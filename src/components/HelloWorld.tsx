@@ -11,7 +11,7 @@ export interface HelloWorldProps {
 }
 
 const defaultStyle: CustomStyle = {
-    container: { },
+    container: {},
     label: {
         color: "#F6BB42"
     }

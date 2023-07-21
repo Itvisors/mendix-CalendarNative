@@ -1,5 +1,5 @@
 ## CalendarNative
-[Calendar widget for mobile]
+[Native calendar widget]
 
 ## Features
 [feature highlights]
