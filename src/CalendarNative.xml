@@ -17,14 +17,14 @@
                     <caption>Event Start Date</caption>
                     <description>Event Start Date.</description>
                     <attributeTypes>
-                        <attributeType name="Date"/>
+                        <attributeType name="DateTime"/>
                     </attributeTypes>
                 </property>
                 <property key="eventEndDate" type="attribute" dataSource="datasourceEvents" required="false">
                     <caption>Event End Date</caption>
                     <description>Event End Date.</description>
                     <attributeTypes>
-                        <attributeType name="Date"/>
+                        <attributeType name="DateTime"/>
                     </attributeTypes>
                 </property>
                 <property key="eventText" type="expression" dataSource="datasourceEvents" required="false" defaultValue="">
@@ -32,7 +32,7 @@
                     <description>Text to show on swipe.</description>
                     <returnType type="String"/>
                 </property>
-                <property key="eventDotColor" type="expression" dataSource="datasourceEvents" required="false" defaultValue="#0000ff">
+                <property key="eventDotColor" type="expression" dataSource="datasourceEvents" required="false" defaultValue="'#0000ff'">
                     <caption>Event Dot Color</caption>
                     <description>Should be a hex color.</description>
                     <returnType type="String"/>
