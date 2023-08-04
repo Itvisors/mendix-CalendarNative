@@ -26,7 +26,9 @@
     "@types/big.js": "^6.0.2"
   },
   "dependencies": {
-
+    "@types/lodash": "^4.14.195",
+    "lodash": "^4.17.21",
+    "react-native-calendars": "^1.1300.0"
   },
   "resolutions": {
     "react": "18.2.0",
