@@ -7,9 +7,6 @@ import { Calendar as CalendarLibrary, CalendarUtils } from "react-native-calenda
 
 const defaultStyle = {
     container: {},
-    label: {
-        color: "#F6BB42"
-    }
 };
 
 export function Calendar(props) {
@@ -22,7 +19,7 @@ export function Calendar(props) {
     return (
         <View style={styles.container}>
             <CalendarLibrary
-                showWeekNumbers={props.showWeekNumbers.value}
+                showWeekNumbers={props.showWeekNumbers}
                 showSixWeeks={props.showSixWeeks}
                 enableSwipeMonths={props.enableSwipeMonths}
                 hideDayNames={props.hideDayNames}
