@@ -21,7 +21,9 @@ public class Activity
 	public enum MemberNames
 	{
 		StartDate("StartDate"),
-		EndDate("EndDate");
+		EndDate("EndDate"),
+		Text("Text"),
+		DotColorHex("DotColorHex");
 
 		private final java.lang.String metaName;
 
@@ -194,6 +196,78 @@ public class Activity
 	public final void setEndDate(com.mendix.systemwideinterfaces.core.IContext context, java.util.Date enddate)
 	{
 		getMendixObject().setValue(context, MemberNames.EndDate.toString(), enddate);
+	}
+
+	/**
+	 * @return value of Text
+	 */
+	public final java.lang.String getText()
+	{
+		return getText(getContext());
+	}
+
+	/**
+	 * @param context
+	 * @return value of Text
+	 */
+	public final java.lang.String getText(com.mendix.systemwideinterfaces.core.IContext context)
+	{
+		return (java.lang.String) getMendixObject().getValue(context, MemberNames.Text.toString());
+	}
+
+	/**
+	 * Set value of Text
+	 * @param text
+	 */
+	public final void setText(java.lang.String text)
+	{
+		setText(getContext(), text);
+	}
+
+	/**
+	 * Set value of Text
+	 * @param context
+	 * @param text
+	 */
+	public final void setText(com.mendix.systemwideinterfaces.core.IContext context, java.lang.String text)
+	{
+		getMendixObject().setValue(context, MemberNames.Text.toString(), text);
+	}
+
+	/**
+	 * @return value of DotColorHex
+	 */
+	public final java.lang.String getDotColorHex()
+	{
+		return getDotColorHex(getContext());
+	}
+
+	/**
+	 * @param context
+	 * @return value of DotColorHex
+	 */
+	public final java.lang.String getDotColorHex(com.mendix.systemwideinterfaces.core.IContext context)
+	{
+		return (java.lang.String) getMendixObject().getValue(context, MemberNames.DotColorHex.toString());
+	}
+
+	/**
+	 * Set value of DotColorHex
+	 * @param dotcolorhex
+	 */
+	public final void setDotColorHex(java.lang.String dotcolorhex)
+	{
+		setDotColorHex(getContext(), dotcolorhex);
+	}
+
+	/**
+	 * Set value of DotColorHex
+	 * @param context
+	 * @param dotcolorhex
+	 */
+	public final void setDotColorHex(com.mendix.systemwideinterfaces.core.IContext context, java.lang.String dotcolorhex)
+	{
+		getMendixObject().setValue(context, MemberNames.DotColorHex.toString(), dotcolorhex);
 	}
 
 	/**

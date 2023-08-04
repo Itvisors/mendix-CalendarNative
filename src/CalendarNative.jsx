@@ -11,5 +11,6 @@ export function CalendarNative( props ) {
         showSixWeeks={props.showSixWeeks}
         enableSwipeMonths={props.enableSwipeMonths}
         hideDayNames={props.hideDayNames}
-        hideArrows={props.hideArrows} />
+        hideArrows={props.hideArrows} 
+        events={props.events}/>
 }

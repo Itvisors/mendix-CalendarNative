@@ -3,7 +3,7 @@ import { View } from "react-native";
 
 import { mergeNativeStyles } from "@mendix/pluggable-widgets-tools";
 
-import { Calendar as CalendarLibrary } from "react-native-calendars"
+import { Calendar as CalendarLibrary, CalendarUtils } from "react-native-calendars";
 
 const defaultStyle = {
     container: {},
@@ -12,8 +12,13 @@ const defaultStyle = {
     }
 };
 
-export function Calendar( props ) {
+export function Calendar(props) {
     const styles = mergeNativeStyles(defaultStyle, props.style);
+
+    const INITIAL_DATE = Date();
+    const date = CalendarUtils.getCalendarDateString(INITIAL_DATE);
+         
+      
     return (
         <View style={styles.container}>
             <CalendarLibrary
@@ -21,7 +26,18 @@ export function Calendar( props ) {
                 showSixWeeks={props.showSixWeeks}
                 enableSwipeMonths={props.enableSwipeMonths}
                 hideDayNames={props.hideDayNames}
-                hideArrows={props.hideArrows} />
+                hideArrows={props.hideArrows}
+                markingType={"multi-dot"}
+                markedDates={{
+                    [date]: {
+                        selected: true,
+                        dots: [
+                            { key: "vacation", color: "blue", selectedDotColor: "red" },
+                            { key: "massage", color: "red", selectedDotColor: "white" }
+                        ]
+                    }
+                }}
+            />
         </View>
     );
 }
