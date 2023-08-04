@@ -8,10 +8,36 @@
     <icon/>
     <properties>
         <propertyGroup caption="General">
-            <property key="yourName" type="string" required="false">
-                <caption>Name</caption>
-                <description>Enter your name</description>
-            </property>
+            <propertyGroup caption="data">
+                <property key="datasourceEvents" type="datasource" isList="true" required="true">
+                    <caption>Data source</caption>
+                    <description />
+                </property>
+                <property key="eventStartDate" type="attribute" dataSource="datasourceEvents" required="true">
+                    <caption>Event Start Date</caption>
+                    <description>Event Start Date.</description>
+                    <attributeTypes>
+                        <attributeType name="Date"/>
+                    </attributeTypes>
+                </property>
+                <property key="eventEndDate" type="attribute" dataSource="datasourceEvents" required="false">
+                    <caption>Event End Date</caption>
+                    <description>Event End Date.</description>
+                    <attributeTypes>
+                        <attributeType name="Date"/>
+                    </attributeTypes>
+                </property>
+                <property key="eventText" type="expression" dataSource="datasourceEvents" required="false" defaultValue="">
+                    <caption>Event Text</caption>
+                    <description>Text to show on swipe.</description>
+                    <returnType type="String"/>
+                </property>
+                <property key="eventDotColor" type="expression" dataSource="datasourceEvents" required="false" defaultValue="#0000ff">
+                    <caption>Event Dot Color</caption>
+                    <description>Should be a hex color.</description>
+                    <returnType type="String"/>
+                </property>
+            </propertyGroup>
         </propertyGroup>
     </properties>
 </widget>

@@ -4,11 +4,16 @@
  * @author Mendix Widgets Framework Team
  */
 import { CSSProperties } from "react";
+import { ListValue, ListAttributeValue, ListExpressionValue } from "mendix";
 
 export interface CalendarNativeProps<Style> {
     name: string;
     style: Style[];
-    yourName: string;
+    datasourceEvents: ListValue;
+    eventStartDate: ListAttributeValue<any>;
+    eventEndDate?: ListAttributeValue<any>;
+    eventText?: ListExpressionValue<string>;
+    eventDotColor?: ListExpressionValue<string>;
 }
 
 export interface CalendarNativePreviewProps {
@@ -20,5 +25,9 @@ export interface CalendarNativePreviewProps {
     style: string;
     styleObject?: CSSProperties;
     readOnly: boolean;
-    yourName: string;
+    datasourceEvents: {} | { caption: string } | { type: string } | null;
+    eventStartDate: string;
+    eventEndDate: string;
+    eventText: string;
+    eventDotColor: string;
 }

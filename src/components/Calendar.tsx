@@ -1,11 +1,11 @@
 import { ReactElement, createElement } from "react";
-import { Text, View } from "react-native";
+import { View } from "react-native";
 
 import { mergeNativeStyles } from "@mendix/pluggable-widgets-tools";
 
 import { CustomStyle } from "../CalendarNative";
-
-export interface HelloWorldProps {
+import {Calendar as CalendarLibrary} from "react-native-calendars"
+export interface CalendarProps {
     name?: string;
     style: CustomStyle[];
 }
@@ -17,11 +17,11 @@ const defaultStyle: CustomStyle = {
     }
 };
 
-export function HelloWorld({ name, style }: HelloWorldProps): ReactElement {
+export function Calendar({ style }: CalendarProps): ReactElement {
     const styles = mergeNativeStyles(defaultStyle, style);
     return (
         <View style={styles.container}>
-            <Text style={styles.label}>Hello {name || "World"}</Text>
+            <CalendarLibrary />
         </View>
     );
 }
