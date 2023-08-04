@@ -5,6 +5,11 @@ import { Style } from "@mendix/pluggable-widgets-tools";
 
 import { Calendar } from "../src/components/Calendar";
 
-export function CalendarNative({ style }) {
-    return <Calendar style={style}/>
+export function CalendarNative( props ) {
+    return <Calendar style={props.style}
+        showWeekNumbers={props.showWeekNumbers}
+        showSixWeeks={props.showSixWeeks}
+        enableSwipeMonths={props.enableSwipeMonths}
+        hideDayNames={props.hideDayNames}
+        hideArrows={props.hideArrows} />
 }

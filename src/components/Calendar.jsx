@@ -3,7 +3,7 @@ import { View } from "react-native";
 
 import { mergeNativeStyles } from "@mendix/pluggable-widgets-tools";
 
-import {Calendar as CalendarLibrary} from "react-native-calendars"
+import { Calendar as CalendarLibrary } from "react-native-calendars"
 
 const defaultStyle = {
     container: {},
@@ -12,11 +12,16 @@ const defaultStyle = {
     }
 };
 
-export function Calendar({ style }) {
-    const styles = mergeNativeStyles(defaultStyle, style);
+export function Calendar( props ) {
+    const styles = mergeNativeStyles(defaultStyle, props.style);
     return (
         <View style={styles.container}>
-            <CalendarLibrary />
+            <CalendarLibrary
+                showWeekNumbers={props.showWeekNumbers.value}
+                showSixWeeks={props.showSixWeeks}
+                enableSwipeMonths={props.enableSwipeMonths}
+                hideDayNames={props.hideDayNames}
+                hideArrows={props.hideArrows} />
         </View>
     );
 }
