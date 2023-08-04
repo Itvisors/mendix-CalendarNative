@@ -2,13 +2,13 @@
   "name": "calendarnative",
   "widgetName": "CalendarNative",
   "version": "1.0.0",
-  "description": "Native calendar widget",
+  "description": "Calendar native",
   "copyright": "Aiden(2023)",
   "author": "Johan Munneke",
   "engines": {
     "node": ">=16"
   },
-  "license": "Apache-2.0",
+  "license": "MIT",
   "config": {
     "projectPath": "./Test/"
   },
@@ -26,9 +26,7 @@
     "@types/big.js": "^6.0.2"
   },
   "dependencies": {
-    "@types/lodash": "^4.14.195",
-    "lodash": "^4.17.21",
-    "react-native-calendars": "^1.1300.0"
+
   },
   "resolutions": {
     "react": "18.2.0",
