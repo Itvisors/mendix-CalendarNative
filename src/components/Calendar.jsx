@@ -1,21 +1,32 @@
-import { createElement } from "react";
+import { createElement, useState, useEffect } from "react";
 import { View } from "react-native";
 
 import { mergeNativeStyles } from "@mendix/pluggable-widgets-tools";
 
-import { Calendar as CalendarLibrary, CalendarUtils } from "react-native-calendars";
+import { Calendar as CalendarLibrary } from "react-native-calendars";
+import { multiDotMapping } from "../mappings/multidotMapping";
 
 const defaultStyle = {
-    container: {},
+    container: {}
 };
 
 export function Calendar(props) {
+    const [dots, setDots] = useState({});
+
     const styles = mergeNativeStyles(defaultStyle, props.style);
 
-    const INITIAL_DATE = Date();
-    const date = CalendarUtils.getCalendarDateString(INITIAL_DATE);
-         
-      
+    useEffect(() => {
+        props.events.items.map(item => {
+            const dateDot = multiDotMapping(item, props.eventStartDate, props.eventDotColor);
+            setDots(prevState => ({ ...prevState, ...dateDot }));
+        });
+    }, []);
+    
+    console.warn(dots);
+
+    // const INITIAL_DATE = Date();
+    // const date = CalendarUtils.getCalendarDateString(INITIAL_DATE);
+
     return (
         <View style={styles.container}>
             <CalendarLibrary
@@ -25,15 +36,7 @@ export function Calendar(props) {
                 hideDayNames={props.hideDayNames}
                 hideArrows={props.hideArrows}
                 markingType={"multi-dot"}
-                markedDates={{
-                    [date]: {
-                        selected: true,
-                        dots: [
-                            { key: "vacation", color: "blue", selectedDotColor: "red" },
-                            { key: "massage", color: "red", selectedDotColor: "white" }
-                        ]
-                    }
-                }}
+                markedDates={dots}
             />
         </View>
     );

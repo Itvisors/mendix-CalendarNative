@@ -22,8 +22,7 @@ public class Activity
 	{
 		StartDate("StartDate"),
 		EndDate("EndDate"),
-		Text("Text"),
-		DotColorHex("DotColorHex");
+		eventDotColor("eventDotColor");
 
 		private final java.lang.String metaName;
 
@@ -199,75 +198,39 @@ public class Activity
 	}
 
 	/**
-	 * @return value of Text
+	 * @return value of eventDotColor
 	 */
-	public final java.lang.String getText()
+	public final java.lang.String geteventDotColor()
 	{
-		return getText(getContext());
+		return geteventDotColor(getContext());
 	}
 
 	/**
 	 * @param context
-	 * @return value of Text
+	 * @return value of eventDotColor
 	 */
-	public final java.lang.String getText(com.mendix.systemwideinterfaces.core.IContext context)
+	public final java.lang.String geteventDotColor(com.mendix.systemwideinterfaces.core.IContext context)
 	{
-		return (java.lang.String) getMendixObject().getValue(context, MemberNames.Text.toString());
+		return (java.lang.String) getMendixObject().getValue(context, MemberNames.eventDotColor.toString());
 	}
 
 	/**
-	 * Set value of Text
-	 * @param text
+	 * Set value of eventDotColor
+	 * @param eventdotcolor
 	 */
-	public final void setText(java.lang.String text)
+	public final void seteventDotColor(java.lang.String eventdotcolor)
 	{
-		setText(getContext(), text);
+		seteventDotColor(getContext(), eventdotcolor);
 	}
 
 	/**
-	 * Set value of Text
+	 * Set value of eventDotColor
 	 * @param context
-	 * @param text
+	 * @param eventdotcolor
 	 */
-	public final void setText(com.mendix.systemwideinterfaces.core.IContext context, java.lang.String text)
+	public final void seteventDotColor(com.mendix.systemwideinterfaces.core.IContext context, java.lang.String eventdotcolor)
 	{
-		getMendixObject().setValue(context, MemberNames.Text.toString(), text);
-	}
-
-	/**
-	 * @return value of DotColorHex
-	 */
-	public final java.lang.String getDotColorHex()
-	{
-		return getDotColorHex(getContext());
-	}
-
-	/**
-	 * @param context
-	 * @return value of DotColorHex
-	 */
-	public final java.lang.String getDotColorHex(com.mendix.systemwideinterfaces.core.IContext context)
-	{
-		return (java.lang.String) getMendixObject().getValue(context, MemberNames.DotColorHex.toString());
-	}
-
-	/**
-	 * Set value of DotColorHex
-	 * @param dotcolorhex
-	 */
-	public final void setDotColorHex(java.lang.String dotcolorhex)
-	{
-		setDotColorHex(getContext(), dotcolorhex);
-	}
-
-	/**
-	 * Set value of DotColorHex
-	 * @param context
-	 * @param dotcolorhex
-	 */
-	public final void setDotColorHex(com.mendix.systemwideinterfaces.core.IContext context, java.lang.String dotcolorhex)
-	{
-		getMendixObject().setValue(context, MemberNames.DotColorHex.toString(), dotcolorhex);
+		getMendixObject().setValue(context, MemberNames.eventDotColor.toString(), eventdotcolor);
 	}
 
 	/**
