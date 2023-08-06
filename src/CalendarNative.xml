@@ -14,15 +14,8 @@
                     <description />
                 </property>
                 <property key="eventStartDate" type="attribute" dataSource="datasourceEvents" required="true">
-                    <caption>Event Start Date</caption>
-                    <description>Event Start Date.</description>
-                    <attributeTypes>
-                        <attributeType name="DateTime"/>
-                    </attributeTypes>
-                </property>
-                <property key="eventEndDate" type="attribute" dataSource="datasourceEvents" required="false">
-                    <caption>Event End Date</caption>
-                    <description>Event End Date.</description>
+                    <caption>Event Date</caption>
+                    <description>Event Date.</description>
                     <attributeTypes>
                         <attributeType name="DateTime"/>
                     </attributeTypes>
