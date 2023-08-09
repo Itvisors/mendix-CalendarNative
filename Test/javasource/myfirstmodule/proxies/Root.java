@@ -21,7 +21,7 @@ public class Root
 	public enum MemberNames
 	{
 		ViewDate("ViewDate"),
-		DateSelected("DateSelected");
+		SelectedDate("SelectedDate");
 
 		private final java.lang.String metaName;
 
@@ -161,39 +161,39 @@ public class Root
 	}
 
 	/**
-	 * @return value of DateSelected
+	 * @return value of SelectedDate
 	 */
-	public final java.util.Date getDateSelected()
+	public final java.util.Date getSelectedDate()
 	{
-		return getDateSelected(getContext());
+		return getSelectedDate(getContext());
 	}
 
 	/**
 	 * @param context
-	 * @return value of DateSelected
+	 * @return value of SelectedDate
 	 */
-	public final java.util.Date getDateSelected(com.mendix.systemwideinterfaces.core.IContext context)
+	public final java.util.Date getSelectedDate(com.mendix.systemwideinterfaces.core.IContext context)
 	{
-		return (java.util.Date) getMendixObject().getValue(context, MemberNames.DateSelected.toString());
+		return (java.util.Date) getMendixObject().getValue(context, MemberNames.SelectedDate.toString());
 	}
 
 	/**
-	 * Set value of DateSelected
-	 * @param dateselected
+	 * Set value of SelectedDate
+	 * @param selecteddate
 	 */
-	public final void setDateSelected(java.util.Date dateselected)
+	public final void setSelectedDate(java.util.Date selecteddate)
 	{
-		setDateSelected(getContext(), dateselected);
+		setSelectedDate(getContext(), selecteddate);
 	}
 
 	/**
-	 * Set value of DateSelected
+	 * Set value of SelectedDate
 	 * @param context
-	 * @param dateselected
+	 * @param selecteddate
 	 */
-	public final void setDateSelected(com.mendix.systemwideinterfaces.core.IContext context, java.util.Date dateselected)
+	public final void setSelectedDate(com.mendix.systemwideinterfaces.core.IContext context, java.util.Date selecteddate)
 	{
-		getMendixObject().setValue(context, MemberNames.DateSelected.toString(), dateselected);
+		getMendixObject().setValue(context, MemberNames.SelectedDate.toString(), selecteddate);
 	}
 
 	/**
