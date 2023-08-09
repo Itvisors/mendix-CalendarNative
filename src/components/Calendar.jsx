@@ -16,13 +16,11 @@ export function Calendar(props) {
     const styles = mergeNativeStyles(defaultStyle, props.style);
    
     useEffect(() => {
-            setDotsArray(multiDotMapping(props.events.items, props.eventStartDate, props.eventDotColor));
-    }, [setDotsArray, multiDotMapping, props.events.items]);
+            setDotsArray(multiDotMapping(props.events.items, props.eventStartDate, props.eventDotColor, props.selectedDay));
+    }, [setDotsArray, multiDotMapping, props.events.items, props.selectedDay]);
 
     // const INITIAL_DATE = Date();
     // const date = CalendarUtils.getCalendarDateString(INITIAL_DATE);
-
-    console.warn(dotsArray);
 
     return (
         <View style={styles.container}>

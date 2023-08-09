@@ -4,9 +4,9 @@ import { Calendar } from "../src/components/Calendar";
 import { CalendarUtils } from "react-native-calendars";
 
 export function CalendarNative(props) {
-    const [selected, setSelected] = useState('');
+    const [selectedDateString, setSelectedDateString] = useState('');
     const executeOnDayPress = (date) => {
-        setSelected(date.dateString);
+        setSelectedDateString(date.dateString);
         const dateObject = new Date(date.dateString);
         if (props.selectedDate) {
             if (!props.selectedDate.readOnly) {
@@ -35,7 +35,7 @@ export function CalendarNative(props) {
                 eventDotColor={props.eventDotColor}
                 viewDate={viewDateString}
                 onDayPress={executeOnDayPress}
-                selectedDay={selected}
+                selectedDay={selectedDateString}
             />
         );
     } else {
