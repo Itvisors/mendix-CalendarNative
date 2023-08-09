@@ -54,7 +54,7 @@
                 </property>
             </propertyGroup>
         </propertyGroup>
-        <propertyGroup caption="Appearance">
+        <propertyGroup caption="Properties">
             <property key="showWeekNumbers" type="boolean" required="true" defaultValue="false">
                 <caption>Show Week Numbers</caption>
                 <description></description>
@@ -75,6 +75,14 @@
                 <caption>Hide Arrows</caption>
                 <description></description>
             </property>
+             <property key="startOfWeek" type="enumeration" defaultValue="Monday">
+                    <caption>Start Of Week</caption>
+                    <description />
+                    <enumerationValues>
+                        <enumerationValue key="Monday">Monday</enumerationValue>
+                        <enumerationValue key="Sunday">Sunday</enumerationValue>
+                    </enumerationValues>
+                </property>
         </propertyGroup>
     </properties>
 </widget>

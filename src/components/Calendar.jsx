@@ -34,6 +34,7 @@ export function Calendar(props) {
                 markedDates={dotsArray}
                 initialDate={props.viewDate}
                 onDayPress={props.onDayPress}
+                firstDay={props.firstDay}
             />
         </View>
     );

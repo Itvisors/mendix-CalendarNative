@@ -36,6 +36,7 @@ export function CalendarNative(props) {
                 viewDate={viewDateString}
                 onDayPress={executeOnDayPress}
                 selectedDay={selectedDateString}
+                firstDay={props.startOfWeek === 'Sunday' ? 0 : 1}
             />
         );
     } else {
