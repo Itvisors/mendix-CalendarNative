@@ -21,7 +21,8 @@ public class Activity
 	public enum MemberNames
 	{
 		StartDate("StartDate"),
-		EndDate("EndDate");
+		EndDate("EndDate"),
+		eventDotColor("eventDotColor");
 
 		private final java.lang.String metaName;
 
@@ -194,6 +195,42 @@ public class Activity
 	public final void setEndDate(com.mendix.systemwideinterfaces.core.IContext context, java.util.Date enddate)
 	{
 		getMendixObject().setValue(context, MemberNames.EndDate.toString(), enddate);
+	}
+
+	/**
+	 * @return value of eventDotColor
+	 */
+	public final java.lang.String geteventDotColor()
+	{
+		return geteventDotColor(getContext());
+	}
+
+	/**
+	 * @param context
+	 * @return value of eventDotColor
+	 */
+	public final java.lang.String geteventDotColor(com.mendix.systemwideinterfaces.core.IContext context)
+	{
+		return (java.lang.String) getMendixObject().getValue(context, MemberNames.eventDotColor.toString());
+	}
+
+	/**
+	 * Set value of eventDotColor
+	 * @param eventdotcolor
+	 */
+	public final void seteventDotColor(java.lang.String eventdotcolor)
+	{
+		seteventDotColor(getContext(), eventdotcolor);
+	}
+
+	/**
+	 * Set value of eventDotColor
+	 * @param context
+	 * @param eventdotcolor
+	 */
+	public final void seteventDotColor(com.mendix.systemwideinterfaces.core.IContext context, java.lang.String eventdotcolor)
+	{
+		getMendixObject().setValue(context, MemberNames.eventDotColor.toString(), eventdotcolor);
 	}
 
 	/**
