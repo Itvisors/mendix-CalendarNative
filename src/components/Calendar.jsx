@@ -11,21 +11,18 @@ const defaultStyle = {
 };
 
 export function Calendar(props) {
-    const [dots, setDots] = useState({});
+    const [dotsArray, setDotsArray] = useState({});
 
     const styles = mergeNativeStyles(defaultStyle, props.style);
-
+   
     useEffect(() => {
-        props.events.items.map(item => {
-            const dateDot = multiDotMapping(item, props.eventStartDate, props.eventDotColor);
-            setDots(prevState => ({ ...prevState, ...dateDot }));
-        });
-    }, []);
-    
-    console.warn(dots);
+            setDotsArray(multiDotMapping(props.events.items, props.eventStartDate, props.eventDotColor));
+    }, [setDotsArray, multiDotMapping, props.events.items]);
 
     // const INITIAL_DATE = Date();
     // const date = CalendarUtils.getCalendarDateString(INITIAL_DATE);
+
+    console.warn(dotsArray);
 
     return (
         <View style={styles.container}>
@@ -36,7 +33,7 @@ export function Calendar(props) {
                 hideDayNames={props.hideDayNames}
                 hideArrows={props.hideArrows}
                 markingType={"multi-dot"}
-                markedDates={dots}
+                markedDates={dotsArray}
             />
         </View>
     );
