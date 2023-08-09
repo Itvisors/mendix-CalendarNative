@@ -20,7 +20,8 @@ public class Root
 	 */
 	public enum MemberNames
 	{
-		ViewDate("ViewDate");
+		ViewDate("ViewDate"),
+		DateSelected("DateSelected");
 
 		private final java.lang.String metaName;
 
@@ -157,6 +158,42 @@ public class Root
 	public final void setViewDate(com.mendix.systemwideinterfaces.core.IContext context, java.util.Date viewdate)
 	{
 		getMendixObject().setValue(context, MemberNames.ViewDate.toString(), viewdate);
+	}
+
+	/**
+	 * @return value of DateSelected
+	 */
+	public final java.util.Date getDateSelected()
+	{
+		return getDateSelected(getContext());
+	}
+
+	/**
+	 * @param context
+	 * @return value of DateSelected
+	 */
+	public final java.util.Date getDateSelected(com.mendix.systemwideinterfaces.core.IContext context)
+	{
+		return (java.util.Date) getMendixObject().getValue(context, MemberNames.DateSelected.toString());
+	}
+
+	/**
+	 * Set value of DateSelected
+	 * @param dateselected
+	 */
+	public final void setDateSelected(java.util.Date dateselected)
+	{
+		setDateSelected(getContext(), dateselected);
+	}
+
+	/**
+	 * Set value of DateSelected
+	 * @param context
+	 * @param dateselected
+	 */
+	public final void setDateSelected(com.mendix.systemwideinterfaces.core.IContext context, java.util.Date dateselected)
+	{
+		getMendixObject().setValue(context, MemberNames.DateSelected.toString(), dateselected);
 	}
 
 	/**

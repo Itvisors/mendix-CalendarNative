@@ -1,4 +1,4 @@
-import React, { createElement } from "react";
+import React, { createElement, useState } from "react";
 
 import { Calendar } from "../src/components/Calendar";
 import { CalendarUtils } from "react-native-calendars";
@@ -7,13 +7,19 @@ export function CalendarNative(props) {
     const [selected, setSelected] = useState('');
     const executeOnDayPress = (date) => {
         setSelected(date.dateString);
+        const dateObject = new Date(date.dateString);
+        if (props.selectedDate) {
+            if (!props.selectedDate.readOnly) {
+                props.selectedDate.setValue(dateObject)
+            }
+        }
         //Execute the on day press action if needed
-        // if (props.onShowAction && props.onShowAction.get(notification).canExecute) {
-        //     props.onShowAction.get(notification).execute();
-        // }
+        if (props.onDayPress && props.onDayPress.canExecute) {
+            props.onDayPress.execute();
+        }
     }
 
-    const viewDateString = CalendarUtils.getCalendarDateString(props.viewDate.value);
+    const viewDateString = props.viewDate && props.viewDate.value ? CalendarUtils.getCalendarDateString(props.viewDate.value) : undefined;
 
     if (props.datasourceEvents.status === "available") {
         return (

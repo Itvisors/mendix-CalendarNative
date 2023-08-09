@@ -39,6 +39,21 @@
                 </property>
             </propertyGroup>
         </propertyGroup>
+        <propertyGroup caption="Events">
+            <propertyGroup caption="Select Date">
+                <property key="onDayPress" type="action" required="false">
+                    <caption>On Day Press</caption>
+                    <description>Action to trigger on day press.</description>
+                </property>
+                <property key="selectedDate" type="attribute" required="false">
+                    <caption>Selected Date</caption>
+                    <description>Date set when pressed.</description>
+                    <attributeTypes>
+                        <attributeType name="DateTime"/>
+                    </attributeTypes>
+                </property>
+            </propertyGroup>
+        </propertyGroup>
         <propertyGroup caption="Appearance">
             <property key="showWeekNumbers" type="boolean" required="true" defaultValue="false">
                 <caption>Show Week Numbers</caption>
