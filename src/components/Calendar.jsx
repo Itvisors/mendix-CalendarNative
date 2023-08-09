@@ -3,7 +3,7 @@ import { View } from "react-native";
 
 import { mergeNativeStyles } from "@mendix/pluggable-widgets-tools";
 
-import { Calendar as CalendarLibrary } from "react-native-calendars";
+import { Calendar as CalendarLibrary, CalendarUtils } from "react-native-calendars";
 import { multiDotMapping } from "../mappings/multidotMapping";
 
 const defaultStyle = {
@@ -21,12 +21,10 @@ export function Calendar(props) {
             setDots(prevState => ({ ...prevState, ...dateDot }));
         });
     }, []);
+
+    const viewDateString = CalendarUtils.getCalendarDateString(props.viewDate.value);
     
     console.warn(dots);
-
-    // const INITIAL_DATE = Date();
-    // const date = CalendarUtils.getCalendarDateString(INITIAL_DATE);
-
     return (
         <View style={styles.container}>
             <CalendarLibrary
@@ -37,6 +35,7 @@ export function Calendar(props) {
                 hideArrows={props.hideArrows}
                 markingType={"multi-dot"}
                 markedDates={dots}
+                initialDate={viewDateString}
             />
         </View>
     );
