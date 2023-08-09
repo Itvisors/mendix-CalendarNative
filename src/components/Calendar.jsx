@@ -34,6 +34,8 @@ export function Calendar(props) {
                 hideArrows={props.hideArrows}
                 markingType={"multi-dot"}
                 markedDates={dotsArray}
+                initialDate={props.viewDate}
+                onDayPress={props.onDayPress}
             />
         </View>
     );

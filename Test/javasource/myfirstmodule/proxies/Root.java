@@ -4,24 +4,23 @@
 
 package myfirstmodule.proxies;
 
-public class Activity
+public class Root
 {
-	private final com.mendix.systemwideinterfaces.core.IMendixObject activityMendixObject;
+	private final com.mendix.systemwideinterfaces.core.IMendixObject rootMendixObject;
 
 	private final com.mendix.systemwideinterfaces.core.IContext context;
 
 	/**
 	 * Internal name of this entity
 	 */
-	public static final java.lang.String entityName = "MyFirstModule.Activity";
+	public static final java.lang.String entityName = "MyFirstModule.Root";
 
 	/**
 	 * Enum describing members of this entity
 	 */
 	public enum MemberNames
 	{
-		StartDate("StartDate"),
-		EndDate("EndDate");
+		ViewDate("ViewDate");
 
 		private final java.lang.String metaName;
 
@@ -37,31 +36,31 @@ public class Activity
 		}
 	}
 
-	public Activity(com.mendix.systemwideinterfaces.core.IContext context)
+	public Root(com.mendix.systemwideinterfaces.core.IContext context)
 	{
 		this(context, com.mendix.core.Core.instantiate(context, entityName));
 	}
 
-	protected Activity(com.mendix.systemwideinterfaces.core.IContext context, com.mendix.systemwideinterfaces.core.IMendixObject activityMendixObject)
+	protected Root(com.mendix.systemwideinterfaces.core.IContext context, com.mendix.systemwideinterfaces.core.IMendixObject rootMendixObject)
 	{
-		if (activityMendixObject == null) {
+		if (rootMendixObject == null) {
 			throw new java.lang.IllegalArgumentException("The given object cannot be null.");
 		}
-		if (!com.mendix.core.Core.isSubClassOf(entityName, activityMendixObject.getType())) {
+		if (!com.mendix.core.Core.isSubClassOf(entityName, rootMendixObject.getType())) {
 			throw new java.lang.IllegalArgumentException(String.format("The given object is not a %s", entityName));
 		}	
 
-		this.activityMendixObject = activityMendixObject;
+		this.rootMendixObject = rootMendixObject;
 		this.context = context;
 	}
 
 	/**
-	 * @deprecated Use 'Activity.load(IContext, IMendixIdentifier)' instead.
+	 * @deprecated Use 'Root.load(IContext, IMendixIdentifier)' instead.
 	 */
 	@java.lang.Deprecated
-	public static myfirstmodule.proxies.Activity initialize(com.mendix.systemwideinterfaces.core.IContext context, com.mendix.systemwideinterfaces.core.IMendixIdentifier mendixIdentifier) throws com.mendix.core.CoreException
+	public static myfirstmodule.proxies.Root initialize(com.mendix.systemwideinterfaces.core.IContext context, com.mendix.systemwideinterfaces.core.IMendixIdentifier mendixIdentifier) throws com.mendix.core.CoreException
 	{
-		return myfirstmodule.proxies.Activity.load(context, mendixIdentifier);
+		return myfirstmodule.proxies.Root.load(context, mendixIdentifier);
 	}
 
 	/**
@@ -71,23 +70,23 @@ public class Activity
 	 * @param mendixObject The Mendix object for the new instance
 	 * @return a new instance of this proxy class
 	 */
-	public static myfirstmodule.proxies.Activity initialize(com.mendix.systemwideinterfaces.core.IContext context, com.mendix.systemwideinterfaces.core.IMendixObject mendixObject)
+	public static myfirstmodule.proxies.Root initialize(com.mendix.systemwideinterfaces.core.IContext context, com.mendix.systemwideinterfaces.core.IMendixObject mendixObject)
 	{
-		return new myfirstmodule.proxies.Activity(context, mendixObject);
+		return new myfirstmodule.proxies.Root(context, mendixObject);
 	}
 
-	public static myfirstmodule.proxies.Activity load(com.mendix.systemwideinterfaces.core.IContext context, com.mendix.systemwideinterfaces.core.IMendixIdentifier mendixIdentifier) throws com.mendix.core.CoreException
+	public static myfirstmodule.proxies.Root load(com.mendix.systemwideinterfaces.core.IContext context, com.mendix.systemwideinterfaces.core.IMendixIdentifier mendixIdentifier) throws com.mendix.core.CoreException
 	{
 		com.mendix.systemwideinterfaces.core.IMendixObject mendixObject = com.mendix.core.Core.retrieveId(context, mendixIdentifier);
-		return myfirstmodule.proxies.Activity.initialize(context, mendixObject);
+		return myfirstmodule.proxies.Root.initialize(context, mendixObject);
 	}
 
-	public static java.util.List<myfirstmodule.proxies.Activity> load(com.mendix.systemwideinterfaces.core.IContext context, java.lang.String xpathConstraint) throws com.mendix.core.CoreException
+	public static java.util.List<myfirstmodule.proxies.Root> load(com.mendix.systemwideinterfaces.core.IContext context, java.lang.String xpathConstraint) throws com.mendix.core.CoreException
 	{
 		return com.mendix.core.Core.createXPathQuery(String.format("//%1$s%2$s", entityName, xpathConstraint))
 			.execute(context)
 			.stream()
-			.map(obj -> myfirstmodule.proxies.Activity.initialize(context, obj))
+			.map(obj -> myfirstmodule.proxies.Root.initialize(context, obj))
 			.collect(java.util.stream.Collectors.toList());
 	}
 
@@ -125,75 +124,39 @@ public class Activity
 		com.mendix.core.Core.delete(context, getMendixObject());
 	}
 	/**
-	 * @return value of StartDate
+	 * @return value of ViewDate
 	 */
-	public final java.util.Date getStartDate()
+	public final java.util.Date getViewDate()
 	{
-		return getStartDate(getContext());
+		return getViewDate(getContext());
 	}
 
 	/**
 	 * @param context
-	 * @return value of StartDate
+	 * @return value of ViewDate
 	 */
-	public final java.util.Date getStartDate(com.mendix.systemwideinterfaces.core.IContext context)
+	public final java.util.Date getViewDate(com.mendix.systemwideinterfaces.core.IContext context)
 	{
-		return (java.util.Date) getMendixObject().getValue(context, MemberNames.StartDate.toString());
+		return (java.util.Date) getMendixObject().getValue(context, MemberNames.ViewDate.toString());
 	}
 
 	/**
-	 * Set value of StartDate
-	 * @param startdate
+	 * Set value of ViewDate
+	 * @param viewdate
 	 */
-	public final void setStartDate(java.util.Date startdate)
+	public final void setViewDate(java.util.Date viewdate)
 	{
-		setStartDate(getContext(), startdate);
+		setViewDate(getContext(), viewdate);
 	}
 
 	/**
-	 * Set value of StartDate
+	 * Set value of ViewDate
 	 * @param context
-	 * @param startdate
+	 * @param viewdate
 	 */
-	public final void setStartDate(com.mendix.systemwideinterfaces.core.IContext context, java.util.Date startdate)
+	public final void setViewDate(com.mendix.systemwideinterfaces.core.IContext context, java.util.Date viewdate)
 	{
-		getMendixObject().setValue(context, MemberNames.StartDate.toString(), startdate);
-	}
-
-	/**
-	 * @return value of EndDate
-	 */
-	public final java.util.Date getEndDate()
-	{
-		return getEndDate(getContext());
-	}
-
-	/**
-	 * @param context
-	 * @return value of EndDate
-	 */
-	public final java.util.Date getEndDate(com.mendix.systemwideinterfaces.core.IContext context)
-	{
-		return (java.util.Date) getMendixObject().getValue(context, MemberNames.EndDate.toString());
-	}
-
-	/**
-	 * Set value of EndDate
-	 * @param enddate
-	 */
-	public final void setEndDate(java.util.Date enddate)
-	{
-		setEndDate(getContext(), enddate);
-	}
-
-	/**
-	 * Set value of EndDate
-	 * @param context
-	 * @param enddate
-	 */
-	public final void setEndDate(com.mendix.systemwideinterfaces.core.IContext context, java.util.Date enddate)
-	{
-		getMendixObject().setValue(context, MemberNames.EndDate.toString(), enddate);
+		getMendixObject().setValue(context, MemberNames.ViewDate.toString(), viewdate);
 	}
 
 	/**
@@ -201,7 +164,7 @@ public class Activity
 	 */
 	public final com.mendix.systemwideinterfaces.core.IMendixObject getMendixObject()
 	{
-		return activityMendixObject;
+		return rootMendixObject;
 	}
 
 	/**
@@ -220,7 +183,7 @@ public class Activity
 		}
 		if (obj != null && getClass().equals(obj.getClass()))
 		{
-			final myfirstmodule.proxies.Activity that = (myfirstmodule.proxies.Activity) obj;
+			final myfirstmodule.proxies.Root that = (myfirstmodule.proxies.Root) obj;
 			return getMendixObject().equals(that.getMendixObject());
 		}
 		return false;
