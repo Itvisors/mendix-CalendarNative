@@ -1,10 +1,11 @@
 import { CalendarUtils } from "react-native-calendars";
 
-export function multiDotMapping(events, eventStartDate, eventDotColor, selectedDay) {
+export function multiDotMapping(events, eventStartDate, eventDotColor) {
     let dotsArray = {};
 
     events.map(event => {
         const dateString = CalendarUtils.getCalendarDateString(eventStartDate.get(event).value);
+        //dot color, not start date
         const dotColor = eventStartDate.get(event).value ? eventDotColor.get(event).value : "blue";
 
         dot = { key: event.id, color: dotColor, selectedDotColor: dotColor };
@@ -18,15 +19,6 @@ export function multiDotMapping(events, eventStartDate, eventDotColor, selectedD
             };
         }
     });
-
-    if (selectedDay) {
-        if (dotsArray[selectedDay]) {
-            dotsArray[selectedDay].selected = true;
-        } else
-            dotsArray[selectedDay] = {
-                selected: true
-            };
-    }
 
     return dotsArray;
 }
