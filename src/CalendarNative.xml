@@ -29,7 +29,12 @@
                 </property>
                 <property key="eventText" type="expression" dataSource="datasourceEvents" required="false">
                     <caption>Event Text</caption>
-                    <description>Text to show on swipe.</description>
+                    <description>Text to show in timeline.</description>
+                    <returnType type="String"/>
+                </property>
+                <property key="eventSummary" type="expression" dataSource="datasourceEvents" required="false">
+                    <caption>Event Summary</caption>
+                    <description>Summary to show in timeline.</description>
                     <returnType type="String"/>
                 </property>
                 <property key="eventDotColor" type="expression" dataSource="datasourceEvents" required="false" defaultValue="'#0000ff'">
@@ -44,6 +49,14 @@
                     <description>Date where the calendar opens on. Calendar will move to this date when it changes.</description>
                     <returnType type="DateTime"/>
                 </property>
+                <property key="calendarView" type="enumeration" defaultValue="BasicCalendar">
+                <caption>View</caption>
+                <description />
+                <enumerationValues>
+                    <enumerationValue key="BasicCalendar">Calendar</enumerationValue>
+                    <enumerationValue key="Timeline">Timeline</enumerationValue>
+                </enumerationValues>
+            </property>
             </propertyGroup>
         </propertyGroup>
         <propertyGroup caption="Events">
@@ -82,14 +95,14 @@
                 <caption>Hide Arrows</caption>
                 <description></description>
             </property>
-             <property key="startOfWeek" type="enumeration" defaultValue="Monday">
-                    <caption>Start Of Week</caption>
-                    <description />
-                    <enumerationValues>
-                        <enumerationValue key="Monday">Monday</enumerationValue>
-                        <enumerationValue key="Sunday">Sunday</enumerationValue>
-                    </enumerationValues>
-                </property>
+            <property key="startOfWeek" type="enumeration" defaultValue="Monday">
+                <caption>Start Of Week</caption>
+                <description />
+                <enumerationValues>
+                    <enumerationValue key="Monday">Monday</enumerationValue>
+                    <enumerationValue key="Sunday">Sunday</enumerationValue>
+                </enumerationValues>
+            </property>
         </propertyGroup>
     </properties>
 </widget>

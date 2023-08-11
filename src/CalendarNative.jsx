@@ -23,38 +23,46 @@ export function CalendarNative(props) {
     const viewDateString = props.viewDate && props.viewDate.value ? CalendarUtils.getCalendarDateString(props.viewDate.value) : undefined;
 
     if (props.datasourceEvents.status === "available") {
-        return (
-            <TimelineCalendar
-                style={props.style}
-                showWeekNumbers={props.showWeekNumbers}
-                showSixWeeks={props.showSixWeeks}
-                enableSwipeMonths={props.enableSwipeMonths}
-                hideDayNames={props.hideDayNames}
-                hideArrows={props.hideArrows}
-                events={props.datasourceEvents}
-                eventStartDate={props.eventStartDate}
-                eventDotColor={props.eventDotColor}
-                viewDate={viewDateString}
-                onDayPress={executeOnDayPress}
-                selectedDay={selectedDateString}
-                firstDay={props.startOfWeek === 'Sunday' ? 0 : 1}
-            />
-            //     <BasicCalendar
-            //     style={props.style}
-            //     showWeekNumbers={props.showWeekNumbers}
-            //     showSixWeeks={props.showSixWeeks}
-            //     enableSwipeMonths={props.enableSwipeMonths}
-            //     hideDayNames={props.hideDayNames}
-            //     hideArrows={props.hideArrows}
-            //     events={props.datasourceEvents}
-            //     eventStartDate={props.eventStartDate}
-            //     eventDotColor={props.eventDotColor}
-            //     viewDate={viewDateString}
-            //     onDayPress={executeOnDayPress}
-            //     selectedDay={selectedDateString}
-            //     firstDay={props.startOfWeek === 'Sunday' ? 0 : 1}
-            // />
-        );
+        if (props.calendarView === "Timeline") {
+            return (
+                <TimelineCalendar
+                    style={props.style}
+                    showWeekNumbers={props.showWeekNumbers}
+                    showSixWeeks={props.showSixWeeks}
+                    enableSwipeMonths={props.enableSwipeMonths}
+                    hideDayNames={props.hideDayNames}
+                    hideArrows={props.hideArrows}
+                    events={props.datasourceEvents}
+                    eventStartDate={props.eventStartDate}
+                    eventEndDate={props.eventEndDate}
+                    eventText={props.eventText}
+                    eventSummary={props.eventSummary}
+                    eventDotColor={props.eventDotColor}
+                    viewDate={viewDateString}
+                    onDayPress={executeOnDayPress}
+                    selectedDay={selectedDateString}
+                    firstDay={props.startOfWeek === 'Sunday' ? 0 : 1}
+                />
+            );
+        } else {
+            return (
+                <BasicCalendar
+                    style={props.style}
+                    showWeekNumbers={props.showWeekNumbers}
+                    showSixWeeks={props.showSixWeeks}
+                    enableSwipeMonths={props.enableSwipeMonths}
+                    hideDayNames={props.hideDayNames}
+                    hideArrows={props.hideArrows}
+                    events={props.datasourceEvents}
+                    eventStartDate={props.eventStartDate}
+                    eventDotColor={props.eventDotColor}
+                    viewDate={viewDateString}
+                    onDayPress={executeOnDayPress}
+                    selectedDay={selectedDateString}
+                    firstDay={props.startOfWeek === 'Sunday' ? 0 : 1}
+                />
+            );
+        }
     } else {
         return <></>;
     }
