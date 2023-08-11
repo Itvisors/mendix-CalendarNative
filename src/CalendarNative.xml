@@ -104,5 +104,15 @@
                 </enumerationValues>
             </property>
         </propertyGroup>
+        <propertyGroup caption="Markings">
+            <property key="markingType" type="enumeration" defaultValue="multi_dot">
+                <caption>Start Of Week</caption>
+                <description />
+                <enumerationValues>
+                    <enumerationValue key="multi_dot">Multi Dot</enumerationValue>
+                    <enumerationValue key="multi_period">Multi Period</enumerationValue>
+                </enumerationValues>
+            </property>
+        </propertyGroup>
     </properties>
 </widget>

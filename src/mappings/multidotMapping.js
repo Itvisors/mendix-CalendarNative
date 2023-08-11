@@ -5,8 +5,7 @@ export function multiDotMapping(events, eventStartDate, eventDotColor) {
 
     events.map(event => {
         const dateString = CalendarUtils.getCalendarDateString(eventStartDate.get(event).value);
-        //dot color, not start date
-        const dotColor = eventStartDate.get(event).value ? eventDotColor.get(event).value : "blue";
+        const dotColor = eventDotColor.get(event).value ? eventDotColor.get(event).value : "blue";
 
         dot = { key: event.id, color: dotColor, selectedDotColor: dotColor };
 
