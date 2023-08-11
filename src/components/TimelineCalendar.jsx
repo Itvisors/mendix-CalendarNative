@@ -61,6 +61,7 @@ export function TimelineCalendar(props) {
                     hideArrows={props.hideArrows}
                     onCalendarToggled={(isOpen) => setIsCalendarOpen(isOpen)}
                     showWeekNumbers={props.showWeekNumbers && isCalendarOpen} // Week numbers only work when month is shown
+                    onDayPress={props.onDayPress}
                 />
                 <TimelineList
                     events={eventsArray}
