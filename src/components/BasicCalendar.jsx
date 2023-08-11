@@ -4,8 +4,7 @@ import { View } from "react-native";
 import { mergeNativeStyles } from "@mendix/pluggable-widgets-tools";
 
 import { Calendar } from "react-native-calendars";
-import { multiDotMapping } from "../mappings/multidotMapping";
-import { multiPeriodMarking } from "../mappings/multiPeriodMarking";
+import { markingMapping} from "../mappings/markingMapping";
 
 const defaultStyle = {
     container: {}
@@ -17,11 +16,7 @@ export function BasicCalendar(props) {
     const styles = mergeNativeStyles(defaultStyle, props.style);
    
     useEffect(() => {
-        if (props.markingType === 'multi-dot') {
-            setMarkedDatesArray(multiDotMapping(props.events.items, props.eventStartDate, props.eventDotColor, props.selectedDay));
-        } else if (props.markingType === 'multi-period') {
-            setMarkedDatesArray(multiPeriodMarking(props.events.items, props.eventStartDate, props.eventEndDate, props.eventDotColor, props.selectedDay));
-        }   
+            setMarkedDatesArray(markingMapping(props.markingType, props.events.items, props.eventStartDate, props.eventEndDate, props.eventDotColor, props.selectedDay));
     }, [props.events.items, props.selectedDay, props.markingType]);
 
     return (
