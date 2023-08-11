@@ -13,12 +13,13 @@ import { getTimelineEvents } from "../mappings/getTimelineEvents";
 
 
 const defaultStyle = {
-    container: {flex: 1}
+    container: { flex: 1 }
 };
 
 export function TimelineCalendar(props) {
     const [markedDatesArray, setMarkedDatesArray] = useState({});
     const [eventsArray, setEventsArray] = useState({});
+    const [isCalendarOpen, setIsCalendarOpen] = useState(false);
 
 
     const styles = mergeNativeStyles(defaultStyle, props.style);
@@ -27,7 +28,6 @@ export function TimelineCalendar(props) {
         let [eventsArrayT, markedDatesArrayT] = getTimelineEvents(props.events.items, props.eventStartDate, props.eventEndDate, props.eventText, props.eventSummary, props.selectedDay);
         setMarkedDatesArray(markedDatesArrayT);
         setEventsArray(eventsArrayT);
-        console.warn('1');
     }, [setMarkedDatesArray, getTimelineEvents, props.events.items, props.selectedDay]);
 
     const INITIAL_TIME = { hour: 9, minutes: 0 };
@@ -35,6 +35,7 @@ export function TimelineCalendar(props) {
         format24h: true,
         //onBackgroundLongPress: this.createNewEvent, // todo
         //onBackgroundLongPressOut: this.approveNewEvent, //todo
+        showWeekNumbers: props.showWeekNumbers ,
         unavailableHours: [{ start: 0, end: 6 }, { start: 22, end: 24 }], // todo
         overlapEventsSpacing: 8,
         rightEdgeSpacing: 24,
@@ -43,39 +44,30 @@ export function TimelineCalendar(props) {
     return (
         //todo markings
         //todo event multiple days
-        // showWeekNumbers={props.showWeekNumbers}
-        // showSixWeeks={props.showSixWeeks}
-        // enableSwipeMonths={props.enableSwipeMonths}
-        // hideDayNames={props.hideDayNames}
-        // hideArrows={props.hideArrows}
-        // events={props.datasourceEvents}
-        // eventStartDate={props.eventStartDate}
-        // eventEndDate={props.eventEndDate}
-        // eventText={props.eventText}
-        // eventSummary={props.eventSummary}
-        // eventDotColor={props.eventDotColor}
-        // viewDate={viewDateString}
         // onDayPress={executeOnDayPress}
-        // selectedDay={selectedDateString}
-        // firstDay={props.startOfWeek === 'Sunday' ? 0 : 1}
+        // onEventPress
+        // renderEvent
         <View style={styles.container}>
             <CalendarProvider
                 date={props.viewDate}
-                //date={getDate()}
                 showTodayButton // todo 
                 disabledOpacity={0.6}
-            //numberOfDays={3}
             >
                 <ExpandableCalendar
-                    firstDay={1} // todo
+                    firstDay={props.firstDay}
                     markedDates={markedDatesArray}
+                    closeOnDayPress={false}
+                    hideDayNames={props.hideDayNames}
+                    hideArrows={props.hideArrows}
+                    onCalendarToggled={(isOpen) => setIsCalendarOpen(isOpen)}
+                    showWeekNumbers={props.showWeekNumbers && isCalendarOpen} // Week numbers only work when month is shown
                 />
                 <TimelineList
                     events={eventsArray}
                     timelineProps={timelineProps}
                     showNowIndicator
-                    scrollToNow  //todo prop
-                    scrollToFirst // todo prop
+                    scrollToNow
+                    scrollToFirst
                     initialTime={INITIAL_TIME}
                 />
             </CalendarProvider>
