@@ -19,6 +19,8 @@ export function CalendarNative(props) {
         }
     }
 
+    props.markingType = props.markingType.replace("_","-")
+
     const viewDateString = props.viewDate && props.viewDate.value ? CalendarUtils.getCalendarDateString(props.viewDate.value) : undefined;
 
     if (props.datasourceEvents.status === "available") {
@@ -32,11 +34,13 @@ export function CalendarNative(props) {
                 hideArrows={props.hideArrows}
                 events={props.datasourceEvents}
                 eventStartDate={props.eventStartDate}
+                eventEndDate={props.eventEndDate}
                 eventDotColor={props.eventDotColor}
                 viewDate={viewDateString}
                 onDayPress={executeOnDayPress}
                 selectedDay={selectedDateString}
                 firstDay={props.startOfWeek === 'Sunday' ? 0 : 1}
+                markingType={props.markingType}
             />
         );
     } else {
