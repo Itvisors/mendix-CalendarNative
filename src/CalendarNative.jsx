@@ -30,8 +30,6 @@ export function CalendarNative(props) {
                 <TimelineCalendar
                     style={props.style}
                     showWeekNumbers={props.showWeekNumbers}
-                    showSixWeeks={props.showSixWeeks}
-                    enableSwipeMonths={props.enableSwipeMonths}
                     hideDayNames={props.hideDayNames}
                     hideArrows={props.hideArrows}
                     events={props.datasourceEvents}
