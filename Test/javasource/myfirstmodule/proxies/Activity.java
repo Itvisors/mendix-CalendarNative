@@ -22,7 +22,9 @@ public class Activity
 	{
 		StartDate("StartDate"),
 		EndDate("EndDate"),
-		eventDotColor("eventDotColor");
+		eventDotColor("eventDotColor"),
+		Text("Text"),
+		Summary("Summary");
 
 		private final java.lang.String metaName;
 
@@ -231,6 +233,78 @@ public class Activity
 	public final void seteventDotColor(com.mendix.systemwideinterfaces.core.IContext context, java.lang.String eventdotcolor)
 	{
 		getMendixObject().setValue(context, MemberNames.eventDotColor.toString(), eventdotcolor);
+	}
+
+	/**
+	 * @return value of Text
+	 */
+	public final java.lang.String getText()
+	{
+		return getText(getContext());
+	}
+
+	/**
+	 * @param context
+	 * @return value of Text
+	 */
+	public final java.lang.String getText(com.mendix.systemwideinterfaces.core.IContext context)
+	{
+		return (java.lang.String) getMendixObject().getValue(context, MemberNames.Text.toString());
+	}
+
+	/**
+	 * Set value of Text
+	 * @param text
+	 */
+	public final void setText(java.lang.String text)
+	{
+		setText(getContext(), text);
+	}
+
+	/**
+	 * Set value of Text
+	 * @param context
+	 * @param text
+	 */
+	public final void setText(com.mendix.systemwideinterfaces.core.IContext context, java.lang.String text)
+	{
+		getMendixObject().setValue(context, MemberNames.Text.toString(), text);
+	}
+
+	/**
+	 * @return value of Summary
+	 */
+	public final java.lang.String getSummary()
+	{
+		return getSummary(getContext());
+	}
+
+	/**
+	 * @param context
+	 * @return value of Summary
+	 */
+	public final java.lang.String getSummary(com.mendix.systemwideinterfaces.core.IContext context)
+	{
+		return (java.lang.String) getMendixObject().getValue(context, MemberNames.Summary.toString());
+	}
+
+	/**
+	 * Set value of Summary
+	 * @param summary
+	 */
+	public final void setSummary(java.lang.String summary)
+	{
+		setSummary(getContext(), summary);
+	}
+
+	/**
+	 * Set value of Summary
+	 * @param context
+	 * @param summary
+	 */
+	public final void setSummary(com.mendix.systemwideinterfaces.core.IContext context, java.lang.String summary)
+	{
+		getMendixObject().setValue(context, MemberNames.Summary.toString(), summary);
 	}
 
 	/**

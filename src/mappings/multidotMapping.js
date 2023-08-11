@@ -1,6 +1,6 @@
 import { CalendarUtils } from "react-native-calendars";
 
-export function multiDotMapping(events, eventStartDate, eventDotColor, selectedDay) {
+export function multiDotMapping(events, eventStartDate, eventDotColor) {
     let dotsArray = {};
 
     events.map(event => {
@@ -18,15 +18,6 @@ export function multiDotMapping(events, eventStartDate, eventDotColor, selectedD
             };
         }
     });
-
-    if (selectedDay) {
-        if (dotsArray[selectedDay]) {
-            dotsArray[selectedDay].selected = true;
-        } else
-            dotsArray[selectedDay] = {
-                selected: true
-            };
-    }
 
     return dotsArray;
 }
