@@ -1,4 +1,4 @@
-import { getCalendarDateTimeString } from "../utils/getCalendarDateTimeString";
+import { getCalendarDateTimeString } from "../utils/dateUtils";
 import { CalendarUtils } from "react-native-calendars";
 
 export function getTimelineEvents(events, eventStartDateProp, eventEndDateProp, eventTextProp, eventSummaryProp, selectedDay) {
