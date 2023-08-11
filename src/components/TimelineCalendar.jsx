@@ -10,6 +10,7 @@ import {
 } from 'react-native-calendars';
 
 import { getTimelineEvents } from "../mappings/getTimelineEvents";
+import { markingMapping} from "../mappings/markingMapping";
 
 
 const defaultStyle = {
@@ -26,9 +27,13 @@ export function TimelineCalendar(props) {
 
     useEffect(() => {
         let [eventsArrayT, markedDatesArrayT] = getTimelineEvents(props.events.items, props.eventStartDate, props.eventEndDate, props.eventText, props.eventSummary, props.selectedDay);
-        setMarkedDatesArray(markedDatesArrayT);
+        //setMarkedDatesArray(markedDatesArrayT);
         setEventsArray(eventsArrayT);
-    }, [setMarkedDatesArray, getTimelineEvents, props.events.items, props.selectedDay]);
+    }, [getTimelineEvents, props.events.items, props.selectedDay]);
+
+    useEffect(() => {
+        setMarkedDatesArray(markingMapping(props.markingType, props.events.items, props.eventStartDate, props.eventEndDate, props.eventDotColor, props.selectedDay));
+}, [props.events.items, props.selectedDay, props.markingType]);
 
     const INITIAL_TIME = { hour: 9, minutes: 0 };
     const timelineProps = {
@@ -44,7 +49,6 @@ export function TimelineCalendar(props) {
     return (
         //todo markings
         //todo event multiple days
-        // onDayPress={executeOnDayPress}
         // onEventPress
         // renderEvent
         <View style={styles.container}>
@@ -56,6 +60,7 @@ export function TimelineCalendar(props) {
                 <ExpandableCalendar
                     firstDay={props.firstDay}
                     markedDates={markedDatesArray}
+                    markingType={props.markingType}
                     closeOnDayPress={false}
                     hideDayNames={props.hideDayNames}
                     hideArrows={props.hideArrows}
