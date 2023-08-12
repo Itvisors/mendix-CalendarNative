@@ -33,7 +33,7 @@ export function markingMapping(markingType, events, eventStartDate, eventEndDate
                     };
                 }
             }
-        } else {
+        } else if (startDateString && endDateString) {
             daysInBetween = differenceInDays(eventStartDate.get(event).value, eventEndDate.get(event).value);
             for (let i = 0; i < daysInBetween + 1; i++) {
                 const dateString = addDaysToDate(eventStartDate.get(event).value, i);
@@ -66,12 +66,20 @@ export function markingMapping(markingType, events, eventStartDate, eventEndDate
         if (selectedDay) {
             if (datesArray[selectedDay]) {
                 datesArray[selectedDay].selected = true;
-            } else
-                datesArray[selectedDay] = {
-                    selected: true
-                };
+            } else {
+                if (markingType === "multi-period") {
+                    datesArray[selectedDay] = {
+                        selected: true,
+                        periods: []
+                    };
+                } else if (markingType === "multi-dot") {
+                    datesArray[selectedDay] = {
+                        selected: true,
+                        dots: []
+                    };
+                }
+            }
         }
-    
     });
 
     return datesArray;
