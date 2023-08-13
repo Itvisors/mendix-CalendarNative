@@ -16,7 +16,8 @@ export function BasicCalendar(props) {
     const styles = mergeNativeStyles(defaultStyle, props.style);
    
     useEffect(() => {
-            setMarkedDatesArray(markingMapping(props.markingType, props.events.items, props.eventStartDate, props.eventEndDate, props.eventDotColor, props.selectedDay));
+            const [eventsArray, markedDatesArrayT] = markingMapping(props.markingType, props.events.items, props.eventStartDate, props.eventEndDate, props.eventDotColor, props.eventText, props.eventSummary, props.selectedDay);
+            setMarkedDatesArray(markedDatesArrayT);
     }, [props.events.items, props.selectedDay, props.markingType]);
 
     return (

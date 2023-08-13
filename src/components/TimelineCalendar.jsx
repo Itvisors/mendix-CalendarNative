@@ -3,13 +3,8 @@ import { View } from "react-native";
 
 import { mergeNativeStyles } from "@mendix/pluggable-widgets-tools";
 
-import {
-    ExpandableCalendar,
-    TimelineList,
-    CalendarProvider
-} from 'react-native-calendars';
+import {ExpandableCalendar, TimelineList, CalendarProvider} from 'react-native-calendars';
 
-import { getTimelineEvents } from "../mappings/getTimelineEvents";
 import { markingMapping} from "../mappings/markingMapping";
 
 
@@ -26,14 +21,10 @@ export function TimelineCalendar(props) {
     const styles = mergeNativeStyles(defaultStyle, props.style);
 
     useEffect(() => {
-        let [eventsArrayT, markedDatesArrayT] = getTimelineEvents(props.events.items, props.eventStartDate, props.eventEndDate, props.eventText, props.eventSummary, props.selectedDay);
-        //setMarkedDatesArray(markedDatesArrayT);
+        let [eventsArrayT, markedDatesArrayT] = markingMapping(props.markingType, props.events.items, props.eventStartDate, props.eventEndDate, props.eventDotColor, props.eventText, props.eventSummary, props.selectedDay);
         setEventsArray(eventsArrayT);
-    }, [getTimelineEvents, props.events.items, props.selectedDay]);
-
-    useEffect(() => {
-        setMarkedDatesArray(markingMapping(props.markingType, props.events.items, props.eventStartDate, props.eventEndDate, props.eventDotColor, props.selectedDay));
-}, [props.events.items, props.selectedDay, props.markingType]);
+        setMarkedDatesArray(markedDatesArrayT)
+    }, [props.events.items, props.selectedDay, props.markingType]);
 
     const INITIAL_TIME = { hour: 9, minutes: 0 };
     const timelineProps = {

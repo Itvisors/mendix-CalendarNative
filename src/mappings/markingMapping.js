@@ -1,34 +1,36 @@
+import { getCalendarDateTimeString, addDaysToDate, differenceInDays } from "../utils/dateUtils";
 import { CalendarUtils } from "react-native-calendars";
 
-import { addDaysToDate, differenceInDays } from "../utils/dateUtils";
+export function markingMapping(markingType, events, eventStartDate, eventEndDate, eventDotColor, eventTextProp, eventSummaryProp, selectedDay) {
+    let eventsArray = {};
+    let markedDatesArray = {};
 
-export function markingMapping(markingType, events, eventStartDate, eventEndDate, eventDotColor, selectedDay) {
-    let datesArray = {};
-
+    //To-Do ignore get functions when props is not set in the widget.
     events.map(event => {
         const startDateString = CalendarUtils.getCalendarDateString(eventStartDate.get(event).value);
         const endDateString = CalendarUtils.getCalendarDateString(eventEndDate.get(event).value);
+        const startDateTimeString = getCalendarDateTimeString(eventStartDate.get(event).value);
+        const endDateTimeString = getCalendarDateTimeString(eventEndDate.get(event).value);
         const color = eventDotColor.get(event).value ? eventDotColor.get(event).value : "blue";
+        const eventText = eventTextProp.get(event).value ? eventTextProp.get(event).value : '';
+        const eventSummary = eventSummaryProp.get(event).value ? eventSummaryProp.get(event).value : '';
 
-        let period = {};
-        let dot = {};
-
-        if (startDateString === endDateString || !endDateString) {
+          if (startDateString === endDateString || !endDateString) {
             period = { startingDay: true, endingDay: true, color: color };
             dot = { key: event.id, color: color, selectedDotColor: color };
-            if (datesArray[startDateString]) {
+            if (markedDatesArray[startDateString]) {
                 if (markingType === "multi-period") {
-                    datesArray[startDateString].periods.push(period);
+                    markedDatesArray[startDateString].periods.push(period);
                 } else if (markingType === "multi-dot") {
-                    datesArray[startDateString].dots.push(dot);
+                    markedDatesArray[startDateString].dots.push(dot);
                 }
             } else {
                 if (markingType === "multi-period") {
-                    datesArray[startDateString] = {
+                    markedDatesArray[startDateString] = {
                         periods: [period]
                     };
                 } else if (markingType === "multi-dot") {
-                    datesArray[startDateString] = {
+                    markedDatesArray[startDateString] = {
                         dots: [dot]
                     };
                 }
@@ -43,19 +45,19 @@ export function markingMapping(markingType, events, eventStartDate, eventEndDate
                     color: color
                 };
                 dot = { key: event.id, color: color, selectedDotColor: color };
-                if (datesArray[dateString]) {
+                if (markedDatesArray[dateString]) {
                     if (markingType === "multi-period") {
-                        datesArray[dateString].periods.push(period);
+                        markedDatesArray[dateString].periods.push(period);
                     } else if (markingType === "multi-dot") {
-                        datesArray[dateString].dots.push(dot);
+                        markedDatesArray[dateString].dots.push(dot);
                     }
                 } else {
                     if (markingType === "multi-period") {
-                        datesArray[dateString] = {
+                        markedDatesArray[dateString] = {
                             periods: [period]
                         };
                     } else if (markingType === "multi-dot") {
-                        datesArray[dateString] = {
+                        markedDatesArray[dateString] = {
                             dots: [dot]
                         };
                     }
@@ -64,23 +66,37 @@ export function markingMapping(markingType, events, eventStartDate, eventEndDate
         }
 
         if (selectedDay) {
-            if (datesArray[selectedDay]) {
-                datesArray[selectedDay].selected = true;
+            if (markedDatesArray[selectedDay]) {
+                markedDatesArray[selectedDay].selected = true;
             } else {
                 if (markingType === "multi-period") {
-                    datesArray[selectedDay] = {
+                    markedDatesArray[selectedDay] = {
                         selected: true,
                         periods: []
                     };
                 } else if (markingType === "multi-dot") {
-                    datesArray[selectedDay] = {
+                    markedDatesArray[selectedDay] = {
                         selected: true,
                         dots: []
                     };
                 }
             }
         }
-    });
 
-    return datesArray;
+        newEvent = {
+            start: startDateTimeString,
+            end: endDateTimeString,
+            title: eventText,
+            summary: eventSummary,
+        };
+
+        if (eventsArray[startDateString]) {
+            eventsArray[startDateString].push(newEvent);
+        } else {
+            eventsArray[startDateString] = [newEvent];
+            markedDatesArray[startDateString].marked = true ;
+        }
+     });
+
+    return [eventsArray, markedDatesArray];
 }
