@@ -45,14 +45,14 @@ export function TimelineCalendar(props) {
         <View style={styles.container}>
             <CalendarProvider
                 date={props.viewDate}
-                showTodayButton // todo 
+                showTodayButton={props.showTodayButton}
                 disabledOpacity={0.6}
             >
                 <ExpandableCalendar
                     firstDay={props.firstDay}
                     markedDates={markedDatesArray}
                     markingType={props.markingType}
-                    closeOnDayPress={false}
+                    closeOnDayPress={props.closeOnDayPress}
                     hideDayNames={props.hideDayNames}
                     hideArrows={props.hideArrows}
                     onCalendarToggled={(isOpen) => setIsCalendarOpen(isOpen)}

@@ -36,6 +36,8 @@ export function CalendarNative(props) {
                 <TimelineCalendar
                     style={props.style}
                     showWeekNumbers={props.showWeekNumbers}
+                    showTodayButton={props.showTodayButton}
+                    closeOnDayPress={props.closeOnDayPress}
                     hideDayNames={props.hideDayNames}
                     hideArrows={props.hideArrows}
                     events={props.datasourceEvents}

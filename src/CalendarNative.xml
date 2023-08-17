@@ -75,34 +75,42 @@
             </propertyGroup>
         </propertyGroup>
         <propertyGroup caption="Properties">
-            <property key="showWeekNumbers" type="boolean" required="true" defaultValue="false">
-                <caption>Show Week Numbers</caption>
-                <description></description>
-            </property>
-            <property key="showSixWeeks" type="boolean" required="true" defaultValue="false">
-                <caption>Show Six Weeks</caption>
-                <description></description>
-            </property>
-            <property key="enableSwipeMonths" type="boolean" required="true" defaultValue="false">
-                <caption>Swipe months</caption>
-                <description></description>
-            </property>
-            <property key="hideDayNames" type="boolean" required="true" defaultValue="false">
-                <caption>Hide Day Names</caption>
-                <description></description>
-            </property>
-            <property key="hideArrows" type="boolean" required="true" defaultValue="false">
-                <caption>Hide Arrows</caption>
-                <description></description>
-            </property>
-            <property key="startOfWeek" type="enumeration" defaultValue="Monday">
-                <caption>Start Of Week</caption>
-                <description />
-                <enumerationValues>
-                    <enumerationValue key="Monday">Monday</enumerationValue>
-                    <enumerationValue key="Sunday">Sunday</enumerationValue>
-                </enumerationValues>
-            </property>
+            <propertyGroup caption="General">
+                <property key="showWeekNumbers" type="boolean" required="true" defaultValue="false">
+                    <caption>Show Week Numbers</caption>
+                    <description></description>
+                </property>
+                <property key="showSixWeeks" type="boolean" required="true" defaultValue="false">
+                    <caption>Show Six Weeks</caption>
+                    <description></description>
+                </property>
+                <property key="enableSwipeMonths" type="boolean" required="true" defaultValue="false">
+                    <caption>Swipe months</caption>
+                    <description></description>
+                </property>
+                <property key="hideDayNames" type="boolean" required="true" defaultValue="false">
+                    <caption>Hide Day Names</caption>
+                    <description></description>
+                </property>
+                <property key="hideArrows" type="boolean" required="true" defaultValue="false">
+                    <caption>Hide Arrows</caption>
+                    <description></description>
+                </property>
+                <property key="startOfWeek" type="enumeration" defaultValue="Monday">
+                    <caption>Start Of Week</caption>
+                    <description />
+                    <enumerationValues>
+                        <enumerationValue key="Monday">Monday</enumerationValue>
+                        <enumerationValue key="Sunday">Sunday</enumerationValue>
+                    </enumerationValues>
+                </property>
+            </propertyGroup>
+            <propertyGroup caption="Timeline">
+                <property key="showTodayButton" type="boolean" required="true" defaultValue="false">
+                    <caption>Show Today Button</caption>
+                    <description></description>
+                </property>
+            </propertyGroup>
         </propertyGroup>
         <propertyGroup caption="Markings">
             <property key="markingType" type="enumeration" defaultValue="multi_dot">
