@@ -38,10 +38,6 @@ export function TimelineCalendar(props) {
     };
 
     return (
-        //todo markings
-        //todo event multiple days
-        // onEventPress
-        // renderEvent
         <View style={styles.container}>
             <CalendarProvider
                 date={props.viewDate}

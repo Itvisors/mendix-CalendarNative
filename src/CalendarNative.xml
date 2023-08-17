@@ -110,6 +110,10 @@
                     <caption>Show Today Button</caption>
                     <description></description>
                 </property>
+                <property key="closeOnDayPress" type="boolean" required="true" defaultValue="false">
+                    <caption>Close on select day</caption>
+                    <description>Minimize calendar when a day is selected</description>
+                </property>
             </propertyGroup>
         </propertyGroup>
         <propertyGroup caption="Markings">
