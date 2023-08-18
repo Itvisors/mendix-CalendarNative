@@ -50,13 +50,18 @@
                     <returnType type="DateTime"/>
                 </property>
                 <property key="calendarView" type="enumeration" defaultValue="BasicCalendar">
-                <caption>View</caption>
-                <description />
-                <enumerationValues>
-                    <enumerationValue key="BasicCalendar">Calendar</enumerationValue>
-                    <enumerationValue key="Timeline">Timeline</enumerationValue>
-                </enumerationValues>
-            </property>
+                    <caption>View</caption>
+                    <description />
+                    <enumerationValues>
+                        <enumerationValue key="BasicCalendar">Calendar</enumerationValue>
+                        <enumerationValue key="Timeline">Timeline</enumerationValue>
+                    </enumerationValues>
+                </property>
+                <property key="locale" type="expression" required="false">
+                    <caption>Locale</caption>
+                    <description>Can be set to any moment locale to change the language according to https://momentjs.com/docs/#/i18n/changing-locale/ (e.g en (english) or nl(dutch)).</description>
+                    <returnType type="String"/>
+                </property>
             </propertyGroup>
         </propertyGroup>
         <propertyGroup caption="Events">

@@ -25,6 +25,7 @@
     "@mendix/pluggable-widgets-tools": "^10.0.0"
   },
   "dependencies": {
+    "moment": "^2.29.4",
     "react-native-calendars": "^1.1300.0"
   },
   "resolutions": {
