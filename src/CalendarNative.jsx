@@ -12,7 +12,9 @@ export function CalendarNative(props) {
 
     //Set locale if changes
     useEffect(() => {
-        setLocaleConfig(props.locale.value);
+        if (props.locale && props.locale.value) {
+            setLocaleConfig(props.locale.value);
+        }
     }, [props.locale]);
 
     const executeOnDayPress = (date) => {
