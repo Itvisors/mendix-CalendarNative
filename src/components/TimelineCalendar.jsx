@@ -29,8 +29,7 @@ export function TimelineCalendar(props) {
     const timelineProps = {
         format24h: true,
         onEventPress: props.onEventPress,
-        //onBackgroundLongPress: this.createNewEvent, // todo
-        //onBackgroundLongPressOut: this.approveNewEvent, //todo
+        onBackgroundLongPress: props.onBackgroundLongPress,
         unavailableHours: [{ start: 0, end: 6 }, { start: 22, end: 24 }], // todo
         overlapEventsSpacing: 8,
         rightEdgeSpacing: 24,

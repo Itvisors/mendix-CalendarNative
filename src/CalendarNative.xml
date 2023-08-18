@@ -63,11 +63,13 @@
             <propertyGroup caption="General">
                 <property key="onDayPress" type="action" required="false">
                     <caption>On Day Press</caption>
-                    <description>Action to trigger on day press.</description>
+                    <description>Action to trigger on day press. 
+Selected Date property will be filled with the day pressed.</description>
                 </property>
                 <property key="onDayLongPress" type="action" required="false">
                     <caption>On Day Long Press</caption>
-                    <description>Action to trigger on day long press.</description>
+                    <description>Action to trigger on day long press. 
+Selected Date property will be filled with the day pressed.</description>
                 </property>
                 <property key="selectedDate" type="attribute" required="false">
                     <caption>Selected Date</caption>
@@ -81,6 +83,11 @@
                 <property key="onEventPress" type="action" required="false" dataSource="datasourceEvents">
                     <caption>On Event Press</caption>
                     <description>Action to trigger on event press.</description>
+                </property>
+                <property key="onBackgroundLongPress" type="action" required="false">
+                    <caption>On Background Long Press</caption>
+                    <description>Action to trigger when background in the timeline is long pressed. Can be used to e.g. create an event for that time.
+Selected Date property will be filled with the day and time pressed.</description>
                 </property>
             </propertyGroup>
         </propertyGroup>

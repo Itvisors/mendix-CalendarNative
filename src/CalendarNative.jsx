@@ -4,41 +4,42 @@ import { BasicCalendar } from "./components/BasicCalendar";
 import { TimelineCalendar } from "./components/TimelineCalendar"
 import { CalendarUtils } from "react-native-calendars";
 import { getEventsOnDate } from "./utils/getEventsOnDate";
+import { timeObjectToDateTime } from "./utils/dateUtils";
 
 export function CalendarNative(props) {
     const [selectedDateString, setSelectedDateString] = useState('');
-    
+
     const executeOnDayPress = (date) => {
         setSelectedDateString(date.dateString);
-        const dateObject = new Date(date.dateString);
-        
+        executeActionAndSetDate(date.dateString, props.onDayPress);
+
         //Filter events planned on this day - NOT ABLE TO STORE IT IN A VALUE YET
-        const filteredEvents = getEventsOnDate(dateObject, props.datasourceEvents.items, props.eventStartDate, props.eventEndDate);
-        console.warn(filteredEvents);
-        
-        if (props.selectedDate) {
-            if (!props.selectedDate.readOnly) {
-                props.selectedDate.setValue(dateObject)
-            }
-        }
-        //Execute the on day press action if needed
-        if (props.onDayPress && props.onDayPress.canExecute) {
-            props.onDayPress.execute();
-        }
+        //const filteredEvents = getEventsOnDate(dateObject, props.datasourceEvents.items, props.eventStartDate, props.eventEndDate);
+        //console.warn(filteredEvents);
+
     }
 
     const executeOnDayLongPress = (date) => {
         setSelectedDateString(date.dateString);
-        const dateObject = new Date(date.dateString);
-        
+        executeActionAndSetDate(date.dateString, props.onDayLongPress);
+    }
+
+    const executeOnBackgroundLongPress = (timeString, timeObject) => {
+        // todo fix timezones
+        const convertedDateTimeString = timeObjectToDateTime(timeObject);
+        executeActionAndSetDate(convertedDateTimeString, props.onBackgroundLongPress);
+    }
+
+    const executeActionAndSetDate = (date, action) => {
+        const dateObject = new Date(date);
         if (props.selectedDate) {
             if (!props.selectedDate.readOnly) {
                 props.selectedDate.setValue(dateObject)
             }
         }
         //Execute the on day press action if needed
-        if (props.onDayLongPress && props.onDayLongPress.canExecute) {
-            props.onDayLongPress.execute();
+        if (action && action.canExecute) {
+            action.execute();
         }
     }
 
@@ -50,11 +51,11 @@ export function CalendarNative(props) {
         }
     }
 
-    
-    props.markingType = props.markingType.replace("_","-")
-    
+
+    props.markingType = props.markingType.replace("_", "-")
+
     const viewDateString = props.viewDate && props.viewDate.value ? CalendarUtils.getCalendarDateString(props.viewDate.value) : undefined;
-    
+
     if (props.datasourceEvents.status === "available") {
         if (props.calendarView === "Timeline") {
             return (
@@ -72,9 +73,10 @@ export function CalendarNative(props) {
                     eventSummary={props.eventSummary}
                     eventDotColor={props.eventDotColor}
                     viewDate={viewDateString}
-                    onDayPress={executeOnDayPress}
-                    onDayLongPress={executeOnDayLongPress}
-                    onEventPress={executeEventPress}
+                    onDayPress={props.onDayPress ? executeOnDayPress : undefined}
+                    onDayLongPress={props.onDayLongPress ? executeOnDayLongPress : undefined}
+                    onEventPress={props.onEventPress ? executeEventPress : undefined}
+                    onBackgroundLongPress={props.onBackgroundLongPress ? executeOnBackgroundLongPress : undefined}
                     selectedDay={selectedDateString}
                     firstDay={props.startOfWeek === 'Sunday' ? 0 : 1}
                     markingType={props.markingType}
