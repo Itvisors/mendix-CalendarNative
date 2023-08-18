@@ -32,6 +32,7 @@ export function BasicCalendar(props) {
                 markedDates={markedDatesArray}
                 initialDate={props.viewDate}
                 onDayPress={props.onDayPress}
+                onDayLongPress={props.onDayLongPress}
                 firstDay={props.firstDay}
             />
         </View>

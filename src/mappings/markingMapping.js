@@ -4,6 +4,7 @@ import { CalendarUtils } from "react-native-calendars";
 export function markingMapping(markingType, events, eventStartDate, eventEndDate, eventDotColor, eventTextProp, eventSummaryProp, selectedDay) {
     let eventsArray = {};
     let markedDatesArray = {};
+    let key=0;
 
     //To-Do ignore get functions when props is not set in the widget.
     events.map(event => {
@@ -84,11 +85,13 @@ export function markingMapping(markingType, events, eventStartDate, eventEndDate
         }
 
         newEvent = {
+            key: key,
             start: startDateTimeString,
             end: endDateTimeString,
             title: eventText,
             summary: eventSummary,
         };
+        key++;
 
         if (eventsArray[startDateString]) {
             eventsArray[startDateString].push(newEvent);

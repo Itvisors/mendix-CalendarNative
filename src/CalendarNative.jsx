@@ -7,6 +7,7 @@ import { getEventsOnDate } from "./utils/getEventsOnDate";
 
 export function CalendarNative(props) {
     const [selectedDateString, setSelectedDateString] = useState('');
+    
     const executeOnDayPress = (date) => {
         setSelectedDateString(date.dateString);
         const dateObject = new Date(date.dateString);
@@ -25,6 +26,30 @@ export function CalendarNative(props) {
             props.onDayPress.execute();
         }
     }
+
+    const executeOnDayLongPress = (date) => {
+        setSelectedDateString(date.dateString);
+        const dateObject = new Date(date.dateString);
+        
+        if (props.selectedDate) {
+            if (!props.selectedDate.readOnly) {
+                props.selectedDate.setValue(dateObject)
+            }
+        }
+        //Execute the on day press action if needed
+        if (props.onDayLongPress && props.onDayLongPress.canExecute) {
+            props.onDayLongPress.execute();
+        }
+    }
+
+    const executeEventPress = (event) => {
+        const datasourceItem = props.datasourceEvents.items[event.key];
+        //Execute the on event action if needed
+        if (props.onEventPress && props.onEventPress.get(datasourceItem).canExecute) {
+            props.onEventPress.get(datasourceItem).execute();
+        }
+    }
+
     
     props.markingType = props.markingType.replace("_","-")
     
@@ -48,6 +73,8 @@ export function CalendarNative(props) {
                     eventDotColor={props.eventDotColor}
                     viewDate={viewDateString}
                     onDayPress={executeOnDayPress}
+                    onDayLongPress={executeOnDayLongPress}
+                    onEventPress={executeEventPress}
                     selectedDay={selectedDateString}
                     firstDay={props.startOfWeek === 'Sunday' ? 0 : 1}
                     markingType={props.markingType}
@@ -70,6 +97,7 @@ export function CalendarNative(props) {
                     eventDotColor={props.eventDotColor}
                     viewDate={viewDateString}
                     onDayPress={executeOnDayPress}
+                    onDayLongPress={executeOnDayLongPress}
                     selectedDay={selectedDateString}
                     firstDay={props.startOfWeek === 'Sunday' ? 0 : 1}
                     markingType={props.markingType}

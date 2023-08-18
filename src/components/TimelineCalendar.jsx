@@ -3,9 +3,9 @@ import { View } from "react-native";
 
 import { mergeNativeStyles } from "@mendix/pluggable-widgets-tools";
 
-import {ExpandableCalendar, TimelineList, CalendarProvider} from 'react-native-calendars';
+import { ExpandableCalendar, TimelineList, CalendarProvider } from 'react-native-calendars';
 
-import { markingMapping} from "../mappings/markingMapping";
+import { markingMapping } from "../mappings/markingMapping";
 
 
 const defaultStyle = {
@@ -26,12 +26,11 @@ export function TimelineCalendar(props) {
         setMarkedDatesArray(markedDatesArrayT)
     }, [props.events.items, props.selectedDay, props.markingType]);
 
-    const INITIAL_TIME = { hour: 9, minutes: 0 };
     const timelineProps = {
         format24h: true,
+        onEventPress: props.onEventPress,
         //onBackgroundLongPress: this.createNewEvent, // todo
         //onBackgroundLongPressOut: this.approveNewEvent, //todo
-        showWeekNumbers: props.showWeekNumbers ,
         unavailableHours: [{ start: 0, end: 6 }, { start: 22, end: 24 }], // todo
         overlapEventsSpacing: 8,
         rightEdgeSpacing: 24,
@@ -54,14 +53,15 @@ export function TimelineCalendar(props) {
                     onCalendarToggled={(isOpen) => setIsCalendarOpen(isOpen)}
                     showWeekNumbers={props.showWeekNumbers && isCalendarOpen} // Week numbers only work when month is shown
                     onDayPress={props.onDayPress}
+                    onDayLongPress={props.onDayLongPress}
                 />
                 <TimelineList
                     events={eventsArray}
-                    timelineProps={timelineProps}
                     showNowIndicator
                     scrollToNow
                     scrollToFirst
-                    initialTime={INITIAL_TIME}
+                    timelineProps={timelineProps}
+                    initialTime={{ hour: 9, minutes: 0 }} //todo
                 />
             </CalendarProvider>
         </View>

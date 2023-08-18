@@ -60,10 +60,14 @@
             </propertyGroup>
         </propertyGroup>
         <propertyGroup caption="Events">
-            <propertyGroup caption="Select Date">
+            <propertyGroup caption="General">
                 <property key="onDayPress" type="action" required="false">
                     <caption>On Day Press</caption>
                     <description>Action to trigger on day press.</description>
+                </property>
+                <property key="onDayLongPress" type="action" required="false">
+                    <caption>On Day Long Press</caption>
+                    <description>Action to trigger on day long press.</description>
                 </property>
                 <property key="selectedDate" type="attribute" required="false">
                     <caption>Selected Date</caption>
@@ -71,6 +75,12 @@
                     <attributeTypes>
                         <attributeType name="DateTime"/>
                     </attributeTypes>
+                </property>
+            </propertyGroup>
+            <propertyGroup caption="Timeline">
+                <property key="onEventPress" type="action" required="false" dataSource="datasourceEvents">
+                    <caption>On Event Press</caption>
+                    <description>Action to trigger on event press.</description>
                 </property>
             </propertyGroup>
         </propertyGroup>
@@ -106,7 +116,7 @@
                 </property>
             </propertyGroup>
             <propertyGroup caption="Timeline">
-                <property key="showTodayButton" type="boolean" required="true" defaultValue="false">
+                <property key="showTodayButton" type="boolean" required="true" defaultValue="true">
                     <caption>Show Today Button</caption>
                     <description></description>
                 </property>
