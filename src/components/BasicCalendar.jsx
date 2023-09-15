@@ -29,7 +29,6 @@ export function BasicCalendar(props) {
             props.singleMarkingSelectedColor,
             props.singleMarkingSelectedTextColor
         );
-        console.warn(markedDatesArrayT);
         setMarkedDatesArray(markedDatesArrayT);
     }, [props.events.items, props.selectedDay, props.markingType]);
 
