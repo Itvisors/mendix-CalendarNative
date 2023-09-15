@@ -3,9 +3,8 @@ import React, { createElement, useState, useEffect } from "react";
 import { BasicCalendar } from "./components/BasicCalendar";
 import { TimelineCalendar } from "./components/TimelineCalendar"
 import { CalendarUtils } from "react-native-calendars";
-import { getEventsOnDate } from "./utils/getEventsOnDate";
-import { timeObjectToDateTime } from "./utils/dateUtils";
 import { setLocaleConfig } from "./utils/setLocaleConfig";
+import moment from 'moment';
 
 export function CalendarNative(props) {
     const [selectedDateString, setSelectedDateString] = useState('');
@@ -33,9 +32,7 @@ export function CalendarNative(props) {
     }
 
     const executeOnBackgroundLongPress = (timeString, timeObject) => {
-        // todo fix timezones
-        const convertedDateTimeString = timeObjectToDateTime(timeObject);
-        executeActionAndSetDate(convertedDateTimeString, props.onBackgroundLongPress);
+        executeActionAndSetDate(moment(timeString), props.onBackgroundLongPress);
     }
 
     const executeActionAndSetDate = (date, action) => {
