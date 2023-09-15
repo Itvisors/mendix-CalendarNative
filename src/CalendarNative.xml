@@ -140,12 +140,25 @@ Selected Date property will be filled with the day and time pressed.</descriptio
         </propertyGroup>
         <propertyGroup caption="Markings">
             <property key="markingType" type="enumeration" defaultValue="multi_dot">
-                <caption>Start Of Week</caption>
+                <caption>Marking Type</caption>
                 <description />
                 <enumerationValues>
+                    <enumerationValue key="single_dot">Single Dot</enumerationValue>
                     <enumerationValue key="multi_dot">Multi Dot</enumerationValue>
                     <enumerationValue key="multi_period">Multi Period</enumerationValue>
                 </enumerationValues>
+            </property>
+            <property key="singleMarkingColor" type="string" required="false" defaultValue="">
+                <caption>Single Marking Color</caption>
+                <description>Should be a hex code (e.g., #808080)</description>
+            </property>
+            <property key="singleMarkingSelectedColor" type="string" required="false" defaultValue="">
+                <caption>Single Marking Selected Color</caption>
+                <description>Should be a hex code (e.g., #0000FF)</description>
+            </property>
+            <property key="singleMarkingSelectedTextColor" type="string" required="false" defaultValue="">
+                <caption>Single Marking Selected Text Color</caption>
+                <description>Should be a hex code (e.g., #FFFFFF)</description>
             </property>
         </propertyGroup>
     </properties>

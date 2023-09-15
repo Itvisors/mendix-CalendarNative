@@ -88,6 +88,9 @@ export function CalendarNative(props) {
                     selectedDay={selectedDateString}
                     firstDay={props.startOfWeek === 'Sunday' ? 0 : 1}
                     markingType={props.markingType}
+                    singleMarkingColor={props.singleMarkingColor}
+                    singleMarkingSelectedColor={props.singleMarkingSelectedColor}
+                    singleMarkingSelectedTextColor={props.singleMarkingSelectedTextColor}
                 />
             );
         } else {
@@ -111,6 +114,9 @@ export function CalendarNative(props) {
                     selectedDay={selectedDateString}
                     firstDay={props.startOfWeek === 'Sunday' ? 0 : 1}
                     markingType={props.markingType}
+                    singleMarkingColor={props.singleMarkingColor}
+                    singleMarkingSelectedColor={props.singleMarkingSelectedColor}
+                    singleMarkingSelectedTextColor={props.singleMarkingSelectedTextColor}
                 />
             );
         }
