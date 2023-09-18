@@ -47,10 +47,34 @@ export function TimelineCalendar(props) {
         overlapEventsSpacing: 8,
         rightEdgeSpacing: 24
     };
+    // const theme = {
+    //     backgroundColor: "transparent",
+    //     calendarBackground: "transparent",
+    //     monthTextColor: true ? DEFAULT_COLORS.white : DEFAULT_COLORS.black,
+    //     textDisabledColor: true ? DEFAULT_COLORS.disableGreyDark : DEFAULT_COLORS.disableGrey,
+    //     dayTextColor: true ? DEFAULT_COLORS.disableGrey : DEFAULT_COLORS.black
+    // };
+    // const DEFAULT_COLORS = {
+    //     pureWhite: "#fff",
+    //     white: "#ececec",
+    //     black: "#141414",
+    //     disableGrey: "#D9E1E8",
+    //     disableGreyDark: "#242729",
+    //     blue: "#2C97EB"
+    // };
+
+    const theme = {
+        backgroundColor: "transparent",
+        calendarBackground: "transparent",
+        monthTextColor: "#ececec",
+        textDisabledColor: "#242729",
+        dayTextColor: "#D9E1E8"
+    };
 
     return (
+        
         <View style={styles.container}>
-            <CalendarProvider date={props.viewDate} showTodayButton={props.showTodayButton} disabledOpacity={0.6}>
+            <CalendarProvider date={props.viewDate} showTodayButton={props.showTodayButton} disabledOpacity={0.6} theme={theme}>
                 <ExpandableCalendar
                     firstDay={props.firstDay}
                     markedDates={markedDatesArray}
