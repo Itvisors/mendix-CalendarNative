@@ -17,7 +17,7 @@ export function getCalendarDateTimeString(date) {
 export const addDaysToDate = (date, days) => {
     let newDate = new Date(date);
     newDate.setDate(newDate.getDate() + days);
-    return CalendarUtils.getCalendarDateString(newDate);
+    return [newDate, CalendarUtils.getCalendarDateString(newDate)];
 };
 
 export function differenceInDays(date1, date2) {
@@ -26,3 +26,12 @@ export function differenceInDays(date1, date2) {
     return Math.abs(TotalDays);
 }
 
+export const beginOfDate = (date) => {
+    date.setHours(0,0,0,0);
+    return new Date(date);
+}
+
+export const endofDate = (date) => {
+    date.setHours(23,59,59,999);
+    return new Date(date);
+}
