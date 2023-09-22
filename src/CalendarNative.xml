@@ -102,14 +102,6 @@ Selected Date property will be filled with the day and time pressed.</descriptio
                     <caption>Show Week Numbers</caption>
                     <description></description>
                 </property>
-                <property key="showSixWeeks" type="boolean" required="true" defaultValue="false">
-                    <caption>Show Six Weeks</caption>
-                    <description></description>
-                </property>
-                <property key="enableSwipeMonths" type="boolean" required="true" defaultValue="false">
-                    <caption>Swipe months</caption>
-                    <description></description>
-                </property>
                 <property key="hideDayNames" type="boolean" required="true" defaultValue="false">
                     <caption>Hide Day Names</caption>
                     <description></description>

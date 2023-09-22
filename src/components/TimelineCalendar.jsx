@@ -55,7 +55,7 @@ export function TimelineCalendar(props) {
     return (
 
         <View style={styles.container}>
-            <CalendarProvider date={props.viewDate} showTodayButton={props.showTodayButton} disabledOpacity={0.6}>
+            <CalendarProvider date={props.viewDate} showTodayButton={props.showTodayButton} disabledOpacity={0.6} >
                 <ExpandableCalendar
                     firstDay={props.firstDay}
                     markedDates={markedDatesArray}
