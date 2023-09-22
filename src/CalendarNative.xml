@@ -32,11 +32,6 @@
                     <description>Text to show in timeline.</description>
                     <returnType type="String"/>
                 </property>
-                <property key="eventDotColor" type="expression" dataSource="datasourceEvents" required="false" defaultValue="'#0000ff'">
-                    <caption>Event Dot Color</caption>
-                    <description>Should be a hex color.</description>
-                    <returnType type="String"/>
-                </property>
             </propertyGroup>
             <propertyGroup caption="Calendar">
                 <property key="viewDate" type="expression" required="false">
@@ -126,9 +121,17 @@ Selected Date property will be filled with the day and time pressed.</descriptio
             </propertyGroup>
         </propertyGroup>
         <propertyGroup caption="Markings">
-            <property key="markingType" type="enumeration" defaultValue="multi_dot">
+            <property key="markingTypeTimeline" type="enumeration" defaultValue="multi_dot">
                 <caption>Marking Type</caption>
-                <description />
+                <description>Multi Period is not recommended for the timeline view, because it can take up too much space</description>
+                <enumerationValues>
+                    <enumerationValue key="single_dot">Single Dot</enumerationValue>
+                    <enumerationValue key="multi_dot">Multi Dot</enumerationValue>
+                </enumerationValues>
+            </property>
+            <property key="markingTypeCalendar" type="enumeration" defaultValue="multi_dot">
+                <caption>Marking Type</caption>
+                <description>Multi Period is not recommended for the timeline view, because it can take up too much space</description>
                 <enumerationValues>
                     <enumerationValue key="single_dot">Single Dot</enumerationValue>
                     <enumerationValue key="multi_dot">Multi Dot</enumerationValue>
@@ -136,16 +139,21 @@ Selected Date property will be filled with the day and time pressed.</descriptio
                 </enumerationValues>
             </property>
             <property key="singleMarkingColor" type="string" required="false" defaultValue="">
-                <caption>Single Marking Color</caption>
+                <caption>Marking Color</caption>
                 <description>Should be a hex code (e.g., #808080)</description>
             </property>
             <property key="singleMarkingSelectedColor" type="string" required="false" defaultValue="">
-                <caption>Single Marking Selected Color</caption>
+                <caption>Marking Selected Color</caption>
                 <description>Should be a hex code (e.g., #0000FF)</description>
             </property>
             <property key="singleMarkingSelectedTextColor" type="string" required="false" defaultValue="">
-                <caption>Single Marking Selected Text Color</caption>
+                <caption>Marking Selected Text Color</caption>
                 <description>Should be a hex code (e.g., #FFFFFF)</description>
+            </property>
+            <property key="eventDotColor" type="expression" dataSource="datasourceEvents" required="false" defaultValue="'#0000ff'">
+                <caption>Event Marking Color</caption>
+                <description>Should be a hex color.</description>
+                <returnType type="String"/>
             </property>
         </propertyGroup>
     </properties>
