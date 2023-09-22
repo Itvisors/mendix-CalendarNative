@@ -26,7 +26,6 @@ export function TimelineCalendar(props) {
             props.eventEndDate,
             props.eventDotColor,
             props.eventText,
-            props.eventSummary,
             props.selectedDay,
             props.singleMarkingColor,
             props.singleMarkingSelectedColor,
@@ -45,7 +44,7 @@ export function TimelineCalendar(props) {
             { start: 22, end: 24 }
         ], // todo
         overlapEventsSpacing: 8,
-        rightEdgeSpacing: 24
+        rightEdgeSpacing: 24,
     };
 
     return (

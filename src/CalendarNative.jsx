@@ -75,7 +75,6 @@ export function CalendarNative(props) {
                     eventStartDate={props.eventStartDate}
                     eventEndDate={props.eventEndDate}
                     eventText={props.eventText}
-                    eventSummary={props.eventSummary}
                     eventDotColor={props.eventDotColor}
                     viewDate={viewDateString}
                     onDayPress={props.onDayPress ? executeOnDayPress : undefined}
@@ -103,7 +102,6 @@ export function CalendarNative(props) {
                     eventStartDate={props.eventStartDate}
                     eventEndDate={props.eventEndDate}
                     eventText={props.eventText}
-                    eventSummary={props.eventSummary}
                     eventDotColor={props.eventDotColor}
                     viewDate={viewDateString}
                     onDayPress={executeOnDayPress}
