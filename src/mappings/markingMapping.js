@@ -20,7 +20,7 @@ export function markingMapping(markingType, events, eventStartDate, eventEndDate
         const endDateString = CalendarUtils.getCalendarDateString(endDate);
         const endTimeString = getCalendarTimeString(endDate);
         const endDateTimeString = getCalendarDateTimeString(endDate);
-        
+
         const color = eventDotColor.get(event).value ? eventDotColor.get(event).value : "blue";
         const eventText = eventTextProp.get(event).value ? eventTextProp.get(event).value : '';
         
@@ -134,9 +134,9 @@ export function markingMapping(markingType, events, eventStartDate, eventEndDate
                 } else {
                     eventsArray[dateString] = [newEvent];
                 }
-            
-                key++;
             }
+            
+            key++;
         }
 
 

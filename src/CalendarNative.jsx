@@ -19,11 +19,6 @@ export function CalendarNative(props) {
     const executeOnDayPress = (date) => {
         setSelectedDateString(date.dateString);
         executeActionAndSetDate(date.dateString, props.onDayPress);
-
-        //Filter events planned on this day - NOT ABLE TO STORE IT IN A VALUE YET
-        //const filteredEvents = getEventsOnDate(dateObject, props.datasourceEvents.items, props.eventStartDate, props.eventEndDate);
-        //console.warn(filteredEvents);
-
     }
 
     const executeOnDayLongPress = (date) => {
