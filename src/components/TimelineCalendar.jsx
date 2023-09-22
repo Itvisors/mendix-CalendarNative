@@ -7,6 +7,8 @@ import { ExpandableCalendar, TimelineList, CalendarProvider } from "react-native
 
 import { markingMapping } from "../mappings/markingMapping";
 
+import { theme } from "../utils/theme";
+
 const defaultStyle = {
     container: { flex: 1 }
 };
@@ -44,37 +46,16 @@ export function TimelineCalendar(props) {
             { start: 0, end: 6 },
             { start: 22, end: 24 }
         ], // todo
+        unavailableHoursColor: theme.unavailableHoursColor,
         overlapEventsSpacing: 8,
-        rightEdgeSpacing: 24
-    };
-    // const theme = {
-    //     backgroundColor: "transparent",
-    //     calendarBackground: "transparent",
-    //     monthTextColor: true ? DEFAULT_COLORS.white : DEFAULT_COLORS.black,
-    //     textDisabledColor: true ? DEFAULT_COLORS.disableGreyDark : DEFAULT_COLORS.disableGrey,
-    //     dayTextColor: true ? DEFAULT_COLORS.disableGrey : DEFAULT_COLORS.black
-    // };
-    // const DEFAULT_COLORS = {
-    //     pureWhite: "#fff",
-    //     white: "#ececec",
-    //     black: "#141414",
-    //     disableGrey: "#D9E1E8",
-    //     disableGreyDark: "#242729",
-    //     blue: "#2C97EB"
-    // };
-
-    const theme = {
-        backgroundColor: "transparent",
-        calendarBackground: "transparent",
-        monthTextColor: "#ececec",
-        textDisabledColor: "#242729",
-        dayTextColor: "#D9E1E8"
+        rightEdgeSpacing: 24,
+        theme : theme
     };
 
     return (
-        
+
         <View style={styles.container}>
-            <CalendarProvider date={props.viewDate} showTodayButton={props.showTodayButton} disabledOpacity={0.6} theme={theme}>
+            <CalendarProvider date={props.viewDate} showTodayButton={props.showTodayButton} disabledOpacity={0.6}>
                 <ExpandableCalendar
                     firstDay={props.firstDay}
                     markedDates={markedDatesArray}
@@ -86,6 +67,7 @@ export function TimelineCalendar(props) {
                     showWeekNumbers={props.showWeekNumbers && isCalendarOpen} // Week numbers only work when month is shown
                     onDayPress={props.onDayPress}
                     onDayLongPress={props.onDayLongPress}
+                    theme={theme}
                 />
                 <TimelineList
                     events={eventsArray}
