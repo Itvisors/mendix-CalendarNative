@@ -8,13 +8,19 @@ export function markingMapping(markingType, events, eventStartDate, eventEndDate
 
     //To-Do ignore get functions when props is not set in the widget.
     events.map(event => {
+        let endDate = eventEndDate ? eventEndDate.get(event).value : undefined;
+        if (endDate === undefined) {
+            endDate = eventStartDate.get(event).value;
+        }  
         //Retrieve attributes of an event
         const startDateString = CalendarUtils.getCalendarDateString(eventStartDate.get(event).value);
-        const endDateString = CalendarUtils.getCalendarDateString(eventEndDate.get(event).value);
-        const startDateTimeString = getCalendarDateTimeString(eventStartDate.get(event).value);
-        const endDateTimeString = getCalendarDateTimeString(eventEndDate.get(event).value);
         const startTimeString = getCalendarTimeString(eventStartDate.get(event).value);
-        const endTimeString = getCalendarTimeString(eventEndDate.get(event).value);
+        const startDateTimeString = getCalendarDateTimeString(eventStartDate.get(event).value);
+
+        const endDateString = CalendarUtils.getCalendarDateString(endDate);
+        const endTimeString = getCalendarTimeString(endDate);
+        const endDateTimeString = getCalendarDateTimeString(endDate);
+        
         const color = eventDotColor.get(event).value ? eventDotColor.get(event).value : "blue";
         const eventText = eventTextProp.get(event).value ? eventTextProp.get(event).value : '';
         

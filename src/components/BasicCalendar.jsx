@@ -35,8 +35,7 @@ export function BasicCalendar(props) {
         <View style={styles.container}>
             <Calendar
                 showWeekNumbers={props.showWeekNumbers}
-                showSixWeeks={props.showSixWeeks}
-                enableSwipeMonths={props.enableSwipeMonths}
+                enableSwipeMonths
                 hideDayNames={props.hideDayNames}
                 hideArrows={props.hideArrows}
                 markingType={props.markingType}
