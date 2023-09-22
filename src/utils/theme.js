@@ -14,7 +14,6 @@ export const theme = ({
     textSectionTitleColor: textColor,
     textSectionTitleDisabledColor: disabledColorText,
     dayTextColor: headerColor,
-    todayTextColor: textColor,
     selectedDayTextColor: textColor,
     monthTextColor: textColor,
     indicatorColor: textColor,
