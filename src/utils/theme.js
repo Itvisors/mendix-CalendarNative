@@ -20,6 +20,8 @@ export const theme = ({
     indicatorColor: textColor,
     selectedDayBackgroundColor: selectedDayBackgroundColor,
     arrowColor: textColor,
+    arrowWidth: 20,
+    arrowHeight: 20,
     textDisabledColor: disabledColorText,
     unavailableHoursColor: disabledColorText,
     eventTimes: {

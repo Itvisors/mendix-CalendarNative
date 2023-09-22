@@ -8,6 +8,7 @@ import { ExpandableCalendar, TimelineList, CalendarProvider } from "react-native
 import { markingMapping } from "../mappings/markingMapping";
 
 import { theme } from "../utils/theme";
+import { renderArrows } from "./Arrows";
 
 const defaultStyle = {
     container: { flex: 1 }
@@ -69,6 +70,7 @@ export function TimelineCalendar(props) {
                     onDayPress={props.onDayPress}
                     onDayLongPress={props.onDayLongPress}
                     theme={theme}
+                    renderArrow={renderArrows}
                 />
                 <TimelineList
                     events={eventsArray}
