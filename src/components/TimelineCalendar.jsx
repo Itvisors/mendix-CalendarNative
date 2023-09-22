@@ -7,6 +7,8 @@ import { ExpandableCalendar, TimelineList, CalendarProvider } from "react-native
 
 import { markingMapping } from "../mappings/markingMapping";
 
+import { theme } from "../utils/theme";
+
 const defaultStyle = {
     container: { flex: 1 }
 };
@@ -26,6 +28,7 @@ export function TimelineCalendar(props) {
             props.eventEndDate,
             props.eventDotColor,
             props.eventText,
+            props.eventSummary,
             props.selectedDay,
             props.singleMarkingColor,
             props.singleMarkingSelectedColor,
@@ -43,11 +46,14 @@ export function TimelineCalendar(props) {
             { start: 0, end: 6 },
             { start: 22, end: 24 }
         ], // todo
+        unavailableHoursColor: theme.unavailableHoursColor,
         overlapEventsSpacing: 8,
         rightEdgeSpacing: 24,
+        theme : theme
     };
 
     return (
+
         <View style={styles.container}>
             <CalendarProvider date={props.viewDate} showTodayButton={props.showTodayButton} disabledOpacity={0.6}>
                 <ExpandableCalendar
@@ -61,6 +67,7 @@ export function TimelineCalendar(props) {
                     showWeekNumbers={props.showWeekNumbers && isCalendarOpen} // Week numbers only work when month is shown
                     onDayPress={props.onDayPress}
                     onDayLongPress={props.onDayLongPress}
+                    theme={theme}
                 />
                 <TimelineList
                     events={eventsArray}
