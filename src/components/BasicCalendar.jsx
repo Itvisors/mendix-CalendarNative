@@ -23,7 +23,6 @@ export function BasicCalendar(props) {
             props.eventEndDate,
             props.eventDotColor,
             props.eventText,
-            props.eventSummary,
             props.selectedDay,
             props.singleMarkingColor,
             props.singleMarkingSelectedColor,

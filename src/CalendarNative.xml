@@ -32,11 +32,6 @@
                     <description>Text to show in timeline.</description>
                     <returnType type="String"/>
                 </property>
-                <property key="eventSummary" type="expression" dataSource="datasourceEvents" required="false">
-                    <caption>Event Summary</caption>
-                    <description>Summary to show in timeline.</description>
-                    <returnType type="String"/>
-                </property>
                 <property key="eventDotColor" type="expression" dataSource="datasourceEvents" required="false" defaultValue="'#0000ff'">
                     <caption>Event Dot Color</caption>
                     <description>Should be a hex color.</description>

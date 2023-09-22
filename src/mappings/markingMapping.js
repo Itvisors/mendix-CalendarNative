@@ -1,7 +1,7 @@
 import { getCalendarDateTimeString, addDaysToDate, differenceInDays, beginOfDate } from "../utils/dateUtils";
 import { CalendarUtils } from "react-native-calendars";
 
-export function markingMapping(markingType, events, eventStartDate, eventEndDate, eventDotColor, eventTextProp, eventSummaryProp, selectedDay, singleMarkingColor, singleMarkingSelectedColor, singleMarkingSelectedTextColor) {
+export function markingMapping(markingType, events, eventStartDate, eventEndDate, eventDotColor, eventTextProp, selectedDay, singleMarkingColor, singleMarkingSelectedColor, singleMarkingSelectedTextColor) {
     let eventsArray = {};
     let markedDatesArray = {};
     let key=0;
@@ -15,7 +15,6 @@ export function markingMapping(markingType, events, eventStartDate, eventEndDate
         const endDateTimeString = getCalendarDateTimeString(eventEndDate.get(event).value);
         const color = eventDotColor.get(event).value ? eventDotColor.get(event).value : "blue";
         const eventText = eventTextProp.get(event).value ? eventTextProp.get(event).value : '';
-        const eventSummary = eventSummaryProp.get(event).value ? eventSummaryProp.get(event).value : '';
         
         //SM = single marking
         const SMColor = singleMarkingColor ? singleMarkingColor : "#808080";
@@ -52,7 +51,7 @@ export function markingMapping(markingType, events, eventStartDate, eventEndDate
             newEvent = {
                 key: key,
                 title: eventText,
-                summary: eventSummary,
+                summary: '',
                 start: startDateTimeString,
                 end: endDateTimeString,
             }
@@ -105,7 +104,7 @@ export function markingMapping(markingType, events, eventStartDate, eventEndDate
                 newEvent = {
                     key: key,
                     title: eventText,
-                    summary: eventSummary,
+                    summary: startDateString + ' - ' + endDateString,
                 };
                 if (i === 0) {
                     newEvent = {
