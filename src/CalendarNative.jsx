@@ -4,6 +4,7 @@ import { BasicCalendar } from "./components/BasicCalendar";
 import { TimelineCalendar } from "./components/TimelineCalendar"
 import { CalendarUtils } from "react-native-calendars";
 import { setLocaleConfig } from "./utils/setLocaleConfig";
+import { setViewDate } from "./utils/setViewDate";
 import moment from 'moment';
 
 export function CalendarNative(props) {
@@ -36,6 +37,7 @@ export function CalendarNative(props) {
             if (!props.selectedDate.readOnly) {
                 props.selectedDate.setValue(dateObject)
             }
+            setViewDate(props.viewDate, dateObject);
         }
         //Execute the on day press action if needed
         if (action && action.canExecute) {
@@ -53,8 +55,7 @@ export function CalendarNative(props) {
 
 
     props.markingType = props.markingType.replace("_", "-")
-
-    const viewDateString = props.viewDate && props.viewDate.value ? CalendarUtils.getCalendarDateString(props.viewDate.value) : undefined;
+    const viewDateString = props.viewDate && props.viewDate.value ? CalendarUtils.getCalendarDateString(props.viewDate.value) : CalendarUtils.getCalendarDateString(new Date());
 
     if (props.datasourceEvents.status === "available") {
         if (props.calendarView === "Timeline") {

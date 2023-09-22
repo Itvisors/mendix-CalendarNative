@@ -34,7 +34,6 @@ export function TimelineCalendar(props) {
             props.singleMarkingSelectedColor,
             props.singleMarkingSelectedTextColor
         );
-        console.warn(eventsArrayT)
         setEventsArray(eventsArrayT);
         setMarkedDatesArray(markedDatesArrayT);
     }, [props.events.items, props.selectedDay, props.markingType]);
