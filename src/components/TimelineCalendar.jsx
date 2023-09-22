@@ -49,7 +49,7 @@ export function TimelineCalendar(props) {
         unavailableHoursColor: theme.unavailableHoursColor,
         overlapEventsSpacing: 8,
         rightEdgeSpacing: 24,
-        theme : theme
+        theme: theme
     };
 
     return (
