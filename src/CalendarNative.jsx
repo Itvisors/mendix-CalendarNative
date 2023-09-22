@@ -82,6 +82,7 @@ export function CalendarNative(props) {
                     singleMarkingColor={props.singleMarkingColor}
                     singleMarkingSelectedColor={props.singleMarkingSelectedColor}
                     singleMarkingSelectedTextColor={props.singleMarkingSelectedTextColor}
+                    unavailableHours={props.unavailableHours}
                 />
             );
         } else {

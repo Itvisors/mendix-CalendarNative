@@ -118,6 +118,24 @@ Selected Date property will be filled with the day and time pressed.</descriptio
                     <caption>Close on select day</caption>
                     <description>Minimize calendar when a day is selected</description>
                 </property>
+                <property key="unavailableHours" type="object" isList="true" required="false">
+                <caption>Unavailable Hours</caption>
+                <description>Hours that are disabled in the timeline</description>
+                <properties>
+                    <propertyGroup caption="Hours">
+                        <property key="start" type="expression" required="true">
+                            <caption>Start</caption>
+                            <description>Only full hours</description>
+                            <returnType type="Integer" />
+                        </property>
+                        <property key="end" type="expression" required="true">
+                            <caption>End</caption>
+                            <description>Only full hours</description>
+                            <returnType type="Integer" />
+                        </property>
+                    </propertyGroup>
+                </properties>
+            </property>
             </propertyGroup>
         </propertyGroup>
         <propertyGroup caption="Markings">
