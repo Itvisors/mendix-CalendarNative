@@ -1,4 +1,4 @@
-import { getCalendarDateTimeString, addDaysToDate, differenceInDays, beginOfDate } from "../utils/dateUtils";
+import { getCalendarDateTimeString, getCalendarTimeString, addDaysToDate, differenceInDays, beginOfDate } from "../utils/dateUtils";
 import { CalendarUtils } from "react-native-calendars";
 
 export function markingMapping(markingType, events, eventStartDate, eventEndDate, eventDotColor, eventTextProp, selectedDay, singleMarkingColor, singleMarkingSelectedColor, singleMarkingSelectedTextColor) {
@@ -14,9 +14,13 @@ export function markingMapping(markingType, events, eventStartDate, eventEndDate
         }  
         //Retrieve attributes of an event
         const startDateString = CalendarUtils.getCalendarDateString(eventStartDate.get(event).value);
-        const endDateString = CalendarUtils.getCalendarDateString(endDate);
+        const startTimeString = getCalendarTimeString(eventStartDate.get(event).value);
         const startDateTimeString = getCalendarDateTimeString(eventStartDate.get(event).value);
+
+        const endDateString = CalendarUtils.getCalendarDateString(endDate);
+        const endTimeString = getCalendarTimeString(endDate);
         const endDateTimeString = getCalendarDateTimeString(endDate);
+        
         const color = eventDotColor.get(event).value ? eventDotColor.get(event).value : "blue";
         const eventText = eventTextProp.get(event).value ? eventTextProp.get(event).value : '';
         
@@ -55,7 +59,7 @@ export function markingMapping(markingType, events, eventStartDate, eventEndDate
             newEvent = {
                 key: key,
                 title: eventText,
-                summary: '',
+                summary: startTimeString + ' - ' + endTimeString,
                 start: startDateTimeString,
                 end: endDateTimeString,
             }
@@ -108,7 +112,7 @@ export function markingMapping(markingType, events, eventStartDate, eventEndDate
                 newEvent = {
                     key: key,
                     title: eventText,
-                    summary: startDateString + ' - ' + endDateString,
+                    summary: startDateString + ' (' + startTimeString + ')' + '\n' + endDateString + ' (' + endTimeString + ')',
                 };
                 if (i === 0) {
                     newEvent = {

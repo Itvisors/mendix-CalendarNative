@@ -21,5 +21,11 @@ export const theme = ({
     selectedDayBackgroundColor: selectedDayBackgroundColor,
     arrowColor: textColor,
     textDisabledColor: disabledColorText,
-    unavailableHoursColor: disabledColorText
+    unavailableHoursColor: disabledColorText,
+    eventTimes: {
+        display: 'none'
+    },
+    eventSummary: {
+        fontWeight: 'bold'
+    }
 })
