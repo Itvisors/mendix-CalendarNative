@@ -14,6 +14,12 @@ export function getCalendarDateTimeString(date) {
     }
 }
 
+export function getCalendarTimeString(date) {
+    if (isDate(date) && !isNaN(date.getFullYear())) {
+        return (padNumber(date.getHours()) + ':' + padNumber(date.getMinutes()))
+    }
+}
+
 export const addDaysToDate = (date, days) => {
     let newDate = new Date(date);
     newDate.setDate(newDate.getDate() + days);
