@@ -6,6 +6,7 @@ import { mergeNativeStyles } from "@mendix/pluggable-widgets-tools";
 import { Calendar } from "react-native-calendars";
 import { markingMapping } from "../mappings/markingMapping";
 import { theme } from "../utils/theme";
+import { renderArrows } from "./Arrows";
 
 const defaultStyle = {
     container: {}
@@ -46,6 +47,7 @@ export function BasicCalendar(props) {
                 onDayLongPress={props.onDayLongPress}
                 firstDay={props.firstDay}
                 theme={theme}
+                renderArrow={renderArrows}
             />
         </View>
     );

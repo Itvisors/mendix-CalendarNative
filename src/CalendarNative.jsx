@@ -53,8 +53,9 @@ export function CalendarNative(props) {
         }
     }
 
+    let markingType = props.calendarView === "Timeline" ? props.markingTypeTimeline : props.markingTypeCalendar;
+    markingType = markingType.replace("_", "-");
 
-    props.markingType = props.markingType.replace("_", "-")
     const viewDateString = props.viewDate && props.viewDate.value ? CalendarUtils.getCalendarDateString(props.viewDate.value) : CalendarUtils.getCalendarDateString(new Date());
 
     if (props.datasourceEvents.status === "available") {
@@ -79,10 +80,11 @@ export function CalendarNative(props) {
                     onBackgroundLongPress={props.onBackgroundLongPress ? executeOnBackgroundLongPress : undefined}
                     selectedDay={selectedDateString}
                     firstDay={props.startOfWeek === 'Sunday' ? 0 : 1}
-                    markingType={props.markingType}
+                    markingType={markingType}
                     singleMarkingColor={props.singleMarkingColor}
                     singleMarkingSelectedColor={props.singleMarkingSelectedColor}
                     singleMarkingSelectedTextColor={props.singleMarkingSelectedTextColor}
+                    unavailableHours={props.unavailableHours}
                 />
             );
         } else {
@@ -104,7 +106,7 @@ export function CalendarNative(props) {
                     onDayLongPress={executeOnDayLongPress}
                     selectedDay={selectedDateString}
                     firstDay={props.startOfWeek === 'Sunday' ? 0 : 1}
-                    markingType={props.markingType}
+                    markingType={markingType}
                     singleMarkingColor={props.singleMarkingColor}
                     singleMarkingSelectedColor={props.singleMarkingSelectedColor}
                     singleMarkingSelectedTextColor={props.singleMarkingSelectedTextColor}

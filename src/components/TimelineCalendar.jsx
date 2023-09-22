@@ -8,6 +8,8 @@ import { ExpandableCalendar, TimelineList, CalendarProvider } from "react-native
 import { markingMapping } from "../mappings/markingMapping";
 
 import { theme } from "../utils/theme";
+import { renderArrows } from "./Arrows";
+import { getUnavailableHours } from "../utils/getUnavalableHours";
 
 const defaultStyle = {
     container: { flex: 1 }
@@ -42,10 +44,7 @@ export function TimelineCalendar(props) {
         format24h: true,
         onEventPress: props.onEventPress,
         onBackgroundLongPress: props.onBackgroundLongPress,
-        unavailableHours: [
-            { start: 0, end: 6 },
-            { start: 22, end: 24 }
-        ], // todo
+        unavailableHours: getUnavailableHours(props.unavailableHours),
         unavailableHoursColor: theme.unavailableHoursColor,
         overlapEventsSpacing: 8,
         rightEdgeSpacing: 24,
@@ -68,6 +67,7 @@ export function TimelineCalendar(props) {
                     onDayPress={props.onDayPress}
                     onDayLongPress={props.onDayLongPress}
                     theme={theme}
+                    renderArrow={renderArrows}
                 />
                 <TimelineList
                     events={eventsArray}
