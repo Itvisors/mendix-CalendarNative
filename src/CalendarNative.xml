@@ -120,14 +120,6 @@ Selected Date property will be filled with the day and time pressed.</descriptio
                     <caption>Close on select day</caption>
                     <description>Minimize calendar when a day is selected</description>
                 </property>
-                <property key="scrollToFirst" type="boolean" required="true" defaultValue="false">
-                    <caption>Scroll to first</caption>
-                    <description>Scroll to first event when widget opens</description>
-                </property>
-                <property key="scrollToCurrent" type="boolean" required="true" defaultValue="false">
-                    <caption>Scroll to current</caption>
-                    <description>Scroll to current time when widget opens on today</description>
-                </property>
                 <property key="initialTime" type="expression" required="false">
                     <caption>Initial Time</caption>
                     <description>Initial time where timeline loads</description>

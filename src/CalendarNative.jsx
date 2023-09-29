@@ -106,8 +106,6 @@ export function CalendarNative(props) {
                     singleMarkingSelectedColor={props.singleMarkingSelectedColor}
                     singleMarkingSelectedTextColor={props.singleMarkingSelectedTextColor}
                     unavailableHours={props.unavailableHours}
-                    scrollToFirst={props.scrollToFirst}
-                    scrollToCurrent={props.scrollToCurrent}
                     initialTime={props.initialTime}             
                     onMonthChangeHandler={onMonthChangeHandler}
                 />

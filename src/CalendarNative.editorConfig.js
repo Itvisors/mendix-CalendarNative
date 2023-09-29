@@ -13,6 +13,8 @@ export function getProperties(values, defaultProperties) {
         hidePropertyIn(defaultProperties, values, "initialTime");
         hidePropertyIn(defaultProperties, values, "startOfDay");
         hidePropertyIn(defaultProperties, values, "endOfDay");
+        hidePropertyIn(defaultProperties, values, "eventText");
+        
     } else {
         hidePropertyIn(defaultProperties, values, "markingTypeCalendar");
     }

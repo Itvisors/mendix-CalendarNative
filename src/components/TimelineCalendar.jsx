@@ -77,8 +77,6 @@ export function TimelineCalendar(props) {
                 <TimelineList
                     events={eventsArray}
                     showNowIndicator
-                    scrollToNow={props.scrollToCurrent}
-                    scrollToFirst={props.scrollToFirst}
                     timelineProps={timelineProps}
                     initialTime={initialTime}
                 />
