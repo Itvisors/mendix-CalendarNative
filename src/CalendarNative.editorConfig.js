@@ -11,12 +11,13 @@ export function getProperties(values, defaultProperties) {
     } else {
         hidePropertyIn(defaultProperties, values, "markingTypeCalendar");
     }
-    if (values.markingType === 'single_dot') {
+    if (values.calendarView === 'Timeline' && values.markingTypeTimeline === 'single_dot'
+        || values.calendarView === 'BasicCalendar' && values.markingTypeCalendar === 'single_dot') {
         hidePropertyIn(defaultProperties, values, "eventDotColor");
     } else {
-        hidePropertyIn(defaultProperties, values, "singleMarkingColor");
+        hidePropertyIn(defaultProperties, values, "singleMarkingColor"); 
         hidePropertyIn(defaultProperties, values, "singleMarkingSelectedColor");
         hidePropertyIn(defaultProperties, values, "singleMarkingSelectedTextColor");
-    } 
+    }
     return defaultProperties;
 }
