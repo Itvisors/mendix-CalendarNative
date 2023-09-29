@@ -34,10 +34,12 @@
                 </property>
             </propertyGroup>
             <propertyGroup caption="Calendar">
-                <property key="viewDate" type="expression" required="false">
+                <property key="viewDate" type="attribute" required="true">
                     <caption>Date to show</caption>
                     <description>Date where the calendar opens on. Calendar will move to this date when it changes.</description>
-                    <returnType type="DateTime"/>
+                    <attributeTypes>
+                        <attributeType name="DateTime"/>
+                    </attributeTypes>
                 </property>
                 <property key="calendarView" type="enumeration" defaultValue="BasicCalendar">
                     <caption>View</caption>
