@@ -36,7 +36,7 @@
             <propertyGroup caption="Calendar">
                 <property key="viewDate" type="attribute" required="true">
                     <caption>Date to show</caption>
-                    <description>Date where the calendar opens on. The widget will change this value when you create a new event, such that the widget will re-open on this date.</description>
+                    <description>Date where the calendar opens on. The widget will change this value when you change the date or create a new event, such that the widget will re-open on this date.</description>
                     <attributeTypes>
                         <attributeType name="DateTime"/>
                     </attributeTypes>
@@ -119,6 +119,29 @@ Selected Date property will be filled with the day and time pressed.</descriptio
                 <property key="closeOnDayPress" type="boolean" required="true" defaultValue="false">
                     <caption>Close on select day</caption>
                     <description>Minimize calendar when a day is selected</description>
+                </property>
+                <property key="scrollToFirst" type="boolean" required="true" defaultValue="false">
+                    <caption>Scroll to first</caption>
+                    <description>Scroll to first event when widget opens</description>
+                </property>
+                <property key="scrollToCurrent" type="boolean" required="true" defaultValue="false">
+                    <caption>Scroll to current</caption>
+                    <description>Scroll to current time when widget opens on today</description>
+                </property>
+                <property key="initialTime" type="expression" required="false">
+                    <caption>Initial Time</caption>
+                    <description>Initial time where timeline loads</description>
+                    <returnType type="Integer" />
+                </property>
+                <property key="startOfDay" type="expression" required="false">
+                    <caption>Day start</caption>
+                    <description>Start of the day</description>
+                    <returnType type="Integer" />
+                </property>
+                <property key="endOfDay" type="expression" required="false">
+                    <caption>Day end</caption>
+                    <description>End of the day</description>
+                    <returnType type="Integer" />
                 </property>
                 <property key="unavailableHours" type="object" isList="true" required="false">
                 <caption>Unavailable Hours</caption>

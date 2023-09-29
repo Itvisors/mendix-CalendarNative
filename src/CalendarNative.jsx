@@ -31,8 +31,8 @@ export function CalendarNative(props) {
         executeActionAndSetDate(moment(timeString), props.onBackgroundLongPress);
     }
 
-    const executeActionAndSetDate = (date, action) => {
-        const dateObject = new Date(date);
+    const executeActionAndSetDate = (dateString, action) => {
+        const dateObject = new Date(dateString);
         if (props.selectedDate) {
             if (!props.selectedDate.readOnly) {
                 props.selectedDate.setValue(dateObject)
@@ -43,6 +43,10 @@ export function CalendarNative(props) {
         if (action && action.canExecute) {
             action.execute();
         }
+    }
+
+    const onDateChanged = (date) => {
+        setViewDate(props.viewDate, new Date(date));
     }
 
     const executeEventPress = (event) => {
@@ -78,6 +82,7 @@ export function CalendarNative(props) {
                     onDayLongPress={props.onDayLongPress ? executeOnDayLongPress : undefined}
                     onEventPress={props.onEventPress ? executeEventPress : undefined}
                     onBackgroundLongPress={props.onBackgroundLongPress ? executeOnBackgroundLongPress : undefined}
+                    onDateChanged={onDateChanged}
                     selectedDay={selectedDateString}
                     firstDay={props.startOfWeek === 'Sunday' ? 0 : 1}
                     markingType={markingType}
@@ -85,6 +90,11 @@ export function CalendarNative(props) {
                     singleMarkingSelectedColor={props.singleMarkingSelectedColor}
                     singleMarkingSelectedTextColor={props.singleMarkingSelectedTextColor}
                     unavailableHours={props.unavailableHours}
+                    scrollToFirst={props.scrollToFirst}
+                    scrollToCurrent={props.scrollToCurrent}
+                    initialTime={props.initialTime}
+                    startOfDay={props.startOfDay}
+                    endOfDay={props.endOfDay}                    
                 />
             );
         } else {
@@ -102,8 +112,9 @@ export function CalendarNative(props) {
                     eventText={props.eventText}
                     eventDotColor={props.eventDotColor}
                     viewDate={viewDateString}
-                    onDayPress={executeOnDayPress}
-                    onDayLongPress={executeOnDayLongPress}
+                    onDayPress={props.onDayPress ? executeOnDayPress : undefined}
+                    onDayLongPress={props.onDayLongPress ? executeOnDayLongPress : undefined}
+                    onDateChanged={onDateChanged}
                     selectedDay={selectedDateString}
                     firstDay={props.startOfWeek === 'Sunday' ? 0 : 1}
                     markingType={markingType}

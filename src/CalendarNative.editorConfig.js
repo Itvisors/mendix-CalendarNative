@@ -8,6 +8,11 @@ export function getProperties(values, defaultProperties) {
         hidePropertyIn(defaultProperties, values, "closeOnDayPress");
         hidePropertyIn(defaultProperties, values, "unavailableHours");
         hidePropertyIn(defaultProperties, values, "markingTypeTimeline");
+        hidePropertyIn(defaultProperties, values, "scrollToFirst");
+        hidePropertyIn(defaultProperties, values, "scrollToCurrent");
+        hidePropertyIn(defaultProperties, values, "initialTime");
+        hidePropertyIn(defaultProperties, values, "startOfDay");
+        hidePropertyIn(defaultProperties, values, "endOfDay");
     } else {
         hidePropertyIn(defaultProperties, values, "markingTypeCalendar");
     }

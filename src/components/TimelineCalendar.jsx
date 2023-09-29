@@ -11,6 +11,7 @@ import { theme } from "../utils/theme";
 import { renderArrows } from "./Arrows";
 import { getUnavailableHours } from "../utils/getUnavalableHours";
 
+
 const defaultStyle = {
     container: { flex: 1 }
 };
@@ -50,11 +51,14 @@ export function TimelineCalendar(props) {
         rightEdgeSpacing: 24,
         theme: theme
     };
+    const initialTime = (props.initialTime && props.initialTime.value) ? {hour: props.initialTime.value, minutes: 0} : undefined;
 
-    return (
-
+    return (   
         <View style={styles.container}>
-            <CalendarProvider date={props.viewDate} showTodayButton={props.showTodayButton} disabledOpacity={0.6} >
+            <CalendarProvider date={props.viewDate}
+                showTodayButton={props.showTodayButton}
+                onDateChanged={props.onDateChanged}
+                disabledOpacity={0.6} >
                 <ExpandableCalendar
                     firstDay={props.firstDay}
                     markedDates={markedDatesArray}
@@ -72,10 +76,12 @@ export function TimelineCalendar(props) {
                 <TimelineList
                     events={eventsArray}
                     showNowIndicator
-                    scrollToNow
-                    scrollToFirst
+                    scrollToNow={props.scrollToCurrent}
+                    scrollToFirst={props.scrollToFirst}
                     timelineProps={timelineProps}
-                    initialTime={{ hour: 9, minutes: 0 }} //todo
+                    initialTime={{initialTime}}
+                    start={8}
+                    end={13}
                 />
             </CalendarProvider>
         </View>
