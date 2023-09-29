@@ -65,8 +65,16 @@ export function CalendarNative(props) {
     markingType = markingType.replace("_", "-");
 
     const viewDateString = props.viewDate && props.viewDate.value ? CalendarUtils.getCalendarDateString(props.viewDate.value) : CalendarUtils.getCalendarDateString(new Date());
+    
+    useEffect(()=> {
+        const date_obj = new Date(viewDateString);
+        const year = date_obj.getFullYear();
+        const month = date_obj.getMonth();
+        filterEventsOnDate(year, month, props.datasourceEvents, props.eventStartDate, props.eventEndDate)
+    },[props.datasourceEvents.status])
 
     if (props.datasourceEvents.status === "available") {
+
         if (props.calendarView === "Timeline") {
             return (
                 <TimelineCalendar

@@ -27,5 +27,4 @@ export function filterEventsOnDate(year, month, events, eventStartDate, eventEnd
     )
 
     events.setFilter(filterCond);
-    console.warn(events);
 }
