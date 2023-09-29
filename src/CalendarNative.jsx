@@ -6,9 +6,17 @@ import { CalendarUtils } from "react-native-calendars";
 import { setLocaleConfig } from "./utils/setLocaleConfig";
 import { setViewDate } from "./utils/setViewDate";
 import moment from 'moment';
+import { filterEventsOnDate } from "./utils/filterEventsOnDate";
 
 export function CalendarNative(props) {
     const [selectedDateString, setSelectedDateString] = useState('');
+
+    const onMonthChangeHandler = (date) => {
+        const year = date.year;
+        const month = date.month-1; //Months range from 0 till 11.
+
+        filterEventsOnDate(year, month, props.datasourceEvents, props.eventStartDate, props.eventEndDate)
+    }
 
     //Set locale if changes
     useEffect(() => {
@@ -85,6 +93,7 @@ export function CalendarNative(props) {
                     singleMarkingSelectedColor={props.singleMarkingSelectedColor}
                     singleMarkingSelectedTextColor={props.singleMarkingSelectedTextColor}
                     unavailableHours={props.unavailableHours}
+                    onMonthChangeHandler={onMonthChangeHandler}
                 />
             );
         } else {
@@ -110,6 +119,7 @@ export function CalendarNative(props) {
                     singleMarkingColor={props.singleMarkingColor}
                     singleMarkingSelectedColor={props.singleMarkingSelectedColor}
                     singleMarkingSelectedTextColor={props.singleMarkingSelectedTextColor}
+                    onMonthChangeHandler={onMonthChangeHandler}
                 />
             );
         }
