@@ -26,6 +26,11 @@ mendixProject
 **/tests/testProject
 **/artifacts
 
+**/node_modules/*
 
-node_modules
-
+#Include react-native-calendars\src\index.ts
+!node_modules/react-native-calendars
+node_modules/react-native-calendars/*
+!node_modules/react-native-calendars/src
+node_modules/react-native-calendars/src/*
+!node_modules/react-native-calendars/src/index.ts
