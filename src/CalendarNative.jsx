@@ -6,9 +6,17 @@ import { CalendarUtils } from "react-native-calendars";
 import { setLocaleConfig } from "./utils/setLocaleConfig";
 import { setViewDate } from "./utils/setViewDate";
 import moment from 'moment';
+import { filterEventsOnDate } from "./utils/filterEventsOnDate";
 
 export function CalendarNative(props) {
     const [selectedDateString, setSelectedDateString] = useState('');
+
+    const onMonthChangeHandler = (date) => {
+        const year = date.year;
+        const month = date.month-1; //Months range from 0 till 11.
+
+        filterEventsOnDate(year, month, props.datasourceEvents, props.eventStartDate, props.eventEndDate)
+    }
 
     //Set locale if changes
     useEffect(() => {
@@ -61,8 +69,16 @@ export function CalendarNative(props) {
     markingType = markingType.replace("_", "-");
 
     const viewDateString = props.viewDate && props.viewDate.value ? CalendarUtils.getCalendarDateString(props.viewDate.value) : CalendarUtils.getCalendarDateString(new Date());
+    
+    useEffect(()=> {
+        const date_obj = new Date(viewDateString);
+        const year = date_obj.getFullYear();
+        const month = date_obj.getMonth();
+        filterEventsOnDate(year, month, props.datasourceEvents, props.eventStartDate, props.eventEndDate)
+    },[props.datasourceEvents.status])
 
     if (props.datasourceEvents.status === "available") {
+
         if (props.calendarView === "Timeline") {
             return (
                 <TimelineCalendar
@@ -95,6 +111,7 @@ export function CalendarNative(props) {
                     initialTime={props.initialTime}
                     startOfDay={props.startOfDay}
                     endOfDay={props.endOfDay}                    
+                    onMonthChangeHandler={onMonthChangeHandler}
                 />
             );
         } else {
@@ -121,6 +138,7 @@ export function CalendarNative(props) {
                     singleMarkingColor={props.singleMarkingColor}
                     singleMarkingSelectedColor={props.singleMarkingSelectedColor}
                     singleMarkingSelectedTextColor={props.singleMarkingSelectedTextColor}
+                    onMonthChangeHandler={onMonthChangeHandler}
                 />
             );
         }

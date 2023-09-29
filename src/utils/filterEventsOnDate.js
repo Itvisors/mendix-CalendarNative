@@ -1,15 +1,30 @@
-import { attribute, literal, dayGreaterThanOrEqual, dayLessThanOrEqual, dayEquals, and, or } from "mendix/filters/builders";
+import {attribute, literal, dayGreaterThanOrEqual, dayLessThanOrEqual, and, or } from "mendix/filters/builders";
 
 //This function actually filters the datasourceEvents list retrieved by the DS, we could use this to retrieve only data of the month shown in the view
 //USE FOR LAZY LOAD.
-export function filterEventsOnDate(date, events, eventStartDate, eventEndDate) {
+export function filterEventsOnDate(year, month, events, eventStartDate, eventEndDate) {
+    // Calculate the first day of this month
+    const firstDayOfPreviousMonth = new Date(year, month, 1);
+    // Subtract 1 week (7 days) from the first day of this month
+    const minDate = new Date(firstDayOfPreviousMonth);
+    minDate.setDate(minDate.getDate() - 7);
+
+    // Calculate the first day of the next month
+    const firstDayOfNextMonth = new Date(year, month + 1, 1);
+    // Add 1 week (7 days) to the first day of the next month
+    const maxDate = new Date(firstDayOfNextMonth);
+    maxDate.setDate(maxDate.getDate() + 7);
+
     const filterCond = or(
-        dayEquals(attribute(eventStartDate.id), literal(date)),
-        and(
-            dayLessThanOrEqual(attribute(eventStartDate.id), literal(date)),
-            dayGreaterThanOrEqual(attribute(eventEndDate.id), literal(date))
+        and (
+            dayLessThanOrEqual(attribute(eventStartDate.id), literal(maxDate)),
+            dayGreaterThanOrEqual(attribute(eventEndDate.id), literal(minDate))
+        ),
+        and (
+            dayGreaterThanOrEqual(attribute(eventStartDate.id), literal(minDate)),
+            dayLessThanOrEqual(attribute(eventStartDate.id), literal(maxDate))
         )
-    );
-    
+    )
+
     events.setFilter(filterCond);
 }

@@ -49,6 +49,7 @@ export function BasicCalendar(props) {
                 theme={theme}
                 renderArrow={renderArrows}
                 onDateChanged={props.onDateChanged}
+                onMonthChange={props.onMonthChangeHandler}
             />
         </View>
     );

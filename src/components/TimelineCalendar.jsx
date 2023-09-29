@@ -72,6 +72,7 @@ export function TimelineCalendar(props) {
                     onDayLongPress={props.onDayLongPress}
                     theme={theme}
                     renderArrow={renderArrows}
+                    onMonthChange={date => props.onMonthChangeHandler(date)}
                 />
                 <TimelineList
                     events={eventsArray}
