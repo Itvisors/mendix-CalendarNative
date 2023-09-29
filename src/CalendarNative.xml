@@ -133,16 +133,6 @@ Selected Date property will be filled with the day and time pressed.</descriptio
                     <description>Initial time where timeline loads</description>
                     <returnType type="Integer" />
                 </property>
-                <property key="startOfDay" type="expression" required="false">
-                    <caption>Day start</caption>
-                    <description>Start of the day</description>
-                    <returnType type="Integer" />
-                </property>
-                <property key="endOfDay" type="expression" required="false">
-                    <caption>Day end</caption>
-                    <description>End of the day</description>
-                    <returnType type="Integer" />
-                </property>
                 <property key="unavailableHours" type="object" isList="true" required="false">
                 <caption>Unavailable Hours</caption>
                 <description>Hours that are disabled in the timeline</description>

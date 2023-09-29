@@ -51,7 +51,7 @@ export function TimelineCalendar(props) {
         rightEdgeSpacing: 24,
         theme: theme
     };
-    const initialTime = (props.initialTime && props.initialTime.value) ? {hour: props.initialTime.value, minutes: 0} : undefined;
+    const initialTime = (props.initialTime && props.initialTime.value) ? {hour: Number(props.initialTime.value), minutes: 0} : undefined;
 
     return (   
         <View style={styles.container}>
@@ -80,9 +80,7 @@ export function TimelineCalendar(props) {
                     scrollToNow={props.scrollToCurrent}
                     scrollToFirst={props.scrollToFirst}
                     timelineProps={timelineProps}
-                    initialTime={{initialTime}}
-                    start={8}
-                    end={13}
+                    initialTime={initialTime}
                 />
             </CalendarProvider>
         </View>

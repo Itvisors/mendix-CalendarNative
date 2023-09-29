@@ -28,9 +28,13 @@ mendixProject
 
 **/node_modules/*
 
-#Include react-native-calendars\src\index.ts
+#Include react-native-calendars\src\index.ts 
 !node_modules/react-native-calendars
 node_modules/react-native-calendars/*
 !node_modules/react-native-calendars/src
 node_modules/react-native-calendars/src/*
 !node_modules/react-native-calendars/src/index.ts
+#Include react-native-calendars\src\timeline-list\index.js
+!node_modules/react-native-calendars/src/timeline-list
+node_modules/react-native-calendars/src/timeline-list/*
+!node_modules/react-native-calendars/src/timeline-list/index.js

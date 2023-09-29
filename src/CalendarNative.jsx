@@ -108,9 +108,7 @@ export function CalendarNative(props) {
                     unavailableHours={props.unavailableHours}
                     scrollToFirst={props.scrollToFirst}
                     scrollToCurrent={props.scrollToCurrent}
-                    initialTime={props.initialTime}
-                    startOfDay={props.startOfDay}
-                    endOfDay={props.endOfDay}                    
+                    initialTime={props.initialTime}             
                     onMonthChangeHandler={onMonthChangeHandler}
                 />
             );
