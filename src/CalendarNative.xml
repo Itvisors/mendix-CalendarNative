@@ -36,7 +36,7 @@
             <propertyGroup caption="Calendar">
                 <property key="viewDate" type="attribute" required="true">
                     <caption>Date to show</caption>
-                    <description>Date where the calendar opens on. Calendar will move to this date when it changes.</description>
+                    <description>Date where the calendar opens on. The widget will change this value when you create a new event, such that the widget will re-open on this date.</description>
                     <attributeTypes>
                         <attributeType name="DateTime"/>
                     </attributeTypes>
