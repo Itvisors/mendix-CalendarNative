@@ -1,7 +1,7 @@
 import { getCalendarDateTimeString, getCalendarTimeString, addDaysToDate, differenceInDays, beginOfDate } from "../utils/dateUtils";
 import { CalendarUtils } from "react-native-calendars";
 
-export function markingMapping(markingType, events, eventStartDate, eventEndDate, eventDotColor, eventTextProp, selectedDay, singleMarkingColor, singleMarkingSelectedColor, singleMarkingSelectedTextColor) {
+export function markingMapping(markingType, events, eventStartDate, eventEndDate, eventDotColor, eventTextProp, selectedDay, singleMarkingColor, singleMarkingSelectedColor, singleMarkingSelectedTextColor, eventColorInput) {
     let eventsArray = {};
     let markedDatesArray = {};
     let key=0;
@@ -21,13 +21,14 @@ export function markingMapping(markingType, events, eventStartDate, eventEndDate
         const endTimeString = getCalendarTimeString(endDate);
         const endDateTimeString = getCalendarDateTimeString(endDate);
 
-        const color = eventDotColor.get(event).value ? eventDotColor.get(event).value : "blue";
-        const eventText = eventTextProp.get(event).value ? eventTextProp.get(event).value : '';
+        const color = eventDotColor.get(event).value ?? "blue";
+        const eventText = eventTextProp.get(event).value ?? '';
+        const eventColor = eventColorInput ? eventColorInput.get(event).value ?? '' : '';
         
         //SM = single marking
-        const SMColor = singleMarkingColor ? singleMarkingColor : "#808080";
-        const SMSelectedColor = singleMarkingSelectedColor ? singleMarkingSelectedColor : "#0000FF";
-        const SMSelectedTextColor = singleMarkingSelectedTextColor ? singleMarkingSelectedTextColor : "#FFFFFF";
+        const SMColor = singleMarkingColor ?? "#808080";
+        const SMSelectedColor = singleMarkingSelectedColor ?? "#0000FF";
+        const SMSelectedTextColor = singleMarkingSelectedTextColor ?? "#FFFFFF";
 
         //Add markings and events for an activy of a single day
           if (startDateString === endDateString || !endDateString) {
@@ -62,6 +63,7 @@ export function markingMapping(markingType, events, eventStartDate, eventEndDate
                 summary: startTimeString + ' - ' + endTimeString,
                 start: startDateTimeString,
                 end: endDateTimeString,
+                color: eventColor,
             }
 
             if (eventsArray[startDateString]) {
@@ -113,6 +115,7 @@ export function markingMapping(markingType, events, eventStartDate, eventEndDate
                     key: key,
                     title: eventText,
                     summary: startDateString + ' (' + startTimeString + ')' + '\n' + endDateString + ' (' + endTimeString + ')',
+                    color: eventColor,
                 };
                 if (i === 0) {
                     newEvent = {

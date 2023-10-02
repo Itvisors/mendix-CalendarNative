@@ -86,6 +86,11 @@ Selected Date property will be filled with the day pressed.</description>
                     <description>Action to trigger when background in the timeline is long pressed. Can be used to e.g. create an event for that time.
 Selected Date property will be filled with the day and time pressed.</description>
                 </property>
+                <property key="eventColor" type="expression" required="false" defaultValue="" dataSource="datasourceEvents">
+                    <caption>Event Color</caption>
+                    <description>Should be a hex code (e.g., #808080)</description>
+                    <returnType type="String" />
+                </property>
             </propertyGroup>
         </propertyGroup>
         <propertyGroup caption="Properties">
@@ -163,17 +168,20 @@ Selected Date property will be filled with the day and time pressed.</descriptio
                     <enumerationValue key="multi_period">Multi Period</enumerationValue>
                 </enumerationValues>
             </property>
-            <property key="singleMarkingColor" type="string" required="false" defaultValue="">
+            <property key="singleMarkingColor" type="expression" required="false" defaultValue="">
                 <caption>Marking Color</caption>
                 <description>Should be a hex code (e.g., #808080)</description>
+                <returnType type="String" />
             </property>
-            <property key="singleMarkingSelectedColor" type="string" required="false" defaultValue="">
+            <property key="singleMarkingSelectedColor" type="expression" required="false" defaultValue="">
                 <caption>Marking Selected Color</caption>
                 <description>Should be a hex code (e.g., #0000FF)</description>
+                <returnType type="String" />
             </property>
-            <property key="singleMarkingSelectedTextColor" type="string" required="false" defaultValue="">
+            <property key="singleMarkingSelectedTextColor" type="expression" required="false" defaultValue="">
                 <caption>Marking Selected Text Color</caption>
                 <description>Should be a hex code (e.g., #FFFFFF)</description>
+                <returnType type="String" />
             </property>
             <property key="eventDotColor" type="expression" dataSource="datasourceEvents" required="false" defaultValue="'#0000ff'">
                 <caption>Event Marking Color</caption>

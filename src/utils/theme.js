@@ -26,7 +26,11 @@ export const theme = ({
     eventTimes: {
         display: 'none'
     },
+    eventTitle: {
+        color: textColor
+    },
     eventSummary: {
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        color: textColor
     }
 })
