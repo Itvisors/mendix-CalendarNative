@@ -22,7 +22,7 @@ export function markingMapping(markingType, events, eventStartDate, eventEndDate
         const endDateTimeString = getCalendarDateTimeString(endDate);
 
         const color = eventDotColor.get(event).value ?? "blue";
-        const eventText = eventTextProp.get(event).value ?? '';
+        const eventText = eventTextProp ? eventTextProp.get(event).value ?? '' : '';
         const eventColor = eventColorInput ? eventColorInput.get(event).value ?? '' : '';
         
         //SM = single marking
