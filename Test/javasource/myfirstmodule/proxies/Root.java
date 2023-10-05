@@ -21,7 +21,8 @@ public class Root
 	public enum MemberNames
 	{
 		ViewDate("ViewDate"),
-		SelectedDate("SelectedDate");
+		SelectedDate("SelectedDate"),
+		LanguageCode("LanguageCode");
 
 		private final java.lang.String metaName;
 
@@ -194,6 +195,42 @@ public class Root
 	public final void setSelectedDate(com.mendix.systemwideinterfaces.core.IContext context, java.util.Date selecteddate)
 	{
 		getMendixObject().setValue(context, MemberNames.SelectedDate.toString(), selecteddate);
+	}
+
+	/**
+	 * @return value of LanguageCode
+	 */
+	public final java.lang.String getLanguageCode()
+	{
+		return getLanguageCode(getContext());
+	}
+
+	/**
+	 * @param context
+	 * @return value of LanguageCode
+	 */
+	public final java.lang.String getLanguageCode(com.mendix.systemwideinterfaces.core.IContext context)
+	{
+		return (java.lang.String) getMendixObject().getValue(context, MemberNames.LanguageCode.toString());
+	}
+
+	/**
+	 * Set value of LanguageCode
+	 * @param languagecode
+	 */
+	public final void setLanguageCode(java.lang.String languagecode)
+	{
+		setLanguageCode(getContext(), languagecode);
+	}
+
+	/**
+	 * Set value of LanguageCode
+	 * @param context
+	 * @param languagecode
+	 */
+	public final void setLanguageCode(com.mendix.systemwideinterfaces.core.IContext context, java.lang.String languagecode)
+	{
+		getMendixObject().setValue(context, MemberNames.LanguageCode.toString(), languagecode);
 	}
 
 	/**
