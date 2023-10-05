@@ -38,3 +38,7 @@ node_modules/react-native-calendars/src/*
 !node_modules/react-native-calendars/src/timeline-list
 node_modules/react-native-calendars/src/timeline-list/*
 !node_modules/react-native-calendars/src/timeline-list/index.js
+#Include react-native-calendars\src\timeline\Packer.js
+!node_modules/react-native-calendars/src/timeline
+node_modules/react-native-calendars/src/timeline/*
+!node_modules/react-native-calendars/src/timeline/Packer.js
