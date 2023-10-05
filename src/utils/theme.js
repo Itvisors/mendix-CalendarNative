@@ -32,5 +32,14 @@ export const theme = ({
     eventSummary: {
         fontWeight: 'bold',
         color: textColor
+    },
+    nowIndicatorLine: {
+        height:3
+    },
+    nowIndicatorKnob: {
+        height:10,
+        width:10,
+        marginLeft:-2,
+        marginTop:-2
     }
 })
