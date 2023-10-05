@@ -51,14 +51,14 @@ export function TimelineCalendar(props) {
         rightEdgeSpacing: 24,
         theme: theme
     };
-    const initialTime = (props.initialTime && props.initialTime.value) ? {hour: Number(props.initialTime.value), minutes: 0} : undefined;
-
-    return (   
+    const initialTime = (props.initialTime && props.initialTime.value) ? { hour: Number(props.initialTime.value), minutes: 0 } : undefined;
+    return (
         <View style={styles.container}>
             <CalendarProvider date={props.viewDate}
                 showTodayButton={props.showTodayButton}
                 onDateChanged={props.onDateChanged}
-                disabledOpacity={0.6} >
+                disabledOpacity={0.6}
+            >
                 <ExpandableCalendar
                     firstDay={props.firstDay}
                     markedDates={markedDatesArray}
