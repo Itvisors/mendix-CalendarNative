@@ -21,10 +21,18 @@ export function markingMapping(markingType, events, eventStartDate, eventEndDate
         const endTimeString = getCalendarTimeString(endDate);
         const endDateTimeString = getCalendarDateTimeString(endDate);
 
-        const color = eventDotColor.get(event).value ?? "blue";
+        let color = eventDotColor ? eventDotColor.get(event).value : '#6096e0';
+        if (!color || color.trim === '') {
+            color = '#6096e0'
+        }
+
+        let eventColor = eventColorInput ? eventColorInput.get(event).value : '#6096e0';
+        if (!eventColor || eventColor.trim === '') {
+            eventColor = '#6096e0'
+        }
+
         const eventText = eventTextProp ? eventTextProp.get(event).value ?? '' : '';
-        const eventColor = eventColorInput ? eventColorInput.get(event).value ?? '' : '';
-        
+
         //SM = single marking
         const SMColor = singleMarkingColor ?? "#808080";
         const SMSelectedColor = singleMarkingSelectedColor ?? "#0000FF";
