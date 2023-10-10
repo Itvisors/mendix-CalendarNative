@@ -23,6 +23,8 @@ export const theme = ({
     arrowHeight: 20,
     textDisabledColor: disabledColorText,
     unavailableHoursColor: disabledColorText,
+    todayTextColor: '#FFFFFF',
+    todayBackgroundColor: '#bfd72f', 
     eventTimes: {
         display: 'none'
     },

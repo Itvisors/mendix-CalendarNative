@@ -42,7 +42,7 @@ export function markingMapping(markingType, events, eventStartDate, eventEndDate
           if (startDateString === endDateString || !endDateString) {
             //Markings
             period = { startingDay: true, endingDay: true, color: color };
-            dot = { key: event.id, color: color, selectedDotColor: color };
+            dot = { key: event.id, color: color, selectedDotColor: '#FFFFFF' };
             singledot = { dotColor: SMColor, selectedColor: SMSelectedColor, selectedTextColor: SMSelectedTextColor, marked: true }
             if (markedDatesArray[startDateString]) {
                 if (markingType === "multi-period") {
@@ -95,7 +95,7 @@ export function markingMapping(markingType, events, eventStartDate, eventEndDate
                     endingDay: i === daysInBetween ? true : false,
                     color: color
                 };
-                dot = { key: event.id, color: color, selectedDotColor: color };
+                dot = { key: event.id, color: color, selectedDotColor: '#FFFFFF' };
                 singledot = { dotColor: SMColor, selectedColor: SMSelectedColor, selectedTextColor: SMSelectedTextColor, marked: true }
 
                 if (markedDatesArray[dateString]) {
