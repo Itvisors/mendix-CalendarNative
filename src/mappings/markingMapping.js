@@ -1,7 +1,13 @@
 import { getCalendarDateTimeString, getCalendarTimeString, addDaysToDate, differenceInDays, beginOfDate } from "../utils/dateUtils";
 import { CalendarUtils } from "react-native-calendars";
+import { Appearance } from "react-native";
+
+
 
 export function markingMapping(markingType, events, eventStartDate, eventEndDate, eventDotColor, eventTextProp, selectedDay, singleMarkingColor, singleMarkingSelectedColor, singleMarkingSelectedTextColor, eventColorInput) {
+    const deviceDarkMode = Appearance.getColorScheme() === "dark";
+    const selectedDotColor = deviceDarkMode ? '#FFFFFF' : '#000000';
+
     let eventsArray = {};
     let markedDatesArray = {};
     let key=0;
@@ -42,7 +48,7 @@ export function markingMapping(markingType, events, eventStartDate, eventEndDate
           if (startDateString === endDateString || !endDateString) {
             //Markings
             period = { startingDay: true, endingDay: true, color: color };
-            dot = { key: event.id, color: color, selectedDotColor: '#FFFFFF' };
+            dot = { key: event.id, color: color, selectedDotColor: selectedDotColor };
             singledot = { dotColor: SMColor, selectedColor: SMSelectedColor, selectedTextColor: SMSelectedTextColor, marked: true }
             if (markedDatesArray[startDateString]) {
                 if (markingType === "multi-period") {
@@ -95,7 +101,7 @@ export function markingMapping(markingType, events, eventStartDate, eventEndDate
                     endingDay: i === daysInBetween ? true : false,
                     color: color
                 };
-                dot = { key: event.id, color: color, selectedDotColor: '#FFFFFF' };
+                dot = { key: event.id, color: color, selectedDotColor: selectedDotColor };
                 singledot = { dotColor: SMColor, selectedColor: SMSelectedColor, selectedTextColor: SMSelectedTextColor, marked: true }
 
                 if (markedDatesArray[dateString]) {

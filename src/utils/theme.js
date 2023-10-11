@@ -6,7 +6,7 @@ const textColor = deviceDarkMode ? 'ececec' : '000000';
 const backgroundColor = deviceDarkMode ? '#1c1c1c' :'#fff' ;
 const disabledColorText = deviceDarkMode ? '#444' : '#999';
 const headerColor = deviceDarkMode ? '#D9E1E8' : '#000';
-const selectedDayBackgroundColor = deviceDarkMode ? '#333' : '#1E90FF';
+const selectedDayBackgroundColor = deviceDarkMode ? '#333' : '#c7e3ff';
 
 export const theme = ({
     backgroundColor: backgroundColor,
