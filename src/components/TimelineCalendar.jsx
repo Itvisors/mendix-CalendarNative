@@ -49,7 +49,7 @@ export function TimelineCalendar(props) {
         unavailableHoursColor: theme.unavailableHoursColor,
         overlapEventsSpacing: 8,
         rightEdgeSpacing: 24,
-        theme: theme
+        theme: theme,
     };
 
     const initialTime = (props.initialTime && props.initialTime.value) ? { hour: Number(props.initialTime.value), minutes: 0 } : undefined;
@@ -76,6 +76,7 @@ export function TimelineCalendar(props) {
                     theme={theme}
                     renderArrow={renderArrows}
                     onMonthChange={date => props.onMonthChangeHandler(date)}
+                    displayLoadingIndicator={props.isLoading}
                 />
                 <TimelineList
                     events={eventsArray}

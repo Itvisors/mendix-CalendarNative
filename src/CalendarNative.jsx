@@ -10,8 +10,10 @@ import { filterEventsOnDate } from "./utils/filterEventsOnDate";
 
 export function CalendarNative(props) {
     const [selectedDateString, setSelectedDateString] = useState('');
+    const [isLoading, setIsLoading] = useState(false);
 
     const onMonthChangeHandler = (date) => {
+        setIsLoading(true);
         const year = date.year;
         const month = date.month-1; //Months range from 0 till 11.
 
@@ -55,6 +57,7 @@ export function CalendarNative(props) {
 
     const onDateChanged = (date) => {
         setViewDate(props.viewDate, new Date(date));
+        setIsLoading(false);
     }
 
     const executeEventPress = (event) => {
@@ -109,6 +112,7 @@ export function CalendarNative(props) {
                     initialTime={props.initialTime} 
                     eventColor={props.eventColor}         
                     onMonthChangeHandler={onMonthChangeHandler}
+                    isLoading={isLoading}
                 />
             );
         } else {
