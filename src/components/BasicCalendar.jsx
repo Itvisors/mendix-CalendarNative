@@ -1,21 +1,13 @@
 import { createElement, useState, useEffect } from "react";
-import { View } from "react-native";
-
-import { mergeNativeStyles } from "@mendix/pluggable-widgets-tools";
 
 import { Calendar } from "react-native-calendars";
 import { markingMapping } from "../mappings/markingMapping";
 import { theme } from "../utils/theme";
 import { renderArrows } from "./Arrows";
 
-const defaultStyle = {
-    container: {}
-};
-
 export function BasicCalendar(props) {
     const [markedDatesArray, setMarkedDatesArray] = useState({});
 
-    const styles = mergeNativeStyles(defaultStyle, props.style);
 
     useEffect(() => {
         const [eventsArray, markedDatesArrayT] = markingMapping(
@@ -34,23 +26,23 @@ export function BasicCalendar(props) {
     }, [props.events.items, props.selectedDay, props.markingType]);
 
     return (
-        <View style={styles.container}>
-            <Calendar
-                showWeekNumbers={props.showWeekNumbers}
-                enableSwipeMonths
-                hideDayNames={props.hideDayNames}
-                hideArrows={props.hideArrows}
-                markingType={props.markingType}
-                markedDates={markedDatesArray}
-                initialDate={props.viewDate}
-                onDayPress={props.onDayPress}
-                onDayLongPress={props.onDayLongPress}
-                firstDay={props.firstDay}
-                theme={theme}
-                renderArrow={renderArrows}
-                onDateChanged={props.onDateChanged}
-                onMonthChange={props.onMonthChangeHandler}
-            />
-        </View>
+        <Calendar
+            showWeekNumbers={props.showWeekNumbers}
+            enableSwipeMonths
+            hideDayNames={props.hideDayNames}
+            hideArrows={props.hideArrows}
+            markingType={props.markingType}
+            markedDates={markedDatesArray}
+            initialDate={props.viewDate}
+            onDayPress={props.onDayPress}
+            onDayLongPress={props.onDayLongPress}
+            firstDay={props.firstDay}
+            theme={theme}
+            renderArrow={renderArrows}
+            onDateChanged={props.onDateChanged}
+            onMonthChange={props.onMonthChangeHandler}
+            onPressArrowLeft={() => props.handleArrowClick()}
+            onPressArrowRight={() => props.handleArrowClick()}
+        />
     );
 }
