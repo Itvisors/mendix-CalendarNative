@@ -137,8 +137,6 @@ export function CalendarNative(props) {
                     firstDay={props.startOfWeek === 'Sunday' ? 0 : 1}
                     markingType={markingType}
                     singleMarkingColor={props.singleMarkingColor}
-                    singleMarkingSelectedColor={props.singleMarkingSelectedColor}
-                    singleMarkingSelectedTextColor={props.singleMarkingSelectedTextColor}
                     onMonthChangeHandler={onMonthChangeHandler}
                 />
             );

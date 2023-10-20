@@ -27,8 +27,6 @@ export function BasicCalendar(props) {
             props.eventText,
             props.selectedDay,
             props.singleMarkingColor,
-            props.singleMarkingSelectedColor,
-            props.singleMarkingSelectedTextColor
         );
         setMarkedDatesArray(markedDatesArrayT);
     }, [props.events.items, props.selectedDay, props.markingType]);
