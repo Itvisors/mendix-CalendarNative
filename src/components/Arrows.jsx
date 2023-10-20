@@ -1,5 +1,5 @@
 import { createElement } from "react";
-import { Text } from "react-native";
+import { Text, TouchableOpacity } from "react-native";
 
 export const renderArrows = (direction) => {
     const arrowStyles = {
@@ -8,6 +8,18 @@ export const renderArrows = (direction) => {
     let icon = '>'
     if (direction == 'left') {
         icon = '<'
-    } 
-    return (<Text style={[arrowStyles]}>{icon}</Text>)
+    }
+    return (<TouchableOpacity style={{flex:1}} onPress={handleTextPress}>
+        <Text
+            style={[arrowStyles]}>
+            {icon}
+        </Text>
+    </TouchableOpacity >)
 }
+
+const handleTextPress = (event) => {
+    event.preventDefault(); // Prevent the default behavior of the touch event
+
+    // Handle the press event here
+    console.warn('Text pressed!');
+  };

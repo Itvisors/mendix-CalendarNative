@@ -39,7 +39,7 @@ export function CalendarNative(props) {
         //Set small timeout to make sure widget renders content
         setTimeout(() => {
             setIsLoading(false); // Set isLoading to false when data is loaded
-        }, 1000);
+        }, props.calendarView === "Timeline" ? 1000 : 200);
     }
 
     //Set locale if changes
@@ -153,6 +153,7 @@ export function CalendarNative(props) {
                 markingType={markingType}
                 singleMarkingColor={props.singleMarkingColor}
                 onMonthChangeHandler={onMonthChangeHandler}
+                handleArrowClick={handleArrowClick}
             />
         }
     }

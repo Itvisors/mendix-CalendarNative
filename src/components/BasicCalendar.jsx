@@ -39,6 +39,7 @@ export function BasicCalendar(props) {
             renderArrow={renderArrows}
             onDateChanged={props.onDateChanged}
             onMonthChange={props.onMonthChangeHandler}
+            onPressArrow={() => props.handleArrowClick()}
         />
     );
 }
