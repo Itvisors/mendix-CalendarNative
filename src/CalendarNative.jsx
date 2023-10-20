@@ -27,7 +27,6 @@ export function CalendarNative(props) {
     const defaultStyle = {
         container: { flex: 1 }
     };
-    const styles = mergeNativeStyles(defaultStyle, props.style);
 
     const onMonthChangeHandler = (date) => {
         setIsLoading(true);
@@ -160,7 +159,7 @@ export function CalendarNative(props) {
 
     if (props.datasourceEvents.status === "available") {
         return (
-            <View style={styles.container}>
+            <View style={defaultStyle.container}>
                 <View style={{ flex: 1, zIndex: 1 }}>
                     {getCalendar()}
                 </View>

@@ -18,12 +18,20 @@ export const Tile = {
         justifyContent: 'center',
         alignItems: 'center',
         margin: 5,
-    }    
+    }
 }
 
 export const TileText = {
-        text: {
-            fontSize: 20,
-            color: 'white',
-        }
+    text: {
+        fontSize: 20,
+        color: 'white',
+    }
+}
+
+export const CustomCalendarNativeTheme = {
+    calendarBackground: '#f3b1b1',
+    selectedDayBackgroundColor: '#06d7f8',
+    todayTextColor: '#FFFFFF',
+    todayBackgroundColor: '#bfd72f',
+    selectedDayTextColor: '#bfd72f',
 }

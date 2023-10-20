@@ -1,3 +1,3 @@
-import { borderBottom, Tile, TileText } from "./additional";
+import { borderBottom, Tile, TileText, CustomCalendarNativeTheme} from "./additional";
 
-module.exports = { borderBottom, Tile, TileText };
+module.exports = { borderBottom, Tile, TileText, CustomCalendarNativeTheme };

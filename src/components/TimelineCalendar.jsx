@@ -8,15 +8,12 @@ import { theme } from "../utils/theme";
 import { renderArrows } from "./Arrows";
 import { getUnavailableHours } from "../utils/getUnavalableHours";
 
-
-const defaultStyle = {
-    container: { flex: 1 }
-};
-
 export function TimelineCalendar(props) {
     const [markedDatesArray, setMarkedDatesArray] = useState({});
     const [eventsArray, setEventsArray] = useState({});
     const [isCalendarOpen, setIsCalendarOpen] = useState(false);
+
+    const themeMerged = {...theme, ...props.style[0]};
 
     useEffect(() => {
         let [eventsArrayT, markedDatesArrayT] = markingMapping(
@@ -42,7 +39,7 @@ export function TimelineCalendar(props) {
         unavailableHoursColor: theme.unavailableHoursColor,
         overlapEventsSpacing: 8,
         rightEdgeSpacing: 24,
-        theme: theme,
+        theme: themeMerged,
     };
 
     const initialTime = (props.initialTime && props.initialTime.value) ? { hour: Number(props.initialTime.value), minutes: 0 } : undefined;
@@ -65,7 +62,7 @@ export function TimelineCalendar(props) {
                 showWeekNumbers={props.showWeekNumbers && isCalendarOpen} // Week numbers only work when month is shown
                 onDayPress={props.onDayPress}
                 onDayLongPress={props.onDayLongPress}
-                theme={theme}
+                theme={themeMerged}
                 renderArrow={renderArrows}
                 onMonthChange={date => props.onMonthChangeHandler(date)}
                 onPressArrowLeft={() => props.handleArrowClick()}
