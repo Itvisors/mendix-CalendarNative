@@ -42,3 +42,9 @@ node_modules/react-native-calendars/src/timeline-list/*
 !node_modules/react-native-calendars/src/timeline
 node_modules/react-native-calendars/src/timeline/*
 !node_modules/react-native-calendars/src/timeline/Packer.js
+#Include react-native-calendars\src\calendar\header\index.js
+!node_modules/react-native-calendars/src/calendar
+node_modules/react-native-calendars/src/calendar/*
+!node_modules/react-native-calendars/src/calendar/header
+node_modules/react-native-calendars/src/calendar/header/*
+!node_modules/react-native-calendars/src/calendar/header/index.js
