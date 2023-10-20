@@ -132,7 +132,6 @@ export function CalendarNative(props) {
                 eventColor={props.eventColor}
                 onMonthChangeHandler={onMonthChangeHandler}
                 isLoading={isLoading}
-                handleArrowClick={handleArrowClick}
             />
         } else {
             return <BasicCalendar
@@ -158,7 +157,6 @@ export function CalendarNative(props) {
                 singleMarkingSelectedColor={props.singleMarkingSelectedColor}
                 singleMarkingSelectedTextColor={props.singleMarkingSelectedTextColor}
                 onMonthChangeHandler={onMonthChangeHandler}
-                handleArrowClick={handleArrowClick}
             />
         }
     }
