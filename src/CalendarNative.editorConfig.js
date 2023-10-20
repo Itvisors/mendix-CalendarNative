@@ -26,9 +26,7 @@ export function getProperties(values, defaultProperties) {
         || values.calendarView === 'BasicCalendar' && values.markingTypeCalendar === 'single_dot') {
         hidePropertyIn(defaultProperties, values, "eventDotColor");
     } else {
-        hidePropertyIn(defaultProperties, values, "singleMarkingColor"); 
-        hidePropertyIn(defaultProperties, values, "singleMarkingSelectedColor");
-        hidePropertyIn(defaultProperties, values, "singleMarkingSelectedTextColor");
+        hidePropertyIn(defaultProperties, values, "singleMarkingColor");
     }
     return defaultProperties;
 }

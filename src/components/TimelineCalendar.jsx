@@ -28,8 +28,6 @@ export function TimelineCalendar(props) {
             props.eventText,
             props.selectedDay,
             props.singleMarkingColor,
-            props.singleMarkingSelectedColor,
-            props.singleMarkingSelectedTextColor,
             props.eventColor
         );
         setEventsArray(eventsArrayT);

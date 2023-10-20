@@ -10,14 +10,30 @@ export function markingMapping(markingType, events, eventStartDate, eventEndDate
 
     let eventsArray = {};
     let markedDatesArray = {};
-    let key=0;
+    let key = 0;
+
+    if (events.length === 0 && selectedDay) {
+        if (markingType === "multi-period") {
+            markedDatesArray[selectedDay] = {
+                selected: true,
+                periods: []
+            };
+        } else if (markingType === "multi-dot") {
+            markedDatesArray[selectedDay] = {
+                selected: true,
+                dots: []
+            };
+        } else {
+            markedDatesArray[selectedDay] = { selected: true };
+        }
+    }
 
     //To-Do ignore get functions when props is not set in the widget.
     events.map(event => {
         let endDate = eventEndDate ? eventEndDate.get(event).value : undefined;
         if (endDate === undefined) {
             endDate = eventStartDate.get(event).value;
-        }  
+        }
         //Retrieve attributes of an event
         const startDateString = CalendarUtils.getCalendarDateString(eventStartDate.get(event).value);
         const startTimeString = getCalendarTimeString(eventStartDate.get(event).value);
@@ -40,16 +56,14 @@ export function markingMapping(markingType, events, eventStartDate, eventEndDate
         const eventText = eventTextProp ? eventTextProp.get(event).value ?? '' : '';
 
         //SM = single marking
-        const SMColor = singleMarkingColor ?? "#808080";
-        const SMSelectedColor = singleMarkingSelectedColor ?? "#0000FF";
-        const SMSelectedTextColor = singleMarkingSelectedTextColor ?? "#FFFFFF";
+        const SMColor = singleMarkingColor ?? "#6096e0";
 
         //Add markings and events for an activy of a single day
-          if (startDateString === endDateString || !endDateString) {
+        if (startDateString === endDateString || !endDateString) {
             //Markings
             period = { startingDay: true, endingDay: true, color: color };
             dot = { key: event.id, color: color, selectedDotColor: selectedDotColor };
-            singledot = { dotColor: SMColor, selectedColor: SMSelectedColor, selectedTextColor: SMSelectedTextColor, marked: true }
+            singledot = { dotColor: SMColor, marked: true }
             if (markedDatesArray[startDateString]) {
                 if (markingType === "multi-period") {
                     markedDatesArray[startDateString].periods.push(period);
@@ -102,7 +116,7 @@ export function markingMapping(markingType, events, eventStartDate, eventEndDate
                     color: color
                 };
                 dot = { key: event.id, color: color, selectedDotColor: selectedDotColor };
-                singledot = { dotColor: SMColor, selectedColor: SMSelectedColor, selectedTextColor: SMSelectedTextColor, marked: true }
+                singledot = { dotColor: SMColor, marked: true }
 
                 if (markedDatesArray[dateString]) {
                     if (markingType === "multi-period") {
@@ -120,10 +134,10 @@ export function markingMapping(markingType, events, eventStartDate, eventEndDate
                             dots: [dot]
                         };
                     } else if (markingType === "single-dot") {
-                        markedDatesArray[dateString] = singledot;  
+                        markedDatesArray[dateString] = singledot;
                     }
                 }
-                
+
                 //Timeline events
                 newEvent = {
                     key: key,
@@ -152,7 +166,7 @@ export function markingMapping(markingType, events, eventStartDate, eventEndDate
                     eventsArray[dateString] = [newEvent];
                 }
             }
-            
+
             key++;
         }
 
@@ -161,6 +175,7 @@ export function markingMapping(markingType, events, eventStartDate, eventEndDate
         if (selectedDay) {
             if (markedDatesArray[selectedDay]) {
                 markedDatesArray[selectedDay].selected = true;
+                markedDatesArray[selectedDay].dotColor = selectedDotColor;
             } else {
                 if (markingType === "multi-period") {
                     markedDatesArray[selectedDay] = {
@@ -172,10 +187,12 @@ export function markingMapping(markingType, events, eventStartDate, eventEndDate
                         selected: true,
                         dots: []
                     };
+                } else {
+                    markedDatesArray[selectedDay] = { selected: true };
                 }
             }
         }
-     });
+    });
 
     return [eventsArray, markedDatesArray];
 }

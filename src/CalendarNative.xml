@@ -173,16 +173,6 @@ Selected Date property will be filled with the day and time pressed.</descriptio
                 <description>Should be a hex code (e.g., #808080)</description>
                 <returnType type="String" />
             </property>
-            <property key="singleMarkingSelectedColor" type="expression" required="false" defaultValue="">
-                <caption>Marking Selected Color</caption>
-                <description>Should be a hex code (e.g., #0000FF)</description>
-                <returnType type="String" />
-            </property>
-            <property key="singleMarkingSelectedTextColor" type="expression" required="false" defaultValue="">
-                <caption>Marking Selected Text Color</caption>
-                <description>Should be a hex code (e.g., #FFFFFF)</description>
-                <returnType type="String" />
-            </property>
             <property key="eventDotColor" type="expression" dataSource="datasourceEvents" required="false" defaultValue="'#0000ff'">
                 <caption>Event Marking Color</caption>
                 <description>Should be a hex color.</description>
