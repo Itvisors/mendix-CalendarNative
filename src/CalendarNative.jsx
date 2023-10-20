@@ -14,14 +14,14 @@ import { filterEventsOnDate } from "./utils/filterEventsOnDate";
 export function CalendarNative(props) {
     const [selectedDateString, setSelectedDateString] = useState('');
     const [isLoading, setIsLoading] = useState(false);
-    let debounceTimeout;
+    const [isLoadingArrow, setIsLoadingArrow] = useState(false);
 
     // Custom debounce function to handle arrow clicks
     const handleArrowClick = () => {
-        clearTimeout(debounceTimeout);
-        debounceTimeout = setTimeout(() => {
-            setIsLoading(true);
-        }, 1000);
+        setIsLoadingArrow(true);
+        setTimeout(() => {
+            setIsLoadingArrow(false);
+        }, props.calendarView === "Timeline" ? 1000 : 200);
     };
 
     const defaultStyle = {
@@ -129,7 +129,7 @@ export function CalendarNative(props) {
                 initialTime={props.initialTime}
                 eventColor={props.eventColor}
                 onMonthChangeHandler={onMonthChangeHandler}
-                isLoading={isLoading}
+                handleArrowClick={handleArrowClick}
             />
         } else {
             return <BasicCalendar
@@ -164,7 +164,7 @@ export function CalendarNative(props) {
                 <View style={{ flex: 1, zIndex: 1 }}>
                     {getCalendar()}
                 </View>
-                {isLoading && (<View
+                {(isLoading || isLoadingArrow) && (<View
                     style={{ position: 'absolute', top: 0, bottom: 0, left: 0, right: 0, backgroundColor: 'rgba(0, 0, 0, 0.5)', justifyContent: 'center', alignItems: 'center', zIndex: 999 }}>
                     <ActivityIndicator size="large" color="blue" />
                 </View>)}
