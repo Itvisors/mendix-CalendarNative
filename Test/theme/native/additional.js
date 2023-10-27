@@ -28,10 +28,48 @@ export const TileText = {
     }
 }
 
+
+const aidenRoyalBlue = '#3C5279';
+const aidenLimelightGreen = '#BFD730';
+const aidenBlazeRed = '#D61F26';
+const aidenCoolGrey = '#D3DAE1';
+const aidenDisabledGrey = '#878c92'
+const aidenOffWhite = '#F5F6F2';
+const aidenWarmBlack = '#32363D';
+
+
 export const CustomCalendarNativeTheme = {
-    calendarBackground: '#f3b1b1',
-    selectedDayBackgroundColor: '#06d7f8',
-    todayTextColor: '#FFFFFF',
-    todayBackgroundColor: '#bfd72f',
-    selectedDayTextColor: '#bfd72f',
+    //Calendar
+    calendarBackground: aidenWarmBlack,
+    textSectionTitleColor: aidenLimelightGreen,
+    dayTextColor : aidenOffWhite,
+    textDisabledColor: aidenDisabledGrey, 
+    monthTextColor: aidenLimelightGreen,
+    
+    //Selected day
+    selectedDayBackgroundColor: aidenRoyalBlue,
+    selectedDayTextColor: aidenLimelightGreen,
+    
+    //Today color
+    todayTextColor: aidenBlazeRed,
+    //todayBackgroundColor: aidenRoyalBlue
+
+    //Fonts
+    textDayFontFamily: 'Helvetica',
+    textMonthFontFamily: 'Helvetica',
+    textDayHeaderFontFamily: 'Helvetica',
+    textMonthFontWeight: 'bold',
+    textDayFontSize: 16,
+    textMonthFontSize: 20,
+    textDayHeaderFontSize: 14,
+    
+    //Dots To-Do: Not working...
+    dotColor: aidenLimelightGreen,
+    selectedDotCoor: aidenCoolGrey,
+    disabledDotColor: aidenBlazeRed,
+    
+    //To-Do: Link to Arrows.jsx
+    arrowStyles: {
+        color: aidenLimelightGreen
+    }
 }

@@ -8,6 +8,7 @@ import { renderArrows } from "./Arrows";
 export function BasicCalendar(props) {
     const [markedDatesArray, setMarkedDatesArray] = useState({});
 
+    const themeMerged = {...theme, ...props.style[0]};
 
     useEffect(() => {
         const [eventsArray, markedDatesArrayT] = markingMapping(
@@ -35,7 +36,7 @@ export function BasicCalendar(props) {
             onDayPress={props.onDayPress}
             onDayLongPress={props.onDayLongPress}
             firstDay={props.firstDay}
-            theme={theme}
+            theme={themeMerged}
             renderArrow={renderArrows}
             onDateChanged={props.onDateChanged}
             onMonthChange={props.onMonthChangeHandler}
