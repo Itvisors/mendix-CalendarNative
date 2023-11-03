@@ -12,7 +12,7 @@ export function BasicCalendar(props) {
     const customArrowStyles = themeMerged.arrowStyles;
 
     useEffect(() => {
-        const [eventsArray, markedDatesArrayT] = markingMapping(
+        const [, markedDatesArrayT] = markingMapping(
             props.markingType,
             props.events.items,
             props.eventStartDate,

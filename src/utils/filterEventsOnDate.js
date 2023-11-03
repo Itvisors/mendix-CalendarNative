@@ -15,16 +15,17 @@ export function filterEventsOnDate(year, month, events, eventStartDate, eventEnd
     const maxDate = new Date(firstDayOfNextMonth);
     maxDate.setDate(maxDate.getDate() + 7);
 
-    const filterCond = or(
-        and (
-            dayLessThanOrEqual(attribute(eventStartDate.id), literal(maxDate)),
-            dayGreaterThanOrEqual(attribute(eventEndDate.id), literal(minDate))
-        ),
-        and (
-            dayGreaterThanOrEqual(attribute(eventStartDate.id), literal(minDate)),
-            dayLessThanOrEqual(attribute(eventStartDate.id), literal(maxDate))
-        )
+    let filterCond = and (
+        dayGreaterThanOrEqual(attribute(eventStartDate.id), literal(minDate)),
+        dayLessThanOrEqual(attribute(eventStartDate.id), literal(maxDate))
     )
 
+    if (eventEndDate) {
+        filterCond = or(and (
+            dayLessThanOrEqual(attribute(eventStartDate.id), literal(maxDate)),
+            dayGreaterThanOrEqual(attribute(eventEndDate.id), literal(minDate))
+        ), filterCond)
+    }
+    
     events.setFilter(filterCond);
 }

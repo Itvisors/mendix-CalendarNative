@@ -4,7 +4,7 @@ import { Appearance } from "react-native";
 
 
 
-export function markingMapping(markingType, events, eventStartDate, eventEndDate, eventDotColor, eventTextProp, selectedDay, singleMarkingColor, singleMarkingSelectedColor, singleMarkingSelectedTextColor, eventColorInput) {
+export function markingMapping(markingType, events, eventStartDate, eventEndDate, eventDotColor, eventTextProp, selectedDay, singleMarkingColor, eventColorInput) {
     const deviceDarkMode = Appearance.getColorScheme() === "dark";
     const selectedDotColor = deviceDarkMode ? '#FFFFFF' : '#000000';
 
@@ -30,14 +30,17 @@ export function markingMapping(markingType, events, eventStartDate, eventEndDate
 
     //To-Do ignore get functions when props is not set in the widget.
     events.map(event => {
+        let hasEndDate = true;
         let endDate = eventEndDate ? eventEndDate.get(event).value : undefined;
+        let startDate = eventStartDate.get(event).value;
         if (endDate === undefined) {
-            endDate = eventStartDate.get(event).value;
+            hasEndDate = false;
+            endDate = startDate;
         }
         //Retrieve attributes of an event
-        const startDateString = CalendarUtils.getCalendarDateString(eventStartDate.get(event).value);
-        const startTimeString = getCalendarTimeString(eventStartDate.get(event).value);
-        const startDateTimeString = getCalendarDateTimeString(eventStartDate.get(event).value);
+        const startDateString = CalendarUtils.getCalendarDateString(startDate);
+        const startTimeString = getCalendarTimeString(startDate);
+        const startDateTimeString = getCalendarDateTimeString(startDate);
 
         const endDateString = CalendarUtils.getCalendarDateString(endDate);
         const endTimeString = getCalendarTimeString(endDate);
@@ -56,10 +59,13 @@ export function markingMapping(markingType, events, eventStartDate, eventEndDate
         const eventText = eventTextProp ? eventTextProp.get(event).value ?? '' : '';
 
         //SM = single marking
-        const SMColor = singleMarkingColor ?? "#6096e0";
+        const SMColor = singleMarkingColor ? singleMarkingColor.value : "#6096e0";
+        if (!SMColor || SMColor.trim === '') {
+            SMColor = '#6096e0'
+        }
 
         //Add markings and events for an activy of a single day
-        if (startDateString === endDateString || !endDateString) {
+        if (hasEndDate === false || startDateString === endDateString) {
             //Markings
             period = { startingDay: true, endingDay: true, color: color };
             dot = { key: event.id, color: color, selectedDotColor: selectedDotColor };
@@ -105,9 +111,9 @@ export function markingMapping(markingType, events, eventStartDate, eventEndDate
             //Add markings and events across multiple days
         } else if (startDateString && endDateString) {
 
-            daysInBetween = differenceInDays(eventStartDate.get(event).value, eventEndDate.get(event).value);
+            daysInBetween = differenceInDays(startDate, endDate);
             for (let i = 0; i < daysInBetween + 1; i++) {
-                const [dateDaysAdded, dateString] = addDaysToDate(eventStartDate.get(event).value, i);
+                const [dateDaysAdded, dateString] = addDaysToDate(startDate, i);
 
                 //Markings
                 period = {
