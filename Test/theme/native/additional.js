@@ -68,7 +68,6 @@ export const CustomCalendarNativeTheme = {
     selectedDotCoor: aidenCoolGrey,
     disabledDotColor: aidenBlazeRed,
     
-    //To-Do: Link to Arrows.jsx
     arrowStyles: {
         color: aidenLimelightGreen
     }

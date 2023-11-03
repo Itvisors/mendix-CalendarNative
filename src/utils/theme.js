@@ -18,7 +18,6 @@ export const theme = {
     monthTextColor: textColor,
     indicatorColor: textColor,
     selectedDayBackgroundColor: selectedDayBackgroundColor,
-    arrowColor: textColor,
     arrowWidth: 20,
     arrowHeight: 20,
     textDisabledColor: disabledColorText,
@@ -41,5 +40,9 @@ export const theme = {
         width: 10,
         marginLeft: -2,
         marginTop: -2
+    },
+    arrowStyles: {
+        fontSize: 20,
+        color: textColor
     }
 };
