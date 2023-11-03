@@ -2,7 +2,7 @@ import { Appearance } from "react-native";
 
 const deviceDarkMode = Appearance.getColorScheme() === "dark";
 
-const textColor = deviceDarkMode ? "ececec" : "000000";
+const textColor = deviceDarkMode ? "#ececec" : "#000000";
 const backgroundColor = deviceDarkMode ? "#0A1325" : "#fff";
 const disabledColorText = deviceDarkMode ? "#444" : "#999";
 const headerColor = deviceDarkMode ? "#D9E1E8" : "#000";
