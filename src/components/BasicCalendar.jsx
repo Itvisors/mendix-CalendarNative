@@ -39,9 +39,9 @@ export function BasicCalendar(props) {
             theme={themeMerged}
             renderArrow={renderArrows}
             onDateChanged={props.onDateChanged}
-            onMonthChange={date => props.onMonthChangeHandler(date)}
-            onPressArrowLeft={() => props.handleArrowClick()}
-            onPressArrowRight={() => props.handleArrowClick()}
+            onMonthChange={props.onMonthChangeHandler}
+            onPressArrowLeft={props.handleArrowClick}
+            onPressArrowRight={props.handleArrowClick}
         />
     );
 }

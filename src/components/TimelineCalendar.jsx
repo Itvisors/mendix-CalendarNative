@@ -65,8 +65,8 @@ export function TimelineCalendar(props) {
                 theme={themeMerged}
                 renderArrow={renderArrows}
                 onMonthChange={date => props.onMonthChangeHandler(date)}
-                onPressArrowLeft={() => props.handleArrowClick()}
-                onPressArrowRight={() => props.handleArrowClick()}
+                onPressArrowLeft={props.handleArrowClick}
+                onPressArrowRight={props.handleArrowClick}
             />
             <TimelineList
                 events={eventsArray}
