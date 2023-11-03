@@ -56,7 +56,6 @@ export function TimelineCalendar(props) {
                 markedDates={markedDatesArray}
                 markingType={props.markingType}
                 closeOnDayPress={props.closeOnDayPress}
-                hideDayNames={props.hideDayNames}
                 hideArrows={props.hideArrows}
                 onCalendarToggled={isOpen => setIsCalendarOpen(isOpen)}
                 showWeekNumbers={props.showWeekNumbers && isCalendarOpen} // Week numbers only work when month is shown
