@@ -175,7 +175,7 @@ Selected Date property will be filled with the day and time pressed.</descriptio
             </property>
             <property key="eventDotColor" type="expression" dataSource="datasourceEvents" required="false" defaultValue="'#0000ff'">
                 <caption>Event Marking Color</caption>
-                <description>Should be a hex color.</description>
+                <description>Should be a hex color (e.g., #808080)</description>
                 <returnType type="String"/>
             </property>
         </propertyGroup>
