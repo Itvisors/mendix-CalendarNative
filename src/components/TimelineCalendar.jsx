@@ -57,7 +57,6 @@ export function TimelineCalendar(props) {
                 markedDates={markedDatesArray}
                 markingType={props.markingType}
                 closeOnDayPress={props.closeOnDayPress}
-                hideDayNames={props.hideDayNames}
                 hideArrows={props.hideArrows}
                 onCalendarToggled={isOpen => setIsCalendarOpen(isOpen)}
                 showWeekNumbers={props.showWeekNumbers && isCalendarOpen} // Week numbers only work when month is shown
@@ -66,8 +65,8 @@ export function TimelineCalendar(props) {
                 theme={themeMerged}
                 renderArrow={direction => renderArrows(direction, customArrowStyles)}
                 onMonthChange={date => props.onMonthChangeHandler(date)}
-                onPressArrowLeft={() => props.handleArrowClick()}
-                onPressArrowRight={() => props.handleArrowClick()}
+                onPressArrowLeft={props.handleArrowClick}
+                onPressArrowRight={props.handleArrowClick}
             />
             <TimelineList
                 events={eventsArray}

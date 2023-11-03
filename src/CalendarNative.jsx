@@ -17,7 +17,9 @@ export function CalendarNative(props) {
     const [isLoadingArrow, setIsLoadingArrow] = useState(false);
 
     // Custom debounce function to handle arrow clicks
-    const handleArrowClick = () => {
+    const handleArrowClick = (changeMonth, date) => {
+        // For calendar view the month has to be changed in this function. For timeline this is done in the library
+        props.calendarView === "BasicCalendar" ? changeMonth() : undefined;
         setIsLoadingArrow(true);
         setTimeout(() => {
             setIsLoadingArrow(false);
@@ -103,7 +105,6 @@ export function CalendarNative(props) {
                 showWeekNumbers={props.showWeekNumbers}
                 showTodayButton={props.showTodayButton}
                 closeOnDayPress={props.closeOnDayPress}
-                hideDayNames={props.hideDayNames}
                 hideArrows={props.hideArrows}
                 events={props.datasourceEvents}
                 eventStartDate={props.eventStartDate}
@@ -132,7 +133,6 @@ export function CalendarNative(props) {
                 showWeekNumbers={props.showWeekNumbers}
                 showSixWeeks={props.showSixWeeks}
                 enableSwipeMonths={props.enableSwipeMonths}
-                hideDayNames={props.hideDayNames}
                 hideArrows={props.hideArrows}
                 events={props.datasourceEvents}
                 eventStartDate={props.eventStartDate}

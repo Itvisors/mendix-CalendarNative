@@ -8,7 +8,7 @@ import { renderArrows } from "./Arrows";
 export function BasicCalendar(props) {
     const [markedDatesArray, setMarkedDatesArray] = useState({});
 
-    const themeMerged = {...theme, ...props.style[0]};
+    const themeMerged = { ...theme, ...props.style[0] };
     const customArrowStyles = themeMerged.arrowStyles;
 
     useEffect(() => {
@@ -27,9 +27,8 @@ export function BasicCalendar(props) {
 
     return (
         <Calendar
-        showWeekNumbers={props.showWeekNumbers}
-        enableSwipeMonths
-            hideDayNames={props.hideDayNames}
+            showWeekNumbers={props.showWeekNumbers}
+            enableSwipeMonths
             hideArrows={props.hideArrows}
             markingType={props.markingType}
             markedDates={markedDatesArray}
@@ -40,9 +39,9 @@ export function BasicCalendar(props) {
             theme={themeMerged}
             renderArrow={direction => renderArrows(direction, customArrowStyles)}
             onDateChanged={props.onDateChanged}
-            onMonthChange={date => props.onMonthChangeHandler(date)}
-            onPressArrowLeft={() => props.handleArrowClick()}
-            onPressArrowRight={() => props.handleArrowClick()}
+            onMonthChange={props.onMonthChangeHandler}
+            onPressArrowLeft={props.handleArrowClick}
+            onPressArrowRight={props.handleArrowClick}
         />
     );
 }
