@@ -31,14 +31,12 @@ export function markingMapping(markingType, events, eventStartDate, eventEndDate
     //To-Do ignore get functions when props is not set in the widget.
     events.map(event => {
         let hasEndDate = true;
-        console.warn('hallo');
         let endDate = eventEndDate ? eventEndDate.get(event).value : undefined;
         let startDate = eventStartDate.get(event).value;
         if (endDate === undefined) {
             hasEndDate = false;
             endDate = startDate;
         }
-        console.warn(endDate);
         //Retrieve attributes of an event
         const startDateString = CalendarUtils.getCalendarDateString(startDate);
         const startTimeString = getCalendarTimeString(startDate);

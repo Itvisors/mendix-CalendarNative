@@ -11,7 +11,7 @@ export function BasicCalendar(props) {
     const themeMerged = {...theme, ...props.style[0]};
 
     useEffect(() => {
-        const [eventsArray, markedDatesArrayT] = markingMapping(
+        const [, markedDatesArrayT] = markingMapping(
             props.markingType,
             props.events.items,
             props.eventStartDate,
