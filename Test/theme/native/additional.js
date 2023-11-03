@@ -61,8 +61,7 @@ export const CustomCalendarNativeTheme = {
     textMonthFontWeight: 'bold',
     textDayFontSize: 16,
     textMonthFontSize: 20,
-    textDayHeaderFontSize: 14,
-    
+
     //Dots To-Do: Not working...
     dotColor: aidenLimelightGreen,
     selectedDotCoor: aidenCoolGrey,

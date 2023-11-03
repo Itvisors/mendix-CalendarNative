@@ -14,7 +14,8 @@ export function TimelineCalendar(props) {
     const [isCalendarOpen, setIsCalendarOpen] = useState(false);
 
     const themeMerged = {...theme, ...props.style[0]};
-
+    const customArrowStyles = themeMerged.arrowStyles;
+    
     useEffect(() => {
         let [eventsArrayT, markedDatesArrayT] = markingMapping(
             props.markingType,
@@ -63,7 +64,7 @@ export function TimelineCalendar(props) {
                 onDayPress={props.onDayPress}
                 onDayLongPress={props.onDayLongPress}
                 theme={themeMerged}
-                renderArrow={renderArrows}
+                renderArrow={direction => renderArrows(direction, customArrowStyles)}
                 onMonthChange={date => props.onMonthChangeHandler(date)}
                 onPressArrowLeft={() => props.handleArrowClick()}
                 onPressArrowRight={() => props.handleArrowClick()}

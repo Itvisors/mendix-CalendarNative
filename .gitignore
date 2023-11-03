@@ -48,3 +48,7 @@ node_modules/react-native-calendars/src/calendar/*
 !node_modules/react-native-calendars/src/calendar/header
 node_modules/react-native-calendars/src/calendar/header/*
 !node_modules/react-native-calendars/src/calendar/header/index.js
+#Include react-native-calendars\src\expandableCalendar\index.js
+!node_modules/react-native-calendars/src/expandableCalendar
+node_modules/react-native-calendars/src/expandableCalendar/*
+!node_modules/react-native-calendars/src/expandableCalendar/index.js
