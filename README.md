@@ -29,4 +29,4 @@ The most common styling options are mentioned below. For further information ple
 18.	textDayFontSize (number): The font size for day cell text.
 19.	textMonthFontSize (number): The font size for month title text.
 20.	textDayHeaderFontSize (number): The font size for day names in the header.
-21. arrowStyles {object}: Object to define styling of the arrowButtons.
+21. arrowStyles {object}: Object to define styling of the arrowButtons (e.g., fontSize, color).
