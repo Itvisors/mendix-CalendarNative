@@ -1,10 +1,9 @@
 import { createElement, useState, useEffect } from "react";
 
+import { mergeNativeStyles } from "@mendix/pluggable-widgets-tools";
 import { ExpandableCalendar, TimelineList, CalendarProvider } from "react-native-calendars";
-
 import { markingMapping } from "../mappings/markingMapping";
-
-import { theme } from "../utils/theme";
+import { topLayerTheme, theme } from "../utils/theme";
 import { renderArrows } from "./Arrows";
 import { getUnavailableHours } from "../utils/getUnavalableHours";
 
@@ -13,9 +12,21 @@ export function TimelineCalendar(props) {
     const [eventsArray, setEventsArray] = useState({});
     const [isCalendarOpen, setIsCalendarOpen] = useState(false);
 
-    const themeMerged = {...theme, ...props.style[0]};
+    //Begin code merge styles
+    const topLayerCustomStyles = {};
+    for (const key in props.style[0]) {
+        if (typeof props.style[0][key] !== 'object') {
+            topLayerCustomStyles[key] = props.style[0][key];
+            delete props.style[0][key];
+        }
+    }
+
+    const themeMergedTopLayer = {...topLayerTheme, ...topLayerCustomStyles};
+    const themeMergedUnderlyingLayer = mergeNativeStyles(theme, props.style);
+    const themeMerged = {...themeMergedTopLayer, ...themeMergedUnderlyingLayer};
     const customArrowStyles = themeMerged.arrowStyles;
-    
+    //End code to merge styles
+
     useEffect(() => {
         let [eventsArrayT, markedDatesArrayT] = markingMapping(
             props.markingType,

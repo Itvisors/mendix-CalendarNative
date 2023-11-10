@@ -8,7 +8,7 @@ const disabledColorText = deviceDarkMode ? "#444" : "#999";
 const headerColor = deviceDarkMode ? "#D9E1E8" : "#000";
 const selectedDayBackgroundColor = deviceDarkMode ? "#333" : "#c7e3ff";
 
-export const theme = {
+export const topLayerTheme = {
     backgroundColor: backgroundColor,
     calendarBackground: backgroundColor,
     textSectionTitleColor: textColor,
@@ -21,7 +21,10 @@ export const theme = {
     arrowWidth: 20,
     arrowHeight: 20,
     textDisabledColor: disabledColorText,
-    unavailableHoursColor: disabledColorText,
+    unavailableHoursColor: disabledColorText
+};
+
+export const theme = {
     eventTimes: {
         display: "none"
     },
