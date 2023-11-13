@@ -86,20 +86,20 @@ export function CalendarNative(props) {
             props.onEventPress.get(datasourceItem).execute();
         }
     }
-    
-        //Begin code merge styles
-        const topLayerCustomStyles = {};
-        for (const key in props.style[0]) {
-            if (typeof props.style[0][key] !== 'object') {
-                topLayerCustomStyles[key] = props.style[0][key];
-                delete props.style[0][key];
-            }
+
+    //Begin code merge styles
+    const topLayerCustomStyles = {};
+    for (const key in props.style[0]) {
+        if (typeof props.style[0][key] !== 'object') {
+            topLayerCustomStyles[key] = props.style[0][key];
+            delete props.style[0][key];
         }
-    
-        const themeMergedTopLayer = {...topLayerTheme, ...topLayerCustomStyles};
-        const themeMergedUnderlyingLayer = mergeNativeStyles(theme, props.style);
-        const themeMerged = {...themeMergedTopLayer, ...themeMergedUnderlyingLayer};
-        //End code to merge styles
+    }
+
+    const themeMergedTopLayer = { ...topLayerTheme, ...topLayerCustomStyles };
+    const themeMergedUnderlyingLayer = mergeNativeStyles(theme, props.style);
+    const themeMerged = { ...themeMergedTopLayer, ...themeMergedUnderlyingLayer };
+    //End code to merge styles
 
     let markingType = props.calendarView === "Timeline" ? props.markingTypeTimeline : props.markingTypeCalendar;
     markingType = markingType.replace("_", "-");
@@ -173,7 +173,9 @@ export function CalendarNative(props) {
     if (props.datasourceEvents.status === "available") {
         return (
             <>
-                {getCalendar()}
+                <View style={{ zIndex: 1, flex: props.calendarView === "Timeline" ? 1 : undefined }}>
+                    {getCalendar()}
+                </View>
                 {(isLoading || isLoadingArrow) && (<View
                     style={{ position: 'absolute', top: 0, bottom: 0, left: 0, right: 0, backgroundColor: 'rgba(0, 0, 0, 0.5)', justifyContent: 'center', alignItems: 'center', zIndex: 999 }}>
                     <ActivityIndicator size="large" color="blue" />
