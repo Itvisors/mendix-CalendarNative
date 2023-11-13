@@ -17,7 +17,6 @@ export function getProperties(values, defaultProperties) {
         hidePropertyIn(defaultProperties, values, "onEventPress");
         hidePropertyIn(defaultProperties, values, "onBackgroundLongPress");
         hidePropertyIn(defaultProperties, values, "eventColor");
-        hidePropertyIn(defaultProperties, values, "eventTextColor");
         
     } else {
         hidePropertyIn(defaultProperties, values, "markingTypeCalendar");
