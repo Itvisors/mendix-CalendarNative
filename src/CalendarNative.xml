@@ -8,7 +8,7 @@
     <icon/>
     <properties>
         <propertyGroup caption="General">
-            <propertyGroup caption="data">
+            <propertyGroup caption="Data">
                 <property key="datasourceEvents" type="datasource" isList="true" required="true">
                     <caption>Data source</caption>
                     <description />
@@ -27,13 +27,8 @@
                         <attributeType name="DateTime"/>
                     </attributeTypes>
                 </property>
-                <property key="eventText" type="expression" dataSource="datasourceEvents" required="false">
-                    <caption>Event Text</caption>
-                    <description>Text to show in timeline.</description>
-                    <returnType type="String"/>
-                </property>
             </propertyGroup>
-            <propertyGroup caption="Calendar">
+            <propertyGroup caption="Basic">
                 <property key="viewDate" type="attribute" required="true">
                     <caption>Date to show</caption>
                     <description>Date where the calendar opens on. The widget will change this value when you change the date or create a new event, such that the widget will re-open on this date.</description>
@@ -52,6 +47,13 @@
                 <property key="locale" type="expression" required="false">
                     <caption>Locale</caption>
                     <description>Can be set to any moment locale to change the language according to https://momentjs.com/docs/#/i18n/changing-locale/ (e.g en (english) or nl(dutch)).</description>
+                    <returnType type="String"/>
+                </property>
+            </propertyGroup>
+            <propertyGroup caption="Timeline">
+                <property key="eventText" type="expression" dataSource="datasourceEvents" required="false">
+                    <caption>Event Title</caption>
+                    <description>Title to show in timeline.</description>
                     <returnType type="String"/>
                 </property>
             </propertyGroup>
