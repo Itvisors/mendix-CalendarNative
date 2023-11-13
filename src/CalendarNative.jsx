@@ -16,6 +16,7 @@ export function CalendarNative(props) {
     const [selectedDateString, setSelectedDateString] = useState('');
     const [isLoading, setIsLoading] = useState(false);
     const [isLoadingArrow, setIsLoadingArrow] = useState(false);
+    const [themeMerged, setThemeMerged] = useState({});
 
     // Custom debounce function to handle arrow clicks
     const handleArrowClick = (changeMonth, date) => {
@@ -88,17 +89,22 @@ export function CalendarNative(props) {
     }
 
     //Begin code merge styles
-    const topLayerCustomStyles = {};
-    for (const key in props.style[0]) {
-        if (typeof props.style[0][key] !== 'object') {
-            topLayerCustomStyles[key] = props.style[0][key];
-            delete props.style[0][key];
-        }
-    }
+    useEffect(()=> {
+        let topLayerCustomStyles = {};
+        let nestedLayerCustomStyles = [{}];
 
-    const themeMergedTopLayer = { ...topLayerTheme, ...topLayerCustomStyles };
-    const themeMergedUnderlyingLayer = mergeNativeStyles(theme, props.style);
-    const themeMerged = { ...themeMergedTopLayer, ...themeMergedUnderlyingLayer };
+        for (const key in props.style[0]) {
+            if (typeof props.style[0][key] !== 'object') {
+                topLayerCustomStyles[key] = props.style[0][key];
+            } else {
+                nestedLayerCustomStyles[0][key] = props.style[0][key];
+            }
+        }
+
+        const themeMergedTopLayer = {...topLayerTheme, ...topLayerCustomStyles};
+        const themeMergedUnderlyingLayer = mergeNativeStyles(theme, nestedLayerCustomStyles);
+        setThemeMerged({...themeMergedTopLayer, ...themeMergedUnderlyingLayer});
+    },[props.style])
     //End code to merge styles
 
     let markingType = props.calendarView === "Timeline" ? props.markingTypeTimeline : props.markingTypeCalendar;
@@ -116,7 +122,6 @@ export function CalendarNative(props) {
     const getCalendar = () => {
         if (props.calendarView === "Timeline") {
             return <TimelineCalendar
-                style={props.style}
                 theme={themeMerged}
                 showWeekNumbers={props.showWeekNumbers}
                 showTodayButton={props.showTodayButton}
@@ -145,7 +150,6 @@ export function CalendarNative(props) {
             />
         } else {
             return <BasicCalendar
-                style={props.style}
                 theme={themeMerged}
                 showWeekNumbers={props.showWeekNumbers}
                 showSixWeeks={props.showSixWeeks}
