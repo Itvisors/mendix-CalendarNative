@@ -13,7 +13,6 @@ import moment from 'moment';
 import { filterEventsOnDate } from "./utils/filterEventsOnDate";
 
 export function CalendarNative(props) {
-    const [selectedDateString, setSelectedDateString] = useState('');
     const [isLoading, setIsLoading] = useState(false);
     const [isLoadingArrow, setIsLoadingArrow] = useState(false);
     const [themeMerged, setThemeMerged] = useState({});
@@ -49,12 +48,10 @@ export function CalendarNative(props) {
     }, [props.locale]);
 
     const executeOnDayPress = (date) => {
-        setSelectedDateString(date.dateString);
         executeActionAndSetDate(date.dateString, props.onDayPress);
     }
 
     const executeOnDayLongPress = (date) => {
-        setSelectedDateString(date.dateString);
         executeActionAndSetDate(date.dateString, props.onDayLongPress);
     }
 
@@ -138,7 +135,6 @@ export function CalendarNative(props) {
                 onEventPress={props.onEventPress ? executeEventPress : undefined}
                 onBackgroundLongPress={props.onBackgroundLongPress ? executeOnBackgroundLongPress : undefined}
                 onDateChanged={onDateChanged}
-                selectedDay={selectedDateString}
                 firstDay={props.startOfWeek === 'Sunday' ? 0 : 1}
                 markingType={markingType}
                 singleMarkingColor={props.singleMarkingColor}
@@ -164,7 +160,6 @@ export function CalendarNative(props) {
                 onDayPress={props.onDayPress ? executeOnDayPress : undefined}
                 onDayLongPress={props.onDayLongPress ? executeOnDayLongPress : undefined}
                 onDateChanged={onDateChanged}
-                selectedDay={selectedDateString}
                 firstDay={props.startOfWeek === 'Sunday' ? 0 : 1}
                 markingType={markingType}
                 singleMarkingColor={props.singleMarkingColor}

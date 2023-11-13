@@ -4,29 +4,13 @@ import { Appearance } from "react-native";
 
 
 
-export function markingMapping(markingType, events, eventStartDate, eventEndDate, eventDotColor, eventTextProp, selectedDay, singleMarkingColor, eventColorInput) {
+export function markingMapping(markingType, events, eventStartDate, eventEndDate, eventDotColor, eventTextProp, singleMarkingColor, eventColorInput) {
     const deviceDarkMode = Appearance.getColorScheme() === "dark";
     const selectedDotColor = deviceDarkMode ? '#FFFFFF' : '#000000';
 
     let eventsArray = {};
     let markedDatesArray = {};
     let key = 0;
-
-    if (events.length === 0 && selectedDay) {
-        if (markingType === "multi-period") {
-            markedDatesArray[selectedDay] = {
-                selected: true,
-                periods: []
-            };
-        } else if (markingType === "multi-dot") {
-            markedDatesArray[selectedDay] = {
-                selected: true,
-                dots: []
-            };
-        } else {
-            markedDatesArray[selectedDay] = { selected: true };
-        }
-    }
 
     //To-Do ignore get functions when props is not set in the widget.
     events.map(event => {
@@ -174,29 +158,6 @@ export function markingMapping(markingType, events, eventStartDate, eventEndDate
             }
 
             key++;
-        }
-
-
-        //Mark Selected day
-        if (selectedDay) {
-            if (markedDatesArray[selectedDay]) {
-                markedDatesArray[selectedDay].selected = true;
-                markedDatesArray[selectedDay].dotColor = selectedDotColor;
-            } else {
-                if (markingType === "multi-period") {
-                    markedDatesArray[selectedDay] = {
-                        selected: true,
-                        periods: []
-                    };
-                } else if (markingType === "multi-dot") {
-                    markedDatesArray[selectedDay] = {
-                        selected: true,
-                        dots: []
-                    };
-                } else {
-                    markedDatesArray[selectedDay] = { selected: true };
-                }
-            }
         }
     });
 

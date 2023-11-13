@@ -15,7 +15,6 @@ export function BasicCalendar(props) {
             props.eventEndDate,
             props.eventDotColor,
             props.eventText,
-            props.selectedDay,
             props.singleMarkingColor,
         );
         setMarkedDatesArray(markedDatesArrayT);
