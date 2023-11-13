@@ -1,9 +1,7 @@
 import { createElement, useState, useEffect } from "react";
 
-import { mergeNativeStyles } from "@mendix/pluggable-widgets-tools";
 import { ExpandableCalendar, TimelineList, CalendarProvider } from "react-native-calendars";
 import { markingMapping } from "../mappings/markingMapping";
-import { topLayerTheme, theme } from "../utils/theme";
 import { renderArrows } from "./Arrows";
 import { getUnavailableHours } from "../utils/getUnavalableHours";
 
@@ -11,21 +9,6 @@ export function TimelineCalendar(props) {
     const [markedDatesArray, setMarkedDatesArray] = useState({});
     const [eventsArray, setEventsArray] = useState({});
     const [isCalendarOpen, setIsCalendarOpen] = useState(false);
-
-    //Begin code merge styles
-    const topLayerCustomStyles = {};
-    for (const key in props.style[0]) {
-        if (typeof props.style[0][key] !== 'object') {
-            topLayerCustomStyles[key] = props.style[0][key];
-            delete props.style[0][key];
-        }
-    }
-
-    const themeMergedTopLayer = {...topLayerTheme, ...topLayerCustomStyles};
-    const themeMergedUnderlyingLayer = mergeNativeStyles(theme, props.style);
-    const themeMerged = {...themeMergedTopLayer, ...themeMergedUnderlyingLayer};
-    const customArrowStyles = themeMerged.arrowStyles;
-    //End code to merge styles
 
     useEffect(() => {
         let [eventsArrayT, markedDatesArrayT] = markingMapping(
@@ -48,10 +31,10 @@ export function TimelineCalendar(props) {
         onEventPress: props.onEventPress,
         onBackgroundLongPress: props.onBackgroundLongPress,
         unavailableHours: getUnavailableHours(props.unavailableHours),
-        unavailableHoursColor: theme.unavailableHoursColor,
+        unavailableHoursColor: props.theme.unavailableHoursColor,
         overlapEventsSpacing: 8,
         rightEdgeSpacing: 24,
-        theme: themeMerged,
+        theme: props.theme,
     };
 
     const initialTime = (props.initialTime && props.initialTime.value) ? { hour: Number(props.initialTime.value), minutes: 0 } : undefined;
@@ -73,8 +56,8 @@ export function TimelineCalendar(props) {
                 showWeekNumbers={props.showWeekNumbers && isCalendarOpen} // Week numbers only work when month is shown
                 onDayPress={props.onDayPress}
                 onDayLongPress={props.onDayLongPress}
-                theme={themeMerged}
-                renderArrow={direction => renderArrows(direction, customArrowStyles)}
+                theme={props.theme}
+                renderArrow={direction => renderArrows(direction, props.theme.arrowStyles)}
                 onMonthChange={date => props.onMonthChangeHandler(date)}
                 onPressArrowLeft={props.handleArrowClick}
                 onPressArrowRight={props.handleArrowClick}

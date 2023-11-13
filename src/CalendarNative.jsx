@@ -2,6 +2,7 @@ import React, { createElement, useState, useEffect } from "react";
 import { View, ActivityIndicator } from "react-native";
 
 import { mergeNativeStyles } from "@mendix/pluggable-widgets-tools";
+import { topLayerTheme, theme } from "./utils/theme";
 
 import { BasicCalendar } from "./components/BasicCalendar";
 import { TimelineCalendar } from "./components/TimelineCalendar"
@@ -85,6 +86,20 @@ export function CalendarNative(props) {
             props.onEventPress.get(datasourceItem).execute();
         }
     }
+    
+        //Begin code merge styles
+        const topLayerCustomStyles = {};
+        for (const key in props.style[0]) {
+            if (typeof props.style[0][key] !== 'object') {
+                topLayerCustomStyles[key] = props.style[0][key];
+                delete props.style[0][key];
+            }
+        }
+    
+        const themeMergedTopLayer = {...topLayerTheme, ...topLayerCustomStyles};
+        const themeMergedUnderlyingLayer = mergeNativeStyles(theme, props.style);
+        const themeMerged = {...themeMergedTopLayer, ...themeMergedUnderlyingLayer};
+        //End code to merge styles
 
     let markingType = props.calendarView === "Timeline" ? props.markingTypeTimeline : props.markingTypeCalendar;
     markingType = markingType.replace("_", "-");
@@ -102,6 +117,7 @@ export function CalendarNative(props) {
         if (props.calendarView === "Timeline") {
             return <TimelineCalendar
                 style={props.style}
+                theme={themeMerged}
                 showWeekNumbers={props.showWeekNumbers}
                 showTodayButton={props.showTodayButton}
                 closeOnDayPress={props.closeOnDayPress}
@@ -130,6 +146,7 @@ export function CalendarNative(props) {
         } else {
             return <BasicCalendar
                 style={props.style}
+                theme={themeMerged}
                 showWeekNumbers={props.showWeekNumbers}
                 showSixWeeks={props.showSixWeeks}
                 enableSwipeMonths={props.enableSwipeMonths}
