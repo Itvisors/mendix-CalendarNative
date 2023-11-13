@@ -7,6 +7,7 @@
 ## Usage
 [step by step instructions]
 Mention that you cannot use a scroll container on the page or in the layout when you use the timeline view.
+Mention no period marking in timeline and why
 
 ### Styling options
 The most common styling options are mentioned below. For further information please visit the official docs..... ###official docs###
