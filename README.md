@@ -31,7 +31,7 @@ The widget needs a context object to be able to interact directly with the calen
 - Basic
   - Date to show: date where the calendar opens on. The widget will change this value when you change the date or create a new event, such that the widget will re-open on this date
   - View: either calendar or timeline
-  - Locale: language that can be set to any moment locale to change the language according to https://momentjs.com/docs/#/i18n/changing-locale/ (e.g en (english) or nl(dutch))
+  - Locale: language that can be set to any moment locale to change the language according to https://momentjs.com/docs/#/i18n/changing-locale/ (e.g en (English) or nl(Dutch))
 - Timeline (properties only available for the timeline view)
   - Event Title: title to show in timeline
 
@@ -85,5 +85,5 @@ The most common styling options are mentioned below:
 23. **eventTitle {object}:** Object to define styling of the title of the events (e.g., color).
 24. **eventSummary {object}:** Object to define styling of the event summary (e.g., font weight, color).
 
-## Known limiation
+## Known limitation
 - Period marking does not scale correctly in the timeline view, hence disabled. 
