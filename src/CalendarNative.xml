@@ -30,7 +30,7 @@
             </propertyGroup>
             <propertyGroup caption="Basic">
                 <property key="viewDate" type="attribute" required="true">
-                    <caption>Date to show</caption>
+                    <caption>Date to Show</caption>
                     <description>Date where the calendar opens on. The widget will change this value when you change the date or create a new event, such that the widget will re-open on this date.</description>
                     <attributeTypes>
                         <attributeType name="DateTime"/>
@@ -106,7 +106,7 @@ Selected Date property will be filled with the day and time pressed.</descriptio
                     <description></description>
                 </property>
                 <property key="startOfWeek" type="enumeration" defaultValue="Monday">
-                    <caption>Start Of Week</caption>
+                    <caption>Start of Week</caption>
                     <description />
                     <enumerationValues>
                         <enumerationValue key="Monday">Monday</enumerationValue>
@@ -120,7 +120,7 @@ Selected Date property will be filled with the day and time pressed.</descriptio
                     <description></description>
                 </property>
                 <property key="closeOnDayPress" type="boolean" required="true" defaultValue="false">
-                    <caption>Close on select day</caption>
+                    <caption>Close on Select Day</caption>
                     <description>Minimize calendar when a day is selected</description>
                 </property>
                 <property key="initialTime" type="expression" required="false">
@@ -151,7 +151,7 @@ Selected Date property will be filled with the day and time pressed.</descriptio
         <propertyGroup caption="Markings">
             <property key="markingTypeTimeline" type="enumeration" defaultValue="multi_dot">
                 <caption>Marking Type</caption>
-                <description>Multi Period is not recommended for the timeline view, because it can take up too much space</description>
+                <description/>
                 <enumerationValues>
                     <enumerationValue key="single_dot">Single Dot</enumerationValue>
                     <enumerationValue key="multi_dot">Multi Dot</enumerationValue>
@@ -159,7 +159,7 @@ Selected Date property will be filled with the day and time pressed.</descriptio
             </property>
             <property key="markingTypeCalendar" type="enumeration" defaultValue="multi_dot">
                 <caption>Marking Type</caption>
-                <description>Multi Period is not recommended for the timeline view, because it can take up too much space</description>
+                <description/>
                 <enumerationValues>
                     <enumerationValue key="single_dot">Single Dot</enumerationValue>
                     <enumerationValue key="multi_dot">Multi Dot</enumerationValue>
