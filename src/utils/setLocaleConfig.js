@@ -3,14 +3,15 @@ import { todayTranslations } from "./todayTranslations";
 import moment from "moment/min/moment-with-locales";
 
 export function setLocaleConfig(locale) {
-    moment.locale(locale);
-    const today = todayTranslations[locale] ? todayTranslations[locale] : "Today";
-    LocaleConfig.locales[locale] = {
+    const localeLowerCase = locale.toLowercase();
+    moment.locale(localeLowerCase);
+    const today = todayTranslations[localeLowerCase] ? todayTranslations[localeLowerCase] : "Today";
+    LocaleConfig.locales[localeLowerCase] = {
         monthNames: moment.months(),
         monthNamesShort: moment.monthsShort(),
         dayNames: moment.weekdays(),
         dayNamesShort: moment.weekdaysShort(),
         today: today
     };
-    LocaleConfig.defaultLocale = locale;
+    LocaleConfig.defaultLocale = localeLowerCase;
 }
