@@ -1,5 +1,5 @@
 export function getUnavailableHours(unavailableHours) {
-    let newUnavailableHours = [];
+    const newUnavailableHours = [];
 
     unavailableHours.forEach(unavailable => {
         let start = Number(unavailable.start.value);

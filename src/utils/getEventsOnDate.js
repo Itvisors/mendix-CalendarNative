@@ -1,10 +1,10 @@
 import { CalendarUtils } from "react-native-calendars";
 
 export function getEventsOnDate(date, events, eventStartDate, eventEndDate) {
-    let filteredEvents = [];
+    const filteredEvents = [];
     const dateToCheck = CalendarUtils.getCalendarDateString(date);
 
-    events.map(event => {
+    events.forEach(event => {
         const startDateString = CalendarUtils.getCalendarDateString(eventStartDate.get(event).value);
         const endDateString = CalendarUtils.getCalendarDateString(eventEndDate.get(event).value);
 

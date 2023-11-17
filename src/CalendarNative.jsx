@@ -1,8 +1,8 @@
-import React, { createElement, useState, useEffect } from "react";
-import { View, ActivityIndicator } from "react-native";
+import React, { createElement, useEffect, useState } from "react";
+import { ActivityIndicator, View } from "react-native";
 
 import { mergeNativeStyles } from "@mendix/pluggable-widgets-tools";
-import { topLayerTheme, theme } from "./utils/theme";
+import { theme, topLayerTheme } from "./utils/theme";
 
 import { BasicCalendar } from "./components/BasicCalendar";
 import { TimelineCalendar } from "./components/TimelineCalendar";
@@ -20,7 +20,9 @@ export function CalendarNative(props) {
     // Custom debounce function to handle arrow clicks
     const handleArrowClick = (changeMonth, date) => {
         // For calendar view the month has to be changed in this function. For timeline this is done in the library
-        props.calendarView === "BasicCalendar" ? changeMonth() : undefined;
+        if (props.calendarView === "BasicCalendar") {
+            changeMonth();
+        }
         setIsLoadingArrow(true);
         setTimeout(
             () => {
@@ -53,18 +55,6 @@ export function CalendarNative(props) {
         }
     }, [props.locale]);
 
-    const executeOnDayPress = date => {
-        executeActionAndSetDate(date.dateString, props.onDayPress);
-    };
-
-    const executeOnDayLongPress = date => {
-        executeActionAndSetDate(date.dateString, props.onDayLongPress);
-    };
-
-    const executeOnBackgroundLongPress = (timeString, timeObject) => {
-        executeActionAndSetDate(moment(timeString), props.onBackgroundLongPress);
-    };
-
     const executeActionAndSetDate = (dateString, action) => {
         const dateObject = new Date(dateString);
         if (props.selectedDate) {
@@ -77,6 +67,18 @@ export function CalendarNative(props) {
         if (action && action.canExecute) {
             action.execute();
         }
+    };
+
+    const executeOnDayPress = date => {
+        executeActionAndSetDate(date.dateString, props.onDayPress);
+    };
+
+    const executeOnDayLongPress = date => {
+        executeActionAndSetDate(date.dateString, props.onDayLongPress);
+    };
+
+    const executeOnBackgroundLongPress = (timeString, timeObject) => {
+        executeActionAndSetDate(moment(timeString), props.onBackgroundLongPress);
     };
 
     const onDateChanged = date => {
@@ -93,8 +95,8 @@ export function CalendarNative(props) {
 
     //Begin code merge styles
     useEffect(() => {
-        let topLayerCustomStyles = {};
-        let nestedLayerCustomStyles = [{}];
+        const topLayerCustomStyles = {};
+        const nestedLayerCustomStyles = [{}];
 
         for (const key in props.style[0]) {
             if (typeof props.style[0][key] !== "object") {
@@ -119,9 +121,9 @@ export function CalendarNative(props) {
             : CalendarUtils.getCalendarDateString(new Date());
 
     useEffect(() => {
-        const date_obj = new Date(viewDateString);
-        const year = date_obj.getFullYear();
-        const month = date_obj.getMonth();
+        const dateObj = new Date(viewDateString);
+        const year = dateObj.getFullYear();
+        const month = dateObj.getMonth();
         filterEventsOnDate(year, month, props.datasourceEvents, props.eventStartDate, props.eventEndDate);
     }, [props.datasourceEvents.status]);
 

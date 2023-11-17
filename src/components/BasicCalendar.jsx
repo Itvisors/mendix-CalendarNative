@@ -1,4 +1,4 @@
-import { createElement, useState, useEffect } from "react";
+import { createElement, useEffect, useState } from "react";
 
 import { Calendar } from "react-native-calendars";
 import { markingMapping } from "../mappings/markingMapping";

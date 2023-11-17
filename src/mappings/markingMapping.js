@@ -1,9 +1,9 @@
 import {
-    getCalendarDateTimeString,
-    getCalendarTimeString,
     addDaysToDate,
+    beginOfDate,
     differenceInDays,
-    beginOfDate
+    getCalendarDateTimeString,
+    getCalendarTimeString
 } from "../utils/dateUtils";
 import { CalendarUtils } from "react-native-calendars";
 import { Appearance } from "react-native";
@@ -21,15 +21,15 @@ export function markingMapping(
     const deviceDarkMode = Appearance.getColorScheme() === "dark";
     const selectedDotColor = deviceDarkMode ? "#FFFFFF" : "#000000";
 
-    let eventsArray = {};
-    let markedDatesArray = {};
+    const eventsArray = {};
+    const markedDatesArray = {};
     let key = 0;
 
     //To-Do ignore get functions when props is not set in the widget.
-    events.map(event => {
+    events.forEach(event => {
         let hasEndDate = true;
         let endDate = eventEndDate ? eventEndDate.get(event).value : undefined;
-        let startDate = eventStartDate.get(event).value;
+        const startDate = eventStartDate.get(event).value;
         if (endDate === undefined) {
             hasEndDate = false;
             endDate = startDate;
@@ -56,7 +56,7 @@ export function markingMapping(
         const eventText = eventTextProp ? eventTextProp.get(event).value ?? "" : "";
 
         //SM = single marking
-        const SMColor = singleMarkingColor ? singleMarkingColor.value : "#6096e0";
+        let SMColor = singleMarkingColor ? singleMarkingColor.value : "#6096e0";
         if (!SMColor || SMColor.trim === "") {
             SMColor = "#6096e0";
         }
@@ -113,8 +113,8 @@ export function markingMapping(
 
                 //Markings
                 period = {
-                    startingDay: i === 0 ? true : false,
-                    endingDay: i === daysInBetween ? true : false,
+                    startingDay: i === 0,
+                    endingDay: i === daysInBetween,
                     color: color
                 };
                 dot = { key: event.id, color: color, selectedDotColor: selectedDotColor };

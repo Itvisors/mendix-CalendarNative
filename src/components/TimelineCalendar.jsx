@@ -1,6 +1,6 @@
-import { createElement, useState, useEffect } from "react";
+import { createElement, useEffect, useState } from "react";
 
-import { ExpandableCalendar, TimelineList, CalendarProvider } from "react-native-calendars";
+import { CalendarProvider, ExpandableCalendar, TimelineList } from "react-native-calendars";
 import { markingMapping } from "../mappings/markingMapping";
 import { renderArrows } from "./Arrows";
 import { getUnavailableHours } from "../utils/getUnavalableHours";
@@ -11,7 +11,7 @@ export function TimelineCalendar(props) {
     const [isCalendarOpen, setIsCalendarOpen] = useState(false);
 
     useEffect(() => {
-        let [eventsArrayT, markedDatesArrayT] = markingMapping(
+        const [eventsArrayT, markedDatesArrayT] = markingMapping(
             props.markingType,
             props.events.items,
             props.eventStartDate,

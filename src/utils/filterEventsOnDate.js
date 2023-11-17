@@ -1,4 +1,4 @@
-import { attribute, literal, dayGreaterThanOrEqual, dayLessThanOrEqual, and, or } from "mendix/filters/builders";
+import { and, attribute, dayGreaterThanOrEqual, dayLessThanOrEqual, literal, or } from "mendix/filters/builders";
 
 //This function actually filters the datasourceEvents list retrieved by the DS, we could use this to retrieve only data of the month shown in the view
 //USE FOR LAZY LOAD.

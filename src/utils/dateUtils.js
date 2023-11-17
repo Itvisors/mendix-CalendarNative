@@ -19,16 +19,18 @@ export function getCalendarDateTimeString(date) {
             padNumber(date.getSeconds())
         );
     }
+    return undefined;
 }
 
 export function getCalendarTimeString(date) {
     if (isDate(date) && !isNaN(date.getFullYear())) {
         return padNumber(date.getHours()) + ":" + padNumber(date.getMinutes());
     }
+    return undefined;
 }
 
 export const addDaysToDate = (date, days) => {
-    let newDate = new Date(date);
+    const newDate = new Date(date);
     newDate.setDate(newDate.getDate() + days);
     return [newDate, CalendarUtils.getCalendarDateString(newDate)];
 };
