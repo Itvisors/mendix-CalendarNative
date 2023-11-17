@@ -5,11 +5,11 @@ import { mergeNativeStyles } from "@mendix/pluggable-widgets-tools";
 import { topLayerTheme, theme } from "./utils/theme";
 
 import { BasicCalendar } from "./components/BasicCalendar";
-import { TimelineCalendar } from "./components/TimelineCalendar"
+import { TimelineCalendar } from "./components/TimelineCalendar";
 import { CalendarUtils } from "react-native-calendars";
 import { setLocaleConfig } from "./utils/setLocaleConfig";
 import { setViewDate } from "./utils/setViewDate";
-import moment from 'moment';
+import moment from "moment";
 import { filterEventsOnDate } from "./utils/filterEventsOnDate";
 
 export function CalendarNative(props) {
@@ -22,23 +22,29 @@ export function CalendarNative(props) {
         // For calendar view the month has to be changed in this function. For timeline this is done in the library
         props.calendarView === "BasicCalendar" ? changeMonth() : undefined;
         setIsLoadingArrow(true);
-        setTimeout(() => {
-            setIsLoadingArrow(false);
-        }, props.calendarView === "Timeline" ? 1000 : 200);
+        setTimeout(
+            () => {
+                setIsLoadingArrow(false);
+            },
+            props.calendarView === "Timeline" ? 1000 : 200
+        );
     };
 
-    const onMonthChangeHandler = (date) => {
+    const onMonthChangeHandler = date => {
         setIsLoading(true);
         const year = date.year;
         const month = date.month - 1; //Months range from 0 till 11.
 
-        filterEventsOnDate(year, month, props.datasourceEvents, props.eventStartDate, props.eventEndDate)
+        filterEventsOnDate(year, month, props.datasourceEvents, props.eventStartDate, props.eventEndDate);
 
         //Set small timeout to make sure widget renders content
-        setTimeout(() => {
-            setIsLoading(false); // Set isLoading to false when data is loaded
-        }, props.calendarView === "Timeline" ? 1000 : 200);
-    }
+        setTimeout(
+            () => {
+                setIsLoading(false); // Set isLoading to false when data is loaded
+            },
+            props.calendarView === "Timeline" ? 1000 : 200
+        );
+    };
 
     //Set locale if changes
     useEffect(() => {
@@ -47,23 +53,23 @@ export function CalendarNative(props) {
         }
     }, [props.locale]);
 
-    const executeOnDayPress = (date) => {
+    const executeOnDayPress = date => {
         executeActionAndSetDate(date.dateString, props.onDayPress);
-    }
+    };
 
-    const executeOnDayLongPress = (date) => {
+    const executeOnDayLongPress = date => {
         executeActionAndSetDate(date.dateString, props.onDayLongPress);
-    }
+    };
 
     const executeOnBackgroundLongPress = (timeString, timeObject) => {
         executeActionAndSetDate(moment(timeString), props.onBackgroundLongPress);
-    }
+    };
 
     const executeActionAndSetDate = (dateString, action) => {
         const dateObject = new Date(dateString);
         if (props.selectedDate) {
             if (!props.selectedDate.readOnly) {
-                props.selectedDate.setValue(dateObject)
+                props.selectedDate.setValue(dateObject);
             }
             setViewDate(props.viewDate, dateObject);
         }
@@ -71,103 +77,110 @@ export function CalendarNative(props) {
         if (action && action.canExecute) {
             action.execute();
         }
-    }
+    };
 
-    const onDateChanged = (date) => {
+    const onDateChanged = date => {
         setViewDate(props.viewDate, new Date(date));
-    }
+    };
 
-    const executeEventPress = (event) => {
+    const executeEventPress = event => {
         const datasourceItem = props.datasourceEvents.items[event.key];
         //Execute the on event action if needed
         if (props.onEventPress && props.onEventPress.get(datasourceItem).canExecute) {
             props.onEventPress.get(datasourceItem).execute();
         }
-    }
+    };
 
     //Begin code merge styles
-    useEffect(()=> {
+    useEffect(() => {
         let topLayerCustomStyles = {};
         let nestedLayerCustomStyles = [{}];
 
         for (const key in props.style[0]) {
-            if (typeof props.style[0][key] !== 'object') {
+            if (typeof props.style[0][key] !== "object") {
                 topLayerCustomStyles[key] = props.style[0][key];
             } else {
                 nestedLayerCustomStyles[0][key] = props.style[0][key];
             }
         }
 
-        const themeMergedTopLayer = {...topLayerTheme, ...topLayerCustomStyles};
+        const themeMergedTopLayer = { ...topLayerTheme, ...topLayerCustomStyles };
         const themeMergedUnderlyingLayer = mergeNativeStyles(theme, nestedLayerCustomStyles);
-        setThemeMerged({...themeMergedTopLayer, ...themeMergedUnderlyingLayer});
-    },[props.style])
+        setThemeMerged({ ...themeMergedTopLayer, ...themeMergedUnderlyingLayer });
+    }, [props.style]);
     //End code to merge styles
 
     let markingType = props.calendarView === "Timeline" ? props.markingTypeTimeline : props.markingTypeCalendar;
     markingType = markingType.replace("_", "-");
 
-    const viewDateString = props.viewDate && props.viewDate.value ? CalendarUtils.getCalendarDateString(props.viewDate.value) : CalendarUtils.getCalendarDateString(new Date());
+    const viewDateString =
+        props.viewDate && props.viewDate.value
+            ? CalendarUtils.getCalendarDateString(props.viewDate.value)
+            : CalendarUtils.getCalendarDateString(new Date());
 
     useEffect(() => {
         const date_obj = new Date(viewDateString);
         const year = date_obj.getFullYear();
         const month = date_obj.getMonth();
-        filterEventsOnDate(year, month, props.datasourceEvents, props.eventStartDate, props.eventEndDate)
-    }, [props.datasourceEvents.status])
+        filterEventsOnDate(year, month, props.datasourceEvents, props.eventStartDate, props.eventEndDate);
+    }, [props.datasourceEvents.status]);
 
     const getCalendar = () => {
         if (props.calendarView === "Timeline") {
-            return <TimelineCalendar
-                theme={themeMerged}
-                showWeekNumbers={props.showWeekNumbers}
-                showTodayButton={props.showTodayButton}
-                closeOnDayPress={props.closeOnDayPress}
-                hideArrows={props.hideArrows}
-                events={props.datasourceEvents}
-                eventStartDate={props.eventStartDate}
-                eventEndDate={props.eventEndDate}
-                eventText={props.eventText}
-                eventDotColor={props.eventDotColor}
-                viewDate={viewDateString}
-                onDayPress={props.onDayPress ? executeOnDayPress : undefined}
-                onDayLongPress={props.onDayLongPress ? executeOnDayLongPress : undefined}
-                onEventPress={props.onEventPress ? executeEventPress : undefined}
-                onBackgroundLongPress={props.onBackgroundLongPress ? executeOnBackgroundLongPress : undefined}
-                onDateChanged={onDateChanged}
-                firstDay={props.startOfWeek === 'Sunday' ? 0 : 1}
-                markingType={markingType}
-                singleMarkingColor={props.singleMarkingColor}
-                unavailableHours={props.unavailableHours}
-                initialTime={props.initialTime}
-                eventColor={props.eventColor}
-                onMonthChangeHandler={onMonthChangeHandler}
-                handleArrowClick={handleArrowClick}
-            />
+            return (
+                <TimelineCalendar
+                    theme={themeMerged}
+                    showWeekNumbers={props.showWeekNumbers}
+                    showTodayButton={props.showTodayButton}
+                    closeOnDayPress={props.closeOnDayPress}
+                    hideArrows={props.hideArrows}
+                    events={props.datasourceEvents}
+                    eventStartDate={props.eventStartDate}
+                    eventEndDate={props.eventEndDate}
+                    eventText={props.eventText}
+                    eventDotColor={props.eventDotColor}
+                    viewDate={viewDateString}
+                    onDayPress={props.onDayPress ? executeOnDayPress : undefined}
+                    onDayLongPress={props.onDayLongPress ? executeOnDayLongPress : undefined}
+                    onEventPress={props.onEventPress ? executeEventPress : undefined}
+                    onBackgroundLongPress={props.onBackgroundLongPress ? executeOnBackgroundLongPress : undefined}
+                    onDateChanged={onDateChanged}
+                    firstDay={props.startOfWeek === "Sunday" ? 0 : 1}
+                    markingType={markingType}
+                    singleMarkingColor={props.singleMarkingColor}
+                    unavailableHours={props.unavailableHours}
+                    initialTime={props.initialTime}
+                    eventColor={props.eventColor}
+                    onMonthChangeHandler={onMonthChangeHandler}
+                    handleArrowClick={handleArrowClick}
+                />
+            );
         } else {
-            return <BasicCalendar
-                theme={themeMerged}
-                showWeekNumbers={props.showWeekNumbers}
-                showSixWeeks={props.showSixWeeks}
-                enableSwipeMonths={props.enableSwipeMonths}
-                hideArrows={props.hideArrows}
-                events={props.datasourceEvents}
-                eventStartDate={props.eventStartDate}
-                eventEndDate={props.eventEndDate}
-                eventText={props.eventText}
-                eventDotColor={props.eventDotColor}
-                viewDate={viewDateString}
-                onDayPress={props.onDayPress ? executeOnDayPress : undefined}
-                onDayLongPress={props.onDayLongPress ? executeOnDayLongPress : undefined}
-                onDateChanged={onDateChanged}
-                firstDay={props.startOfWeek === 'Sunday' ? 0 : 1}
-                markingType={markingType}
-                singleMarkingColor={props.singleMarkingColor}
-                onMonthChangeHandler={onMonthChangeHandler}
-                handleArrowClick={handleArrowClick}
-            />
+            return (
+                <BasicCalendar
+                    theme={themeMerged}
+                    showWeekNumbers={props.showWeekNumbers}
+                    showSixWeeks={props.showSixWeeks}
+                    enableSwipeMonths={props.enableSwipeMonths}
+                    hideArrows={props.hideArrows}
+                    events={props.datasourceEvents}
+                    eventStartDate={props.eventStartDate}
+                    eventEndDate={props.eventEndDate}
+                    eventText={props.eventText}
+                    eventDotColor={props.eventDotColor}
+                    viewDate={viewDateString}
+                    onDayPress={props.onDayPress ? executeOnDayPress : undefined}
+                    onDayLongPress={props.onDayLongPress ? executeOnDayLongPress : undefined}
+                    onDateChanged={onDateChanged}
+                    firstDay={props.startOfWeek === "Sunday" ? 0 : 1}
+                    markingType={markingType}
+                    singleMarkingColor={props.singleMarkingColor}
+                    onMonthChangeHandler={onMonthChangeHandler}
+                    handleArrowClick={handleArrowClick}
+                />
+            );
         }
-    }
+    };
 
     if (props.datasourceEvents.status === "available") {
         return (
@@ -175,13 +188,25 @@ export function CalendarNative(props) {
                 <View style={{ zIndex: 1, flex: props.calendarView === "Timeline" ? 1 : undefined }}>
                     {getCalendar()}
                 </View>
-                {(isLoading || isLoadingArrow) && (<View
-                    style={{ position: 'absolute', top: 0, bottom: 0, left: 0, right: 0, backgroundColor: 'rgba(0, 0, 0, 0.5)', justifyContent: 'center', alignItems: 'center', zIndex: 999 }}>
-                    <ActivityIndicator size="large" color="blue" />
-                </View>)}
+                {(isLoading || isLoadingArrow) && (
+                    <View
+                        style={{
+                            position: "absolute",
+                            top: 0,
+                            bottom: 0,
+                            left: 0,
+                            right: 0,
+                            backgroundColor: "rgba(0, 0, 0, 0.5)",
+                            justifyContent: "center",
+                            alignItems: "center",
+                            zIndex: 999
+                        }}
+                    >
+                        <ActivityIndicator size="large" color="blue" />
+                    </View>
+                )}
             </>
         );
-
     } else {
         return <></>;
     }

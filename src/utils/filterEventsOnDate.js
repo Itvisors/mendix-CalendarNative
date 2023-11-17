@@ -1,4 +1,4 @@
-import {attribute, literal, dayGreaterThanOrEqual, dayLessThanOrEqual, and, or } from "mendix/filters/builders";
+import { attribute, literal, dayGreaterThanOrEqual, dayLessThanOrEqual, and, or } from "mendix/filters/builders";
 
 //This function actually filters the datasourceEvents list retrieved by the DS, we could use this to retrieve only data of the month shown in the view
 //USE FOR LAZY LOAD.
@@ -15,17 +15,20 @@ export function filterEventsOnDate(year, month, events, eventStartDate, eventEnd
     const maxDate = new Date(firstDayOfNextMonth);
     maxDate.setDate(maxDate.getDate() + 7);
 
-    let filterCond = and (
+    let filterCond = and(
         dayGreaterThanOrEqual(attribute(eventStartDate.id), literal(minDate)),
         dayLessThanOrEqual(attribute(eventStartDate.id), literal(maxDate))
-    )
+    );
 
     if (eventEndDate) {
-        filterCond = or(and (
-            dayLessThanOrEqual(attribute(eventStartDate.id), literal(maxDate)),
-            dayGreaterThanOrEqual(attribute(eventEndDate.id), literal(minDate))
-        ), filterCond)
+        filterCond = or(
+            and(
+                dayLessThanOrEqual(attribute(eventStartDate.id), literal(maxDate)),
+                dayGreaterThanOrEqual(attribute(eventEndDate.id), literal(minDate))
+            ),
+            filterCond
+        );
     }
-    
+
     events.setFilter(filterCond);
 }

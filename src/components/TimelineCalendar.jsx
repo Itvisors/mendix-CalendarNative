@@ -33,13 +33,17 @@ export function TimelineCalendar(props) {
         unavailableHoursColor: props.theme.unavailableHoursColor,
         overlapEventsSpacing: 8,
         rightEdgeSpacing: 24,
-        theme: props.theme,
+        theme: props.theme
     };
 
-    const initialTime = (props.initialTime && props.initialTime.value) ? { hour: Number(props.initialTime.value), minutes: 0 } : undefined;
+    const initialTime =
+        props.initialTime && props.initialTime.value
+            ? { hour: Number(props.initialTime.value), minutes: 0 }
+            : undefined;
 
     return (
-        <CalendarProvider date={props.viewDate}
+        <CalendarProvider
+            date={props.viewDate}
             showTodayButton={props.showTodayButton}
             onDateChanged={props.onDateChanged}
             disabledOpacity={0.6}

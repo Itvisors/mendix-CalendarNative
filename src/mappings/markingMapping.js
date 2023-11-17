@@ -1,12 +1,25 @@
-import { getCalendarDateTimeString, getCalendarTimeString, addDaysToDate, differenceInDays, beginOfDate } from "../utils/dateUtils";
+import {
+    getCalendarDateTimeString,
+    getCalendarTimeString,
+    addDaysToDate,
+    differenceInDays,
+    beginOfDate
+} from "../utils/dateUtils";
 import { CalendarUtils } from "react-native-calendars";
 import { Appearance } from "react-native";
 
-
-
-export function markingMapping(markingType, events, eventStartDate, eventEndDate, eventDotColor, eventTextProp, singleMarkingColor, eventColorInput) {
+export function markingMapping(
+    markingType,
+    events,
+    eventStartDate,
+    eventEndDate,
+    eventDotColor,
+    eventTextProp,
+    singleMarkingColor,
+    eventColorInput
+) {
     const deviceDarkMode = Appearance.getColorScheme() === "dark";
-    const selectedDotColor = deviceDarkMode ? '#FFFFFF' : '#000000';
+    const selectedDotColor = deviceDarkMode ? "#FFFFFF" : "#000000";
 
     let eventsArray = {};
     let markedDatesArray = {};
@@ -30,22 +43,22 @@ export function markingMapping(markingType, events, eventStartDate, eventEndDate
         const endTimeString = getCalendarTimeString(endDate);
         const endDateTimeString = getCalendarDateTimeString(endDate);
 
-        let color = eventDotColor ? eventDotColor.get(event).value : '#6096e0';
-        if (!color || color.trim === '') {
-            color = '#6096e0'
+        let color = eventDotColor ? eventDotColor.get(event).value : "#6096e0";
+        if (!color || color.trim === "") {
+            color = "#6096e0";
         }
 
-        let eventColor = eventColorInput ? eventColorInput.get(event).value : '#6096e0';
-        if (!eventColor || eventColor.trim === '') {
-            eventColor = '#6096e0'
+        let eventColor = eventColorInput ? eventColorInput.get(event).value : "#6096e0";
+        if (!eventColor || eventColor.trim === "") {
+            eventColor = "#6096e0";
         }
 
-        const eventText = eventTextProp ? eventTextProp.get(event).value ?? '' : '';
+        const eventText = eventTextProp ? eventTextProp.get(event).value ?? "" : "";
 
         //SM = single marking
         const SMColor = singleMarkingColor ? singleMarkingColor.value : "#6096e0";
-        if (!SMColor || SMColor.trim === '') {
-            SMColor = '#6096e0'
+        if (!SMColor || SMColor.trim === "") {
+            SMColor = "#6096e0";
         }
 
         //Add markings and events for an activy of a single day
@@ -53,7 +66,7 @@ export function markingMapping(markingType, events, eventStartDate, eventEndDate
             //Markings
             period = { startingDay: true, endingDay: true, color: color };
             dot = { key: event.id, color: color, selectedDotColor: selectedDotColor };
-            singledot = { dotColor: SMColor, marked: true }
+            singledot = { dotColor: SMColor, marked: true };
             if (markedDatesArray[startDateString]) {
                 if (markingType === "multi-period") {
                     markedDatesArray[startDateString].periods.push(period);
@@ -78,11 +91,11 @@ export function markingMapping(markingType, events, eventStartDate, eventEndDate
             newEvent = {
                 key: key,
                 title: eventText,
-                summary: startTimeString + ' - ' + endTimeString,
+                summary: startTimeString + " - " + endTimeString,
                 start: startDateTimeString,
                 end: endDateTimeString,
-                color: eventColor,
-            }
+                color: eventColor
+            };
 
             if (eventsArray[startDateString]) {
                 eventsArray[startDateString].push(newEvent);
@@ -94,7 +107,6 @@ export function markingMapping(markingType, events, eventStartDate, eventEndDate
 
             //Add markings and events across multiple days
         } else if (startDateString && endDateString) {
-
             daysInBetween = differenceInDays(startDate, endDate);
             for (let i = 0; i < daysInBetween + 1; i++) {
                 const [dateDaysAdded, dateString] = addDaysToDate(startDate, i);
@@ -106,7 +118,7 @@ export function markingMapping(markingType, events, eventStartDate, eventEndDate
                     color: color
                 };
                 dot = { key: event.id, color: color, selectedDotColor: selectedDotColor };
-                singledot = { dotColor: SMColor, marked: true }
+                singledot = { dotColor: SMColor, marked: true };
 
                 if (markedDatesArray[dateString]) {
                     if (markingType === "multi-period") {
@@ -132,21 +144,30 @@ export function markingMapping(markingType, events, eventStartDate, eventEndDate
                 newEvent = {
                     key: key,
                     title: eventText,
-                    summary: startDateString + ' (' + startTimeString + ')' + '\n' + endDateString + ' (' + endTimeString + ')',
-                    color: eventColor,
+                    summary:
+                        startDateString +
+                        " (" +
+                        startTimeString +
+                        ")" +
+                        "\n" +
+                        endDateString +
+                        " (" +
+                        endTimeString +
+                        ")",
+                    color: eventColor
                 };
                 if (i === 0) {
                     newEvent = {
                         ...newEvent,
                         start: startDateTimeString,
-                        end: endDateTimeString,
+                        end: endDateTimeString
                     };
                 } else {
                     const dateTimeString = getCalendarDateTimeString(beginOfDate(dateDaysAdded));
                     newEvent = {
                         ...newEvent,
                         start: dateTimeString,
-                        end: endDateTimeString,
+                        end: endDateTimeString
                     };
                 }
 

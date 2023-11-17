@@ -1,5 +1,4 @@
 export function getUnavailableHours(unavailableHours) {
-
     let newUnavailableHours = [];
 
     unavailableHours.forEach(unavailable => {
@@ -11,8 +10,8 @@ export function getUnavailableHours(unavailableHours) {
         if (start < 0) {
             start = 0;
         }
-        if (end > start) { 
-            newUnavailableHours.push({ start: start, end: end })
+        if (end > start) {
+            newUnavailableHours.push({ start: start, end: end });
         }
     });
 
