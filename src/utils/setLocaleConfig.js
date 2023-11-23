@@ -3,7 +3,7 @@ import { todayTranslations } from "./todayTranslations";
 import moment from "moment/min/moment-with-locales";
 
 export function setLocaleConfig(locale) {
-    const localeLowerCase = locale.toLowercase();
+    const localeLowerCase = locale.toLowerCase();
     moment.locale(localeLowerCase);
     const today = todayTranslations[localeLowerCase] ? todayTranslations[localeLowerCase] : "Today";
     LocaleConfig.locales[localeLowerCase] = {
