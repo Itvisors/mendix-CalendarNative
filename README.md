@@ -16,6 +16,7 @@ Widget is based on https://wix.github.io/react-native-calendars/docs/Intro.
 - Unavailable hours, periods in the timeline that disabled.
 - Dark mode
 - Styling options
+- Have custom event content
 
 
 ## Usage
@@ -50,6 +51,7 @@ The widget needs a context object to be able to interact directly with the calen
   - Show Today Button
   - Close on select day: Minimize calendar when a day is selected
   - Initial Time: initial time where timeline loads
+  - Use Custom Events: Set to true to use custom events. Content can be set in the widget content block.
   - Unavailable Hours: list of hours that are disabled in the timeline
  
 ### Markings
