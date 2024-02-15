@@ -16,6 +16,8 @@ export function getProperties(values, defaultProperties) {
         hidePropertyIn(defaultProperties, values, "onEventPress");
         hidePropertyIn(defaultProperties, values, "onBackgroundLongPress");
         hidePropertyIn(defaultProperties, values, "eventColor");
+        hidePropertyIn(defaultProperties, values, "customEvent");
+        hidePropertyIn(defaultProperties, values, "useCustomEvents");
     } else {
         hidePropertyIn(defaultProperties, values, "markingTypeCalendar");
     }
@@ -26,6 +28,9 @@ export function getProperties(values, defaultProperties) {
         hidePropertyIn(defaultProperties, values, "eventDotColor");
     } else {
         hidePropertyIn(defaultProperties, values, "singleMarkingColor");
+    }
+    if (values.calendarView === "Timeline" && !values.useCustomEvents) {
+        hidePropertyIn(defaultProperties, values, "customEvent");
     }
     return defaultProperties;
 }

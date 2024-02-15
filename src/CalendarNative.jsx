@@ -155,6 +155,8 @@ export function CalendarNative(props) {
                     eventColor={props.eventColor}
                     onMonthChangeHandler={onMonthChangeHandler}
                     handleArrowClick={handleArrowClick}
+                    customEvent={props.customEvent}
+                    useCustomEvents={props.useCustomEvents}
                 />
             );
         } else {

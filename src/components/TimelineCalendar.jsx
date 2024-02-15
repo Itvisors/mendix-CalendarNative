@@ -1,4 +1,5 @@
 import { createElement, useEffect, useState } from "react";
+import { View } from "react-native";
 
 import { CalendarProvider, ExpandableCalendar, TimelineList } from "react-native-calendars";
 import { markingMapping } from "../mappings/markingMapping";
@@ -25,6 +26,12 @@ export function TimelineCalendar(props) {
         setMarkedDatesArray(markedDatesArrayT);
     }, [props.events.items, props.selectedDay, props.markingType]);
 
+    const renderEvent = event => {
+        const datasourceItem = props.events.items[event.key];
+        // Customize the rendering of each event as needed
+        return <View key={event.id}>{props.customEvent.get(datasourceItem)}</View>;
+    };
+
     const timelineProps = {
         format24h: true,
         onEventPress: props.onEventPress,
@@ -33,7 +40,8 @@ export function TimelineCalendar(props) {
         unavailableHoursColor: props.theme.unavailableHoursColor,
         overlapEventsSpacing: 8,
         rightEdgeSpacing: 24,
-        theme: props.theme
+        theme: props.theme,
+        renderEvent: props.useCustomEvents && props.customEvent ? event => renderEvent(event) : undefined
     };
 
     const initialTime =

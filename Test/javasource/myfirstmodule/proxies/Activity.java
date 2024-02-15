@@ -23,7 +23,8 @@ public class Activity
 		StartDate("StartDate"),
 		EndDate("EndDate"),
 		eventDotColor("eventDotColor"),
-		Text("Text");
+		Text("Text"),
+		Details("Details");
 
 		private final java.lang.String metaName;
 
@@ -268,6 +269,42 @@ public class Activity
 	public final void setText(com.mendix.systemwideinterfaces.core.IContext context, java.lang.String text)
 	{
 		getMendixObject().setValue(context, MemberNames.Text.toString(), text);
+	}
+
+	/**
+	 * @return value of Details
+	 */
+	public final java.lang.String getDetails()
+	{
+		return getDetails(getContext());
+	}
+
+	/**
+	 * @param context
+	 * @return value of Details
+	 */
+	public final java.lang.String getDetails(com.mendix.systemwideinterfaces.core.IContext context)
+	{
+		return (java.lang.String) getMendixObject().getValue(context, MemberNames.Details.toString());
+	}
+
+	/**
+	 * Set value of Details
+	 * @param details
+	 */
+	public final void setDetails(java.lang.String details)
+	{
+		setDetails(getContext(), details);
+	}
+
+	/**
+	 * Set value of Details
+	 * @param context
+	 * @param details
+	 */
+	public final void setDetails(com.mendix.systemwideinterfaces.core.IContext context, java.lang.String details)
+	{
+		getMendixObject().setValue(context, MemberNames.Details.toString(), details);
 	}
 
 	/**

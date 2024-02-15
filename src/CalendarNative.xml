@@ -93,6 +93,14 @@ Selected Date property will be filled with the day and time pressed.</descriptio
                     <description>Should be a hex code (e.g., #808080)</description>
                     <returnType type="String" />
                 </property>
+                <property key="useCustomEvents" type="boolean" required="true" defaultValue="false">
+                    <caption>Custom Events</caption>
+                    <description>Set to true to use custom events</description>
+                </property>
+                <property key="customEvent" type="widgets" required="false" dataSource="datasourceEvents">
+                    <caption>Custom Event.</caption>
+                    <description>Widgets to place inside.</description>
+                </property>
             </propertyGroup>
         </propertyGroup>
         <propertyGroup caption="Properties">
